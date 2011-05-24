@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_description">Diktofon eesti keele kõnetuvastusega</string>
+	<string name="activity_notelistview_name">Lindistused</string>
+	<string name="activity_recorder_name">Lindistaja</string>
+	<string name="activity_speakers_name">Kõnelejad</string>
+	<string name="activity_preferences_name">Seaded</string>
+	<string name="activity_tagselector_name">Sildid</string>
+	<string name="activity_trans_name">Loe ja kuula</string>
+	<string name="activity_details_name">Detailid</string>
+	<string name="activity_about_name">Info</string>
+
+	<string name="search_transcriptions">Otsi (tõstutundetu)</string>
+	<string name="searchable_settings_description">Lindistuste transkriptsioonid</string>
+
+	<string name="instructionsRecorder">Vajutage nupule, et alustada lindistamist; vajutage uuesti, et peatada/jätkata. Vajutage BACK-nupule, et lindistamissessiooni lõpetada.</string>
+
+	<!-- Notes context menu -->
+	<string name="cm_notes_view">Loe ja kuula</string>
+	<string name="cm_notes_tags">Sildid</string>
+	<string name="cm_notes_transcribe">Transkribeeri</string>
+	<string name="cm_notes_delete">Kustuta</string>
+	<string name="cm_notes_properties">Detailid</string>
+
+	<!-- Menus in any activity -->
+	<string name="menu_add">Lindista</string>
+	<string name="menu_edittags_add">Lisa silte</string>
+	<string name="menu_search">Otsi</string>
+	<string name="menu_tags">Sildid</string>
+	<string name="menu_settings">Seaded</string>
+	<string name="menu_about">Info</string>
+	<string name="menu_delete">Kustuta</string>
+	<string name="menu_speakers_add">Lisa kõneleja</string>
+	<string name="menu_speakers">Kõnelejad</string>
+
+	<!-- Trans-menu and its sub menus -->
+	<string name="menu_trans_share">Jaga</string>
+	<string name="menu_trans_share_trans">Jaga transkriptsiooni</string>
+	<string name="menu_trans_share_audio">Jaga helifaili</string>
+	<string name="menu_trans_share_all">Jaga kõike</string>
+
+	<!-- Notes menu and its sub menus -->
+	<string name="menu_notes_sort">Järjesta ...</string>
+	<string name="menu_notes_sort_by_timestamp">loomisaeg</string>
+	<string name="menu_notes_sort_by_duration">kestus</string>
+	<string name="menu_notes_sort_by_size">suurus (baitides)</string>
+	<string name="menu_notes_sort_by_wordcount">sõnade arv</string>
+	<string name="menu_notes_sort_by_speakercount">kõnelejate arv</string>
+	<string name="menu_notes_transcribe">Transkribeeri kõik lindistused</string>
+	<string name="menu_notes_reload">Laadi kõik lindistused uuesti</string>
+	<string name="menu_recordings_import">Impordi audiofail</string>
+
+	<string name="b_yes">Jah</string>
+	<string name="b_no">Ei</string>
+	<string name="b_ok">OK</string>
+	<string name="b_cancel">Loobu</string>
+	<string name="b_apply_tags">Valmis</string>
+	<string name="confirm_delete_recording">Tahate kindlasti kustutada lindistust \"%1$s\"?</string>
+	<string name="confirm_delete_speaker">Tahate kindlasti kustutada kõnelejat \"%1$s\"?</string>
+	<string name="confirm_transcribe_all">Tahate kindlasti transkribeerida %1$d lindistust?</string>
+	<string name="confirm_finish_activity_recorder">Tahate kindlasti lindistamist lõpetada?</string>
+
+	<string name="error_cant_write_sdcard">VIGA: Mälukaardile kirjutamine luhtus</string>
+	<string name="error_cant_create_dir">VIGA: Kataloogi loomine luhtus</string>
+	<string name="error_cant_create_recorder">VIGA: Lindistaja loomine luhtus</string>
+	<string name="error_cant_read_dir">VIGA: Kataloogi lugemine luhtus</string>
+	<string name="error_failed_make_recording">VIGA: Lindistamine luhtus</string>
+	<string name="error_failed_init_mediaplayer">VIGA: Media Playeri loomine luhtus</string>
+	<string name="error_failed_copy_external_file">VIGA: Välise faili kopeerimine luhtus</string>
+	<string name="error_failed_move_external_file">VIGA: Välise faili ümbernimetamine luhtus</string>
+	<string name="error_failed_load_trans">VIGA: Transkriptsioonifaili laadimine luhtus</string>
+	<string name="error_failed_parse_trans">VIGA: Transkriptsioonifail sisaldab XML-vigu</string>
+	<string name="error_failed_obtain_token">VIGA: Transkriptsioonitookeni laadimine serverist luhtus</string>
+	<string name="error_failed_obtain_trans">VIGA: Transkriptsiooni laadimine serverist luhtus, kuigi proovisin %1$d korda. Proovige natukese aja pärast uuesti.</string>
+	<string name="error_failed_import_audio">VIGA: Audiofail importimine luhtus</string>
+	<string name="error_failed_pick_speaker">VIGA: Kõneleja valik luhtus</string>
+
+	<string name="toast_highlighting">Märgin \"%1$s\"</string>
+
+	<string name="message_loading_recordings">Oodake palun, laadin lindistusi...</string>
+	<string name="message_transcribing">Transkribeerin %1$d lindistust</string>
+	<string name="message_transcribed">Lindistus %1$s transkribeeritud</string>
+	<string name="message_nothing_to_transcribe">Mitte ühtegi transkribeerimist vajavat lindistust pole</string>
+	<string name="message_no_query">Otsisõna puudub</string>
+
+	<string name="message_no_transcription">
+		(Transkriptsioon puudub, saate ainult heli kuulata...)
+	</string>
+
+	<string name="dialog_title_new_tags">Sildid (tühikutega eraldatud)</string>
+	<string name="dialog_title_tags">Muuda silte</string>
+	<string name="dialog_title_new_speaker">Uue kõneleja nimi</string>
+	<string name="dialog_title_new_name">Muuda nime</string>
+	<string name="chooser_record">Lindista rakendusega:</string>
+	<string name="chooser_import">Impordi rakendusega:</string>
+	<string name="chooser_share">Jaga rakendusega:</string>
+	<string name="subject_share">Lindistus %1$s</string>
+
+	<string name="title_note_view">%1$s / %2$d x %3$s</string>
+	<string name="title_notelist_view">%1$d lindistust: %2$d trans-tud, %3$d trans-da</string>
+	
+	<string name="toast_speaker_add_new">Uus kõneleja \"%1$s\"</string>
+	<string name="toast_speaker_change_name">Uus nimi on \"%1$s\"</string>
+	<string name="toast_add_recording">Uus lindistus \"%1$s\"</string>
+	
+	<string name="notification_ticker_player">Mängin taustal</string>
+	<string name="notification_ticker_recorder">Lindistan taustal</string>
+	<string name="notification_text_player_playing">Mängin: %1$s</string>
+	<string name="notification_text_player_completed">Lõpetatud: %1$s</string>
+	<string name="notification_text_recorder_recording">Lindistamine käib...</string>
+	<string name="notification_text_recorder_pausing">Lindistamine pausil</string>
+
+	<string name="emptyview_recordings">Lindistusi pole.\nUue lindistuse tegemiseks vali menüüst \"Lindista\".</string>
+	<string name="emptyview_speakers">Kõnelejaid pole.\nUue kõneleja lisamiseks vali menüüst \"Lisa kõneleja\".</string>
+
+	<!-- <string name="titleTagSelector">%1$d silti / %2$d valitud</string> -->
+	<string name="titleTagSelector">%1$d silti</string>
+
+	<string name="about">
+		&lt;p>&lt;em>%1$s v%2$s&lt;/em>&lt;/p>
+		&lt;p>Autor:
+		&lt;a href="http://www.google.com/profiles/kaljurand">Kaarel Kaljurand&lt;/a>&lt;/p>
+		&lt;p>Dokumentatsioon, nimekiri vigadest, ja lähtekood:
+		&lt;a href="http://code.google.com/p/diktofon/">http://code.google.com/p/diktofon/&lt;/a>&lt;/p>
+		&lt;p>Eestikeelse kõne automaattuvastuse teenus:
+		&lt;a href="http://bark.phon.ioc.ee/webtrans/">http://bark.phon.ioc.ee/webtrans/&lt;/a>&lt;/p>
+	</string>
+
+	<string name="progress_uploading">saadan serverile...</string>
+	<string name="progress_waiting">ootan %1$s...</string>
+	<string name="progress_waiting_unknown">ootan ?? sek...</string>
+	<string name="progress_polling">pollin (%1$d)...</string>
+	<string name="progress_success">...</string>
+	<string name="progress_failure">Transkribeerimine luhtus :(</string>
+	<string name="submit_bug_report">BUG: Juhtus viga. Palun raporteerige see aadressil http://code.google.com/p/diktofon/issues/list</string>
+
+	<!-- Words -->
+	<string name="words">sõna</string>
+	<string name="speakers">kõnelejat</string>
+
+	<!-- Settings -->
+	<string name="titleRecording">Lindistamine</string>
+	<string name="titleTranscribing">Transkribeerimine</string>
+	<string name="titleUi">Kasutajaliides</string>
+
+	<string name="titleUseInternalRecorder">Kasuta Diktofoni lindistajat</string>
+	<string name="summaryUseInternalRecorder">Lindista Diktofoni oma lindistajaga, mitte välise lindistajaga</string>
+
+	<string name="titleRecorderPreferences">Diktofoni lindistaja seaded</string>
+	<string name="summaryRecorderPreferences">Lindistuse lahutus (nt 16-bit) ja sämplimissagedus (nt 16 kHz)</string>
+
+	<string name="titleAutotranscribe">Transkribeeri kohe</string>
+	<string name="summaryAutotranscribe">Transkribeeri kohe pärast lindistamist</string>
+
+	<string name="titleTranscribingPreferences">Transkribeerimisseaded</string>
+	<string name="summaryTranscribingPreferences">Transkribeerimisteenuse seaded: ooteaeg, pollimissagedus, ...</string>
+
+	<string name="nameEmail">Email</string>
+	<string name="titleEmail">E-posti aadress</string>
+	<string name="summaryEmail">E-posti aadressi kasutab server kasutaja tuvastamiseks (vaikimisi kaljurand+diktofon@gmail.com)</string>
+
+	<string name="titleRecordingResolution">Lahutusvõime</string>
+	<string name="summaryRecordingResolution">Lindistuse lahutusvõime (16-bit)</string>
+
+	<string name="titleRecordingRate">Sämplimissagedus</string>
+	<string name="summaryRecordingRate">Sämplimissagedus (soovitus: 16 kHz)</string>
+
+	<string name="titleTranscribingWaitLength">Ooteaja kordaja</string>
+	<string name="summaryTranscribingWaitLength">Eelda, et transkriptsioon on valmis pärast X sekundit, kus X on lindistuse kestus korrutatud selle arvuga</string>
+
+	<string name="titleTranscribingPollAmount">Pollimisarv</string>
+	<string name="summaryTranscribingPollAmount">Kui mitu korda serverilt küsida, et kas transkriptsioon on juba valmis</string>
+	<string-array name="entriesTranscribingPollAmount">
+		<item>1 kord</item>
+		<item>2 korda</item>
+		<item>5 korda</item>
+		<item>10 korda</item>
+	</string-array>
+
+	<string name="titleTranscribingPollPause">Pollimispaus</string>
+	<string name="summaryTranscribingPollPause">Kui mitu sekundit oodata kahe küsimise vahel</string>
+	<string-array name="entriesTranscribingPollPause">
+		<item>1 sek</item>
+		<item>3 sek</item>
+		<item>5 sek</item>
+		<item>10 sek</item>
+	</string-array>
+
+	<string name="titleLocaleEt">Eestikeelne kasutajaliides</string>
+	<string name="summaryLocaleEt">Näita nuppe, menüüsid jms eesti keeles, isegi kui seadme keel on teine</string>
+
+</resources>

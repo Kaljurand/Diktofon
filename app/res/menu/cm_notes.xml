@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:id="@+id/cm_notes_view"
+		android:title="@string/cm_notes_view" />
+
+	<item android:id="@+id/cm_notes_tags"
+		android:title="@string/cm_notes_tags" />
+
+	<item android:id="@+id/cm_notes_transcribe"
+		android:title="@string/cm_notes_transcribe" />
+
+	<item android:id="@+id/cm_notes_delete"
+		android:title="@string/cm_notes_delete" />
+
+	<item android:id="@+id/cm_notes_properties"
+		android:title="@string/cm_notes_properties" />
+
+</menu>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_weight="1">
+
+	<TextView
+		android:id="@+id/textview"
+		android:text="@string/instructionsRecorder"
+		android:textSize="16sp"
+		android:textColor="@color/d_fg_text"
+		android:gravity="center"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"/>
+
+	<ImageButton
+		android:id="@+id/buttonPauseResumeRecording"
+		android:src="@drawable/ic_btn_speak_now"
+		android:gravity="center"
+		android:padding="30dp"
+		android:layout_margin="35dp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"/>
+
+<!--
+	<Button
+		android:id="@+id/ButtonTest"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:drawableTop="@drawable/ic_btn_speak_now"
+		android:paddingTop="32dp"
+		android:drawablePadding="-15dp"
+		android:text="this is text"></Button>
+-->
+
+	<TextView
+		android:id="@+id/volume"
+		android:text="||||||||||||||||||"
+		android:textSize="18sp"
+		android:textColor="@color/d_fg_text_faded"
+		android:singleLine="true"
+		android:gravity="center"
+		android:padding="10dp"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"/>
+
+	<!-- android:typeface="monospace" -->
+	<TextView
+		android:id="@+id/statusbar"
+		android:text="1023 kB"
+		android:textColor="@color/d_fg_text_faded"
+		android:textSize="25sp"
+		android:gravity="center"
+		android:singleLine="true"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"/>
+
+	<Chronometer
+		android:id="@+id/chronometer"
+		android:gravity="center"
+		android:textColor="@color/d_fg_text_faded"
+		android:textSize="25sp"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"/>
+
+</LinearLayout>

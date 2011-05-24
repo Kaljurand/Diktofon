@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BUG: padding was 15sp which was nice -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="horizontal"
+	android:background="@color/bg_audio_player"
+	android:padding="12dp">
+		<Button
+			android:id="@+id/button_trans_playpause"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="1dp"
+			android:background="@drawable/button_play"
+			android:gravity="center_vertical"/>
+
+		<!-- BUG: textSize used to be 20sp -->
+		<TextView
+			android:id="@+id/tv_trans_timer"
+			android:text="0:00"
+			android:textColor="@color/l_fg_timer"
+			android:textSize="16sp"
+			android:paddingLeft="5dp"
+			android:paddingRight="5dp"
+			android:includeFontPadding="false"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"/>
+
+		<SeekBar
+			android:id="@+id/seekbar_trans_seek"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:progress="0"
+			android:max="100"/>
+
+</LinearLayout>

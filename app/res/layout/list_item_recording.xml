@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/list_selector_background"
+	android:padding="6dp">
+
+		<!-- Position -->
+		<TextView
+			android:id="@+id/list_item_position"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/l_fg_title"
+			android:background="@color/speaker1"
+			android:textSize="16sp"
+			android:singleLine="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:layout_marginRight="5dp"
+			android:paddingLeft="3dp"
+			android:paddingRight="3dp"
+			android:paddingBottom="0dp"
+			android:paddingTop="0dp"
+			android:text="12." />
+
+		<!-- Title (timestamp) -->
+		<!-- android:typeface="monospace" -->
+		<!-- android:textStyle="bold" -->
+		<TextView
+			android:id="@+id/list_item_title"
+			android:layout_toRightOf="@+id/list_item_position"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/l_fg_title"
+			android:textSize="16sp"
+			android:singleLine="true"
+			android:text="2011-04-01 (Fri) 17:05" />
+ 
+		<!-- Meta info -->
+		<TextView
+			android:id="@+id/list_item_meta"
+			android:layout_below="@+id/list_item_position"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/l_fg_meta"
+			android:textSize="14sp"
+			android:singleLine="true"
+			android:text="12:34  mpeg  120 MB  1000 words  5 speakers" />
+
+		<!-- Transcription snippet -->
+		<!-- BUG: Only shows 2 lines with marquee... -->
+		<!-- android:ellipsize="marquee" -->
+		<TextView
+			android:id="@+id/list_item_trans"
+			android:bufferType="spannable"
+			android:layout_below="@+id/list_item_meta"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/l_fg_text"
+			android:textSize="14sp"
+			android:lines="3"
+			android:ellipsize="none"
+			android:text="Elas metsas mutionu, keset kuuski noori-vanu" />
+
+		<!-- Tags -->
+		<TextView
+			android:id="@+id/list_item_tags"
+			android:layout_below="@+id/list_item_trans"
+			android:bufferType="spannable"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:layout_alignWithParentIfMissing="true"
+			android:textColor="@color/l_fg_text"
+			android:textSize="13sp"
+			android:singleLine="true"
+			android:gravity="right"
+			android:text="song, mutionu, forest, trees, living" />
+
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:padding="6dp">
+
+		<!-- Name -->
+		<!-- BUG: try also CheckedTextView
+			android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+		-->
+		<TextView
+			android:id="@+id/list_item_speaker_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="16sp"
+			android:padding="5dp"
+			android:gravity="center"
+			android:singleLine="true"
+			android:text="Arnold Alois Schwarzenegger" />
+
+		<!-- Gender -->
+		<!--
+		<TextView
+			android:id="@+id/list_item_speaker_gender"
+			android:layout_below="@+id/list_item_speaker_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="14sp"
+			android:singleLine="true"
+			android:text="male" />
+		-->
+
+		<!-- Description -->
+		<!--
+		<TextView
+			android:id="@+id/list_item_speaker_text"
+			android:bufferType="spannable"
+			android:layout_below="@+id/list_item_speaker_gender"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textSize="13sp"
+			android:lines="2"
+			android:ellipsize="none"
+			android:text="Arnold Alois Schwarzenegger (Thal, 30 juli 1947) is een Oostenrijks-Amerikaans
+			bodybuilder, acteur en politicus. Van 17 november 2003 tot 3 januari 2011 was hij gouverneur
+			van de Amerikaanse staat Californië." />
+		-->
+
+		<!-- ID -->
+		<TextView
+			android:id="@+id/list_item_speaker_id"
+			android:layout_below="@+id/list_item_speaker_text"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:textSize="16sp"
+			android:singleLine="true"
+			android:gravity="right"
+			android:text="ID" />
+
+		<!-- TODO: show also related recordings and speakers -->
+		<!--
+		<TextView
+			android:id="@+id/list_item_speaker_id2"
+			android:layout_below="@+id/list_item_speaker_id"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:layout_alignWithParentIfMissing="true"
+			android:textSize="13sp"
+			android:singleLine="true"
+			android:gravity="right"
+			android:text="Relations: recordings, co-speakers, ..." />
+		-->
+
+</RelativeLayout>

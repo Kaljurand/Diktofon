@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<LinearLayout
+		android:id="@+id/controls_tagselector"
+		android:orientation="horizontal"
+		android:background="@color/bg_audio_player"
+		android:padding="5dp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true" >
+
+		<Button
+			android:id="@+id/b_apply_tags"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:layout_marginLeft="50dp"
+			android:layout_marginRight="50dp"
+			android:text="@string/b_apply_tags"/>
+	</LinearLayout>
+
+	<ListView
+		android:id="@+id/list_edittag"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_alignParentTop="true"
+		android:layout_above="@id/controls_tagselector" />
+
+</RelativeLayout>

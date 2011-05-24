@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- Add a new speaker -->
+	<item
+		android:id="@+id/menu_speakers_add"
+		android:title="@string/menu_speakers_add"
+		android:icon="@drawable/ic_menu_add" />
+
+	<!-- Sort the speakers by id, name, ... -->
+</menu>

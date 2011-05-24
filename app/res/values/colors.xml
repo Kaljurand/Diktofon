@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+We are using the colors that are recommended for the launcher icons.
+
+http://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html
+
+// #ffcc00 (dark yellow)
+HIGHLIGHT = Color.argb(255, 255, 204, 0);
+
+// #808080 (dark grey)
+DISABLED = Color.argb(255, 128, 128, 128);
+
+// #bfbfbf (grey)
+TEXT = Color.argb(255, 191, 191, 191);
+
+// #cc0000 (red)
+PROCESSING = Color.argb(255, 204, 0, 0);
+
+
+Nice colors are available from:
+
+http://www.december.com/html/spec/color1.html
+-->
+
+<resources>
+	<color name="transparent">#00000000</color>
+
+	<!-- Dark-on-light mode -->
+	<color name="l_bg">#ffffff</color>
+	<!-- <color name="l_bg_recording">#bfbfbf</color> -->
+	<color name="l_bg_recording">#eeeee0</color> <!-- ivory2 -->
+
+	<color name="l_fg_text">#000000</color>
+	<color name="l_fg_meta">#005b00</color>
+
+	<!-- <color name="l_fg_title">#669900</color> -->
+	<!-- <color name="l_fg_title">#003399</color> -->
+	<color name="l_fg_title">#000000</color>
+
+	<color name="l_fg_tags">#ff6600</color> <!-- orange -->
+	<!-- <color name="l_bg_tags">#ff9900</color> --> <!-- light orange -->
+	<!-- <color name="l_bg_tags">#ff7722</color> --> <!-- oregon salmon -->
+	<!-- <color name="l_bg_tags">#ff8247</color> --> <!-- sienna1 -->
+	<!-- <color name="l_bg_tags">#ffa54f</color> --> <!-- tan1 -->
+	<color name="l_bg_tags">#ffcc99</color> <!-- sand(Safe Hex3) -->
+	<color name="l_fg_timer">#ffffff</color>
+	<color name="l_fg_disabled">#404040</color>
+
+
+	<!-- Light-on-dark mode -->
+	<!-- maybe: #77f -->
+	<color name="d_fg_title">#3366cc</color>
+	<color name="d_fg_text">#bfbfbf</color>
+
+	<color name="d_fg_text_faded">#808080</color>
+
+	<!-- General -->
+	<color name="highlight">#ffcc00</color>
+	<color name="processing">#cc0000</color>
+
+
+	<!-- dark grey -->
+	<color name="bg_audio_player">#404040</color>
+
+	<!-- Speakers -->
+	<color name="speaker1">#ccccff</color>
+	<color name="speaker2">#ccffcc</color>
+	<color name="speaker3">#ffcccc</color>
+	<color name="speaker4">#ffffcc</color>
+	<color name="speaker5">#ffccff</color>
+	<color name="speaker6">#ccffff</color>
+	<color name="speakerN">#cccccc</color>
+
+	<!-- @deprecated -->
+<!--
+	<color name="speaker1">#3366cc</color>
+	<color name="speaker2">#cc0000</color>
+	<color name="speaker3">#669900</color>
+	<color name="speaker4">#ff6600</color>
+	<color name="speakerN">#bfbfbf</color>
+	<color name="bg_light">#bfbfbf</color>
+	<color name="bg_dark">#404040</color>
+-->
+</resources>
