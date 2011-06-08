@@ -326,7 +326,8 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			startActivityForResult(Intent.createChooser(audioPicker, getString(R.string.chooser_import)), ACTIVITY_PICK_AUDIO);
 			return true;
 		case R.id.menu_notes_reload:
-			initRecordingListInBackground();
+			RecordingListHolder.initRecordingList();
+			fillRecordingListInBackground();
 			loadRecordings();
 			return true;
 		case R.id.menu_about:
@@ -413,6 +414,13 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	}
 
 
+	/**
+	 * <p>Turns the given file into a Recording-object, adds it to
+	 * the list of recordings, updates the GUI and optionally starts
+	 * transcribing it in the background.</p>
+	 * 
+	 * @param file audio file
+	 */
 	private void addRecording(File file) {
 		Recording recording = new Recording(file);
 		mRecordings.add(0, recording);
@@ -451,8 +459,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
 
 	// Using this singleton should make the UI faster, e.g. on orientation change.
-	private void initRecordingListInBackground() {
-		RecordingListHolder.initRecordingList();
+	private void fillRecordingListInBackground() {
 		final File[] files = Dirs.getRecordingsDir().listFiles(Dirs.FILENAME_FILTER);
 		if (files == null) {
 			toast(getString(R.string.error_cant_read_dir) + ": " + Dirs.getRecordingsDir());
@@ -463,12 +470,13 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				mProgressDialog.setMax(numberOfFiles);
 				Thread t = new Thread() {
 					public void run() {
-						RecordingList noteList = RecordingListHolder.getRecordingList();
+						RecordingList recList = RecordingListHolder.getRecordingList();
 						for (File file : files) {
-							Recording note = new Recording(file);
-							noteList.add(note);
+							Recording rec = new Recording(file);
+							recList.add(rec);
 							mProgressHandler.sendEmptyMessage(0);
 						}
+						// TODO: do we need this line?
 						mProgressHandler.sendEmptyMessage(0);
 					}
 				};
@@ -481,12 +489,12 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private void loadRecordings() {
 		mRecordings = RecordingListHolder.getRecordingList();
 		if (mRecordings == null) {
-			initRecordingListInBackground();
+			RecordingListHolder.initRecordingList();
 			mRecordings = RecordingListHolder.getRecordingList();
-		} else {
-			setNewListAdapter();
-			refreshTitle();
+			fillRecordingListInBackground();
 		}
+		setNewListAdapter();
+		refreshTitle();
 	}
 
 
@@ -501,7 +509,10 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	 */
 	private void refreshAdapter() {
 		ListAdapter adapter = mListView.getAdapter();
-		if (adapter != null) {
+		if (adapter == null) {
+			// This should never happen
+			toast("ERROR: refreshAdapter() failed: mListView.getAdapter() == null");
+		} else {
 			RecordingListAdapter recordingListAdapter = (RecordingListAdapter) adapter;
 			recordingListAdapter.setSearchQuery(mQuery);
 			recordingListAdapter.refresh();
