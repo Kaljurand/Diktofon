@@ -39,8 +39,15 @@ public class MyFileUtils {
 	}
 
 
-	public static String getSizeInKbAsString(long size) {
-		String sizeAsString = (long) (size / FileUtils.ONE_KB) + "kB";
+	public static String getSizeAsStringExact(long size) {
+		String sizeAsString;
+		if (size > FileUtils.ONE_MB) {
+			sizeAsString = String.format("%.1fMB", (float) size / FileUtils.ONE_MB);
+		} else if (size > FileUtils.ONE_KB) {
+			sizeAsString = String.format("%.1fkB", (float) size / FileUtils.ONE_KB);
+		} else {
+			sizeAsString = size + "b";
+		}
 		if (size > NetSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
 			sizeAsString += " !!!";
 		}

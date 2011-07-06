@@ -58,9 +58,21 @@ http://www.december.com/html/spec/color1.html
 	<color name="highlight">#ffcc00</color>
 	<color name="processing">#cc0000</color>
 
+	<color name="buttonStroke">#808080</color>
+	<color name="buttonNormal1">#cc0000</color> <!-- top -->
+	<color name="buttonNormal2">#660000</color> <!-- bottom -->
+	<color name="buttonPressed1">#660000</color>
+	<color name="buttonPressed2">#cc0000</color>
+	<color name="buttonFocused1">#cc0000</color>
+	<color name="buttonFocused2">#cc0000</color>
 
-	<!-- dark grey -->
-	<color name="bg_audio_player">#404040</color>
+	<!-- Text shadow -->
+	<color name="shadow">#0f0f0f</color>
+
+	<!-- Android greys from light to dark -->
+	<color name="grey1">#bfbfbf</color>
+	<color name="grey2">#808080</color>	
+	<color name="grey3">#404040</color>
 
 	<!-- Speakers -->
 	<color name="speaker1">#ccccff</color>

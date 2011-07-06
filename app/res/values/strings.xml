@@ -15,6 +15,7 @@
 	<string name="activity_about_name">About</string>
 
 	<string name="search_transcriptions">Search (case insensitive)</string>
+	<string name="search_transcriptions_by_voice">Speak a keyword</string>
 	<string name="searchable_settings_description">Transcriptions of speech recordings</string>
 
 	<string name="instructionsRecorder">Press the button to start recording, press again to pause/resume. Press the BACK-key to finish the recording session.</string>
@@ -86,6 +87,9 @@
 	<string name="b_ok">OK</string>
 	<string name="b_cancel">Cancel</string>
 	<string name="b_apply_tags">Apply</string>
+	<string name="b_recorder_start">Start recording</string>
+	<string name="b_recorder_pause">Recording...\n(tap to pause)</string>
+	<string name="b_recorder_resume">Pausing...\n(tap to resume)</string>
 	<string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
 	<string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
 	<string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>

@@ -4,8 +4,7 @@
 	android:id="@+id/tv_empty_list"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:text="..."
-	android:textColor="@color/d_fg_text_faded"
+	android:textColor="@color/grey3"
 	android:gravity="center"
 	android:padding="6dp"
 	android:textSize="15sp">

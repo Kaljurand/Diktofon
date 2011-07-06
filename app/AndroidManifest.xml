@@ -12,6 +12,7 @@
 		<activity
 			android:name=".activity.RecordingListActivity"
 			android:label="@string/app_name"
+			android:theme="@android:style/Theme.Light"
 			android:launchMode="singleTop"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
@@ -27,6 +28,7 @@
 		<activity
 			android:name=".activity.RecorderActivity"
 			android:label="@string/activity_recorder_name"
+			android:theme="@android:style/Theme.NoTitleBar"
 			android:launchMode="singleTop"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
@@ -58,6 +60,7 @@
 		<activity
 			android:name=".activity.TransActivity"
 			android:label="@string/activity_trans_name"
+			android:theme="@android:style/Theme.Light"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard"
 			android:launchMode="singleTop">
@@ -79,6 +82,7 @@
 		<activity
 			android:name=".activity.SpeakerListActivity"
 			android:label="@string/activity_speakers_name"
+			android:theme="@android:style/Theme.Light"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
 		</activity>
@@ -95,6 +99,7 @@
 		<activity
 			android:name=".activity.TagSelectorActivity"
 			android:label="@string/activity_tagselector_name"
+			android:theme="@android:style/Theme.Light"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
 		</activity>
@@ -103,6 +108,7 @@
 		<activity
 			android:name=".activity.AboutActivity"
 			android:label="@string/activity_about_name"
+			android:theme="@android:style/Theme.Light"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
 		</activity>

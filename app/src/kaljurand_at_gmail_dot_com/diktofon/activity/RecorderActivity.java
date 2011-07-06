@@ -29,6 +29,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.res.Resources;
 import android.media.AudioFormat;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,8 +39,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.File;
@@ -61,7 +62,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 
 	private File mRecordingsDir = null;
 
-	private ImageButton mButtonPauseResumeRecorder;
+	private Button mButtonPauseResumeRecorder;
 	private TextView mVolume;
 	private TextView mStatusbar;
 	private Chronometer mChronometer;
@@ -86,6 +87,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 			try {
 				mService.startRecording(mSampleRate, mResolution, getRecordingFile());
 				setRecorderStyle(getResources().getColor(R.color.processing));
+				setButtonRecording();
 				startTasks();
 			} catch (IOException e) {
 				toast(e.getMessage());
@@ -131,7 +133,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		// TODO: Think about it.
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		mButtonPauseResumeRecorder = (ImageButton) findViewById(R.id.buttonPauseResumeRecording);
+		mButtonPauseResumeRecorder = (Button) findViewById(R.id.buttonPauseResumeRecording);
 
 		mVolume = (TextView) findViewById(R.id.volume);
 		mStatusbar = (TextView) findViewById(R.id.statusbar);
@@ -169,7 +171,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		mShowStatusTask = new Runnable() {
 			public void run() {
 				if (mService != null) {
-					mStatusbar.setText(MyFileUtils.getSizeInKbAsString((long) mService.getLength()));
+					mStatusbar.setText(MyFileUtils.getSizeAsStringExact((long) mService.getLength()));
 					mStatusHandler.postDelayed(this, 1000);
 				}
 			}
@@ -315,9 +317,15 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 
 
 	private void setGuiPausing() {
+		Resources res = getResources();
 		stopChronometer();
-		setRecorderStyle(getResources().getColor(R.color.d_fg_text_faded));
+		setRecorderStyle(res.getColor(R.color.d_fg_text_faded));
 		mStatusHandler.removeCallbacks(mShowStatusTask);
+
+		mButtonPauseResumeRecorder.setText(getString(R.string.b_recorder_resume));
+		mButtonPauseResumeRecorder.setBackgroundDrawable(res.getDrawable(android.R.drawable.btn_default));
+		mButtonPauseResumeRecorder.setTextColor(res.getColor(R.color.grey3));
+		mButtonPauseResumeRecorder.setShadowLayer(0f, 0f, 0f, res.getColor(R.color.shadow));
 	}
 
 
@@ -325,6 +333,16 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		startChronometer();
 		setRecorderStyle(getResources().getColor(R.color.processing));
 		mStatusHandler.postDelayed(mShowStatusTask, 100);
+		setButtonRecording();
+	}
+
+
+	private void setButtonRecording() {
+		Resources res = getResources();
+		mButtonPauseResumeRecorder.setText(getString(R.string.b_recorder_pause));
+		mButtonPauseResumeRecorder.setBackgroundDrawable(res.getDrawable(R.drawable.button_record));
+		mButtonPauseResumeRecorder.setTextColor(res.getColor(R.color.l_bg));
+		mButtonPauseResumeRecorder.setShadowLayer(1.6f, 1.5f, 1.3f, res.getColor(R.color.shadow));
 	}
 
 

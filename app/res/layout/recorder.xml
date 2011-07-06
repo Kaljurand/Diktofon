@@ -13,27 +13,23 @@
 		android:gravity="center"
 		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
+		android:layout_margin="5dp"
 		android:layout_weight="1"/>
 
-	<ImageButton
+
+	<!-- BUG: does not seem to work: android:soundEffectsEnabled="true" -->
+	<Button
 		android:id="@+id/buttonPauseResumeRecording"
-		android:src="@drawable/ic_btn_speak_now"
-		android:padding="50dp"
+		android:text="@string/b_recorder_start"
+		android:textSize="20sp"
+		android:textColor="@color/grey3"
+		android:layout_weight="1"
+		android:padding="20dp"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:layout_gravity="center"
-		android:layout_margin="35dp"/>
+		android:layout_margin="20dp"/>
 
-<!--
-	<Button
-		android:id="@+id/ButtonTest"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:drawableTop="@drawable/ic_btn_speak_now"
-		android:paddingTop="32dp"
-		android:drawablePadding="-15dp"
-		android:text="this is text"></Button>
--->
 
 	<TextView
 		android:id="@+id/volume"
@@ -52,7 +48,7 @@
 		android:id="@+id/statusbar"
 		android:text="1023 kB"
 		android:textColor="@color/d_fg_text_faded"
-		android:textSize="25sp"
+		android:textSize="20sp"
 		android:gravity="center"
 		android:singleLine="true"
 		android:layout_height="wrap_content"

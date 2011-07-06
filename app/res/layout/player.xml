@@ -5,7 +5,7 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="horizontal"
-	android:background="@color/bg_audio_player"
+	android:background="@color/grey3"
 	android:padding="12dp">
 		<Button
 			android:id="@+id/button_trans_playpause"
