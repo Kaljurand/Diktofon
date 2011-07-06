@@ -72,7 +72,7 @@ public class BackgroundTranscriber {
 		String token = mRecording.getToken();
 		if (token == null) {
 			setStatusAndSendMessage(Recording.State.UPLOADING);
-			token = EstSpeechApiUtils.noteToToken(mRecording.getAudioFile(), mRecording.getMime(), mEmail);
+			token = NetSpeechApiUtils.noteToToken(mRecording.getAudioFile(), mRecording.getMime(), mEmail);
 			if (token == null) {
 				setStatusAndSendMessage(Recording.State.FAILURE);
 				throw new TransException(mRes.getString(R.string.error_failed_obtain_token));
@@ -82,7 +82,7 @@ public class BackgroundTranscriber {
 				pauseThread(mInitialWaitLength);
 			}
 		}
-		String trs = EstSpeechApiUtils.tokenToTrans(token);
+		String trs = NetSpeechApiUtils.tokenToTrans(token);
 		int tries = 0;
 		mRecording.resetPollCount();
 		while (trs == null && tries < mPollingAmount) {
@@ -90,7 +90,7 @@ public class BackgroundTranscriber {
 			mRecording.incPollCount();
 			setStatusAndSendMessage(Recording.State.POLLING);
 			pauseThread(mPollingPause);
-			trs = EstSpeechApiUtils.tokenToTrans(token);
+			trs = NetSpeechApiUtils.tokenToTrans(token);
 		}
 		if (trs == null) {
 			setStatusAndSendMessage(Recording.State.FAILURE);

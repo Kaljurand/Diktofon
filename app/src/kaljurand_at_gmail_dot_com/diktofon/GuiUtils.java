@@ -16,8 +16,8 @@
 
 package kaljurand_at_gmail_dot_com.diktofon;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.GradientDrawable;
@@ -40,13 +40,13 @@ public class GuiUtils {
 	private static final int[] DIVIDER_COLORS = {0xFFeeeee0, 0xFFbfbfbf, 0xFFeeeee0};
 
 	/**
-	 * Sets the (text)view that is shown when the list is empty.
+	 * <p>Sets the (text)view that is shown when the list is empty.</p>
 	 * 
 	 * @param activity
 	 * @param lv
 	 * @param text
 	 */
-	public static void setEmptyView(ListActivity activity, ListView lv, String text) {
+	public static void setEmptyView(Activity activity, ListView lv, String text) {
 		TextView emptyView = (TextView) activity.getLayoutInflater().inflate(R.layout.empty_list, null);
 		emptyView.setText(text);
 		emptyView.setVisibility(View.GONE);

@@ -19,9 +19,9 @@ package kaljurand_at_gmail_dot_com.diktofon;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 
-import kaljurand_at_gmail_dot_com.estspeechapi.trans.Transcription;
-
 import org.xml.sax.SAXException;
+
+import ee.ioc.phon.netspeechapi.trans.Transcription;
 
 import java.io.File;
 import java.io.IOException;

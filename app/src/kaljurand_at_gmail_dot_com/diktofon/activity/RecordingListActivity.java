@@ -51,6 +51,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
+import ee.ioc.phon.netspeechapi.trans.Transcription;
+
 import kaljurand_at_gmail_dot_com.diktofon.BackgroundTranscriber;
 import kaljurand_at_gmail_dot_com.diktofon.Dirs;
 import kaljurand_at_gmail_dot_com.diktofon.Executable;
@@ -64,7 +66,6 @@ import kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider;
 import kaljurand_at_gmail_dot_com.diktofon.Utils;
 import kaljurand_at_gmail_dot_com.diktofon.adapter.RecordingListAdapter;
 import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
-import kaljurand_at_gmail_dot_com.estspeechapi.trans.Transcription;
 
 /**
  * <p>Main activity of the Diktofon app. Displays the list of recordings, allows them
@@ -638,7 +639,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private int addNewSpeakersFromTranscription(Transcription transcription) {
 		int count = 0;
 		ContentValues values = new ContentValues();
-		for (Entry<String, kaljurand_at_gmail_dot_com.estspeechapi.trans.Speaker> entry : transcription.getIdToSpeaker().entrySet()) {
+		for (Entry<String, ee.ioc.phon.netspeechapi.trans.Speaker> entry : transcription.getIdToSpeaker().entrySet()) {
 			// BUG: Here we should check that the given speaker is not already in the database
 			if (! entry.getKey().equals("")) {
 				values.put(Speaker.Columns.NAME, entry.getValue().getScreenName());

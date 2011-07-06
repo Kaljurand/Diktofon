@@ -32,7 +32,7 @@ public class MyFileUtils {
 		} else {
 			sizeAsString = size + "b";
 		}
-		if (size > EstSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
+		if (size > NetSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
 			sizeAsString += " !!!";
 		}
 		return sizeAsString;
@@ -41,7 +41,7 @@ public class MyFileUtils {
 
 	public static String getSizeInKbAsString(long size) {
 		String sizeAsString = (long) (size / FileUtils.ONE_KB) + "kB";
-		if (size > EstSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
+		if (size > NetSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
 			sizeAsString += " !!!";
 		}
 		return sizeAsString;

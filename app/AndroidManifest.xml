@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="kaljurand_at_gmail_dot_com.diktofon"
 	android:installLocation="auto"
-	android:versionName="0.9.67"
-	android:versionCode="74">
+	android:versionName="0.9.70"
+	android:versionCode="75">
 	<!-- application: android:debuggable="true" -->
 	<application
 		android:icon="@drawable/ic_launcher"

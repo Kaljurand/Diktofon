@@ -25,8 +25,6 @@ import kaljurand_at_gmail_dot_com.diktofon.SpeakerColor;
 import kaljurand_at_gmail_dot_com.diktofon.provider.TSpeaker;
 import kaljurand_at_gmail_dot_com.diktofon.service.PlayerService;
 import kaljurand_at_gmail_dot_com.diktofon.view.Player;
-import kaljurand_at_gmail_dot_com.estspeechapi.trans.Speaker;
-import kaljurand_at_gmail_dot_com.estspeechapi.trans.Transcription;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -61,6 +59,9 @@ import android.widget.ScrollView;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import ee.ioc.phon.netspeechapi.trans.Speaker;
+import ee.ioc.phon.netspeechapi.trans.Transcription;
 
 import java.io.File;
 import java.io.IOException;
