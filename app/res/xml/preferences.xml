@@ -6,11 +6,6 @@ BUG: try these:
     android:dialogTitle="@string/prefGestureAccuracyDialog"
     android:persistent="true"
     android:shouldDisableView="false"
-
-        <Preference
-                android:title="Custom Preference"
-                android:summary="This works almost like a button"
-                android:key="customPref" />
 -->
 
 	<PreferenceCategory android:title="@string/titleRecording">
