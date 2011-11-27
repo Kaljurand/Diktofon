@@ -416,6 +416,8 @@ public class TransActivity extends AbstractDiktofonActivity {
 		intent.setType("audio/*");
 		ArrayList<Uri> uris = new ArrayList<Uri>();
 		uris.add(Uri.fromFile(new File(mAudioPath)));
+		// TODO: don't create a one-element list here, this way we might
+		// gain wider support from external apps (i.e. not just GMail)
 		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 		startActivity(Intent.createChooser(intent, getString(R.string.chooser_share)));
 	}

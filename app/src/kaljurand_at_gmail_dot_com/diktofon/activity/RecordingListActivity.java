@@ -47,6 +47,7 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map.Entry;
@@ -72,7 +73,7 @@ import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
  * to be viewed and tagged. Allows new recordings to be added.</p>
  * 
  * <p>Title can change (1) on create, (2) after adding a recording, (3) after transcribing a recording,
- * (4) after deleting a recording, after reloading all nrecordings, and after adding/removing the :notrans-tag.</p>
+ * (4) after deleting a recording, after reloading all recordings, and after adding/removing the :notrans-tag.</p>
  * 
  * @author Kaarel Kaljurand
  */
@@ -85,6 +86,8 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private static final int ACTIVITY_PICK_AUDIO = 5;
 
 	private static final int DIALOG_PROGRESS = 1;
+
+	private static final String LOG_TAG = RecordingListActivity.class.getName();
 
 	private SharedPreferences mPrefs;
 	private ListView mListView;
@@ -341,42 +344,27 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
 
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (resultCode != Activity.RESULT_OK || data == null) {
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		super.onActivityResult(requestCode, resultCode, intent);
+		if (resultCode != Activity.RESULT_OK || intent == null) {
 			return;
 		}
 		switch (requestCode) {
 		case ACTIVITY_SELECT_TAGS:
-			String[] selectedTags = data.getStringArrayExtra(TagSelectorActivity.EXTRA_TAGS_SELECTED);
+			String[] selectedTags = intent.getStringArrayExtra(TagSelectorActivity.EXTRA_TAGS_SELECTED);
 			mRecordings.setTags(new HashSet<String>(Arrays.asList(selectedTags)));
 			refreshGui();
 			break;
 		case ACTIVITY_SELECT_TAGS_FOR_SORT:
-			String[] selectedTagsForSort = data.getStringArrayExtra(TagSelectorActivity.EXTRA_TAGS_SELECTED);
+			String[] selectedTagsForSort = intent.getStringArrayExtra(TagSelectorActivity.EXTRA_TAGS_SELECTED);
 			mRecordings.sort(new Recording.TagComparator(new HashSet<String>(Arrays.asList(selectedTagsForSort))));
 			refreshAdapter();
 			break;
 		case ACTIVITY_PICK_AUDIO:
-			Uri audioUri = data.getData();
-			if (audioUri == null) {
-				toast(getString(R.string.error_failed_import_audio));
-				break;
-			}
-			String filename = getAudioFilenameFromUri(audioUri);
-			if (filename == null) {
-				toast(String.format(getString(R.string.error_failed_import_audio_uri), audioUri));
-				break;
-			}
-			try {
-				File newFile = MyFileUtils.copyFileToRecordingsDir(new File(filename));
-				addRecording(newFile);
-			} catch (IOException e) {
-				toast(getString(R.string.error_failed_copy_external_file));
-			}
+			copyIntentDataToRecordingsDir(intent);
 			break;
 		case ACTIVITY_RECORD_SOUND:
-			Uri uri = data.getData();
+			Uri uri = intent.getData();
 			String path1 = getAudioFilenameFromUri(uri);
 			if (path1 == null) {
 				toast(getString(R.string.error_failed_make_recording));
@@ -391,7 +379,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			}
 			break;
 		case MY_ACTIVITY_RECORD_SOUND:
-			String filename1 = getAudioFilenameFromUri(data.getData());
+			String filename1 = getAudioFilenameFromUri(intent.getData());
 			if (filename1 == null) {
 				toast(getString(R.string.error_failed_make_recording));
 			} else {
@@ -409,9 +397,37 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	 */
 	@Override
 	protected void onNewIntent(Intent intent) {
-		Log.i(RecordingListActivity.class.getName(), "onNewIntent: " + intent);
+		Log.i(LOG_TAG, "onNewIntent: " + intent);
 		setIntent(intent);
 		handleIntent(intent);
+	}
+
+
+	private boolean copyIntentDataToRecordingsDir(Intent intent) {
+		Uri audioUri = intent.getData();
+		return copyUriToRecordingsDir(audioUri);
+	}
+
+
+	private boolean copyUriToRecordingsDir(Uri audioUri) {
+		Log.i(LOG_TAG, "URI: " + audioUri);
+		if (audioUri == null) {
+			toast(getString(R.string.error_failed_import_audio));
+			return false;
+		}
+		String filename = getAudioFilenameFromUri(audioUri);
+		if (filename == null) {
+			toast(String.format(getString(R.string.error_failed_import_audio_uri), audioUri));
+			return false;
+		}
+		try {
+			File newFile = MyFileUtils.copyFileToRecordingsDir(new File(filename));
+			addRecording(newFile);
+			return true;
+		} catch (IOException e) {
+			toast(getString(R.string.error_failed_copy_external_file));
+		}
+		return false;
 	}
 
 
@@ -541,7 +557,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			if (mQuery == null) {
 				toast(getString(R.string.message_no_query));
 			} else {
-				// On the Wildfire keyboard
+				// On the HTC Wildfire keyboard
 				// I can't enter the regular vertical bar, but only the
 				// broken vertical bar (\u00a6), so we replace it here with
 				// the regular vertical bar.
@@ -550,12 +566,40 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 					new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
 				suggestions.saveRecentQuery(mQuery, null);
 
-				Log.i(RecordingListActivity.class.getName(), "Query: " + mQuery);
+				Log.i(LOG_TAG, "Query: " + mQuery);
 				mRecordings.sort(new Recording.MatchComparator(mQuery));
 				refreshAdapter();
 			}
+		} else if (Intent.ACTION_SEND.equals(intent.getAction())) {
+			Bundle extras = intent.getExtras();
+			if (extras != null) {
+				Log.i(LOG_TAG, "ACTION_SEND: data = " + intent.getData() + ", extras: " + intent.getExtras().keySet());
+				// TODO: if the SEND-intent contains a subject then ask the user
+				// if she wants to turn it into tags
+				if (intent.hasExtra(Intent.EXTRA_STREAM)) {
+					Object extraStream = extras.get(Intent.EXTRA_STREAM);
+					if (extraStream instanceof Uri) {
+						copyUriToRecordingsDir((Uri) extraStream);
+					} else if (extraStream instanceof ArrayList<?>) {
+						// TODO: we assume a list of Uris, which might not be the case
+						ArrayList<Uri> uris = extras.getParcelableArrayList(Intent.EXTRA_STREAM);
+						if (uris != null) {
+							toast("Importing " + uris.size() + " file(s)...");
+							for (Uri uri : uris) {
+								copyUriToRecordingsDir(uri);
+							}
+						}
+					} else {
+						toast("ERROR: SEND-intent has EXTRA_STREAM with unsupported content");
+					}
+				} else {
+					toast("ERROR: SEND-intent has no EXTRA_STREAM");
+				}
+			} else {
+				toast("ERROR: SEND-intent has no extras");
+			}
 		} else {
-			Log.i(RecordingListActivity.class.getName(), "Intent not handled:" + intent);
+			Log.i(LOG_TAG, "Intent not handled:" + intent);
 		}
 	}
 

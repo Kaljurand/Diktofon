@@ -1,146 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="kaljurand_at_gmail_dot_com.diktofon"
-	android:versionName="0.9.71"
-	android:versionCode="971">
-	<!-- android:installLocation="auto" -->
-	<!-- application: android:debuggable="true" -->
-	<application
-		android:icon="@drawable/ic_launcher"
-		android:label="@string/app_name"
-		android:description="@string/app_description">
-		<activity
-			android:name=".activity.RecordingListActivity"
-			android:label="@string/app_name"
-			android:theme="@android:style/Theme.Light"
-			android:launchMode="singleTop"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-			<intent-filter>
+    package="kaljurand_at_gmail_dot_com.diktofon"
+    android:installLocation="auto"
+    android:versionCode="971"
+    android:versionName="0.9.71" >
+
+    <!-- application: android:debuggable="true" -->
+    <application
+        android:description="@string/app_description"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:name=".activity.RecordingListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="audio/*" >
+                </data>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_recorder_name"
+            android:launchMode="singleTop"
+            android:name=".activity.RecorderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter >
+
+                <!-- Java constant: android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION -->
+                <action android:name="android.provider.MediaStore.RECORD_SOUND" />
+                <!-- <action android:name="android.intent.action.PICK" /> -->
+
+
+                <!--
 				<action android:name="android.intent.action.MAIN" />
-				<action android:name="android.intent.action.SEARCH" />
 				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
-		</activity>
+                -->
+                <!--
+                The DEFAULT-category is needed for intents that do not call
+				by class name to be resolved.
+                -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- <data android:mimeType="audio/wav" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_preferences_name"
+            android:name=".activity.Preferences"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_trans_name"
+            android:launchMode="singleTop"
+            android:name=".activity.TransActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
+            <intent-filter >
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_trans" />
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_details_name"
+            android:name=".activity.DetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_speakers_name"
+            android:name=".activity.SpeakerListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
+        </activity>
 
-		<activity
-			android:name=".activity.RecorderActivity"
-			android:label="@string/activity_recorder_name"
-			android:theme="@android:style/Theme.NoTitleBar"
-			android:launchMode="singleTop"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-			<intent-filter>
-				<!-- Java constant: android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION -->
-				<action android:name="android.provider.MediaStore.RECORD_SOUND" />
-				<!-- <action android:name="android.intent.action.PICK" />-->
-
-				<!--
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-				-->
-				<!--  The DEFAULT-category is needed for intents that do not call
-				by class name to be resolved. -->
-				<category android:name="android.intent.category.DEFAULT" />
-				<!-- <data android:mimeType="audio/wav" /> -->
-			</intent-filter>
-		</activity>
-
-
-		<activity
-			android:name=".activity.Preferences"
-			android:label="@string/activity_preferences_name"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-		</activity>
-
-
-		<activity
-			android:name=".activity.TransActivity"
-			android:label="@string/activity_trans_name"
-			android:theme="@android:style/Theme.Light"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard"
-			android:launchMode="singleTop">
-			<intent-filter>
-				<action android:name="android.intent.action.SEARCH" />
-			</intent-filter>
-			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable_trans"/>
-		</activity>
-
-
-		<activity
-			android:name=".activity.DetailsActivity"
-			android:label="@string/activity_details_name"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-		</activity>
-
-
-		<activity
-			android:name=".activity.SpeakerListActivity"
-			android:label="@string/activity_speakers_name"
-			android:theme="@android:style/Theme.Light"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-		</activity>
-
-<!--
+        <!--
 		<activity
 			android:name=".activity.SpeakersActivity"
 			android:label="@string/activity_speakers_name"
 			android:screenOrientation="portrait"
 			android:configChanges="orientation|keyboardHidden|keyboard">
 		</activity>
--->
+        -->
 
-		<activity
-			android:name=".activity.TagSelectorActivity"
-			android:label="@string/activity_tagselector_name"
-			android:theme="@android:style/Theme.Light"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-		</activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_tagselector_name"
+            android:name=".activity.TagSelectorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
+        </activity>
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:label="@string/activity_about_name"
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
+        </activity>
 
+        <service android:name=".service.PlayerService" />
+        <service android:name=".service.RecorderService" />
 
-		<activity
-			android:name=".activity.AboutActivity"
-			android:label="@string/activity_about_name"
-			android:theme="@android:style/Theme.Light"
-			android:screenOrientation="portrait"
-			android:configChanges="orientation|keyboardHidden|keyboard">
-		</activity>
+        <provider
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider"
+            android:name=".SearchSuggestionsProvider" />
+        <provider
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider"
+            android:name=".provider.SpeakersContentProvider" />
+    </application>
 
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" >
+    </uses-permission>
 
-		<service android:name=".service.PlayerService" />
-
-		<service android:name=".service.RecorderService" />
-
-
-		<provider
-			android:name=".SearchSuggestionsProvider"
-			android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider" />
-
-
-		<provider
-			android:name=".provider.SpeakersContentProvider"
-			android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider" />
-
-	</application>
-
-	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-	<uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
-
-	<!-- 3 = 1.5 -->
-	<!-- 4 = 1.6; supports includeInGlobalSearch -->
-	<!-- 8 = 2.2; HTC Wildfire; supports installLocation -->
-	<!-- 10 = 2.3.3 -->
-	<!-- 11 = 3.0 -->
-	<uses-sdk
-		android:minSdkVersion="4"
-		android:targetSdkVersion="10"/>
+    <!-- 3 = 1.5 -->
+    <!-- 4 = 1.6; supports includeInGlobalSearch -->
+    <!-- 8 = 2.2; HTC Wildfire; supports installLocation -->
+    <!-- 10 = 2.3.3 -->
+    <!-- 11 = 3.0 -->
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="10" />
 
 </manifest>
