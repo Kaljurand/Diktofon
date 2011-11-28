@@ -125,12 +125,18 @@ public class MyFileUtils {
 	 */
 	public static String guessMime(String path) {
 		String ext = getExtension(path);
-		if (ext.equals(".ogg")) return "audio/ogg";
-		if (ext.equals(".mp2")) return "audio/mpeg";
-		if (ext.equals(".mp3")) return "audio/mpeg";
-		if (ext.equals(".mp4")) return "audio/mp4";
-		if (ext.equals(".amr")) return "audio/AMR";
-		if (ext.equals(".3gpp")) return "audio/3gpp";
+		if (".aac".equals(ext)) return "audio/aac";
+		if (".flac".equals(ext)) return "audio/flac";
+		if (".aiff".equals(ext)) return "audio/aiff";
+		if (".aif".equals(ext)) return "audio/aiff";
+		if (".mka".equals(ext)) return "audio/x-matroska";
+		if (".mkv".equals(ext)) return "video/x-matroska";
+		if (".ogg".equals(ext)) return "audio/ogg";
+		if (".mp2".equals(ext)) return "audio/mpeg";
+		if (".mp3".equals(ext)) return "audio/mpeg";
+		if (".mp4".equals(ext)) return "audio/mp4";
+		if (".amr".equals(ext)) return "audio/AMR";
+		if (".3gpp".equals(ext)) return "audio/3gpp";
 		return "audio/wav";
 	}
 
