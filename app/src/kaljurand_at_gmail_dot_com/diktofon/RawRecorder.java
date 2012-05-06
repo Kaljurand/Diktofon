@@ -412,10 +412,17 @@ public class RawRecorder {
 		}
 	}
 
+
 	/*
-	 * <p>Converts two bytes to a short, in LITTLE_ENDIAN format</p>
+	 * <p>Converts two bytes to a short, assuming that the 2nd byte is
+	 * more significant (LITTLE_ENDIAN format).</p>
+	 * 
+	 * <pre>
+	 * 255 | (255 << 8)
+	 * 65535
+	 * </pre>
 	 */
-	private short getShort(byte argB1, byte argB2) {
-		return (short)(argB1 | (argB2 << 8));
+	private static short getShort(byte argB1, byte argB2) {
+		return (short) (argB1 | (argB2 << 8));
 	}
 }

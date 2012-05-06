@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kaljurand_at_gmail_dot_com.diktofon"
-    android:installLocation="auto"
-    android:versionCode="972"
-    android:versionName="0.9.72" >
+    android:versionCode="973"
+    android:versionName="0.9.73" >
 
-    <!-- application: android:debuggable="true" -->
+    <!-- TODO: put this back: android:installLocation="auto" -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:description="@string/app_description"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
+            android:name=".activity.RecordingListActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:name=".activity.RecordingListActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -37,13 +41,13 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
+            android:name=".activity.RecorderActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_recorder_name"
             android:launchMode="singleTop"
-            android:name=".activity.RecorderActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
 
                 <!-- Java constant: android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION -->
                 <action android:name="android.provider.MediaStore.RECORD_SOUND" />
@@ -63,19 +67,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.Preferences"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_preferences_name"
-            android:name=".activity.Preferences"
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.TransActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_trans_name"
             android:launchMode="singleTop"
-            android:name=".activity.TransActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
@@ -84,15 +88,15 @@
                 android:resource="@xml/searchable_trans" />
         </activity>
         <activity
+            android:name=".activity.DetailsActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_details_name"
-            android:name=".activity.DetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.SpeakerListActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_speakers_name"
-            android:name=".activity.SpeakerListActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light" >
         </activity>
@@ -107,16 +111,16 @@
         -->
 
         <activity
+            android:name=".activity.TagSelectorActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_tagselector_name"
-            android:name=".activity.TagSelectorActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light" >
         </activity>
         <activity
+            android:name=".activity.AboutActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_about_name"
-            android:name=".activity.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light" >
         </activity>
@@ -125,19 +129,12 @@
         <service android:name=".service.RecorderService" />
 
         <provider
-            android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider"
-            android:name=".SearchSuggestionsProvider" />
+            android:name=".SearchSuggestionsProvider"
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider" />
         <provider
-            android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider"
-            android:name=".provider.SpeakersContentProvider" />
+            android:name=".provider.SpeakersContentProvider"
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" >
-    </uses-permission>
 
     <!-- 3 = 1.5 -->
     <!-- 4 = 1.6; supports includeInGlobalSearch -->
@@ -146,6 +143,6 @@
     <!-- 11 = 3.0 -->
     <uses-sdk
         android:minSdkVersion="4"
-        android:targetSdkVersion="10" />
+        android:targetSdkVersion="15" />
 
 </manifest>

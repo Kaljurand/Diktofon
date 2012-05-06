@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,15 @@ package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -61,7 +62,6 @@ import kaljurand_at_gmail_dot_com.diktofon.GuiUtils;
 import kaljurand_at_gmail_dot_com.diktofon.MyFileUtils;
 import kaljurand_at_gmail_dot_com.diktofon.Recording;
 import kaljurand_at_gmail_dot_com.diktofon.RecordingList;
-import kaljurand_at_gmail_dot_com.diktofon.RecordingListHolder;
 import kaljurand_at_gmail_dot_com.diktofon.R;
 import kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider;
 import kaljurand_at_gmail_dot_com.diktofon.Utils;
@@ -85,8 +85,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private static final int ACTIVITY_SELECT_TAGS_FOR_SORT = 4;
 	private static final int ACTIVITY_PICK_AUDIO = 5;
 
-	private static final int DIALOG_PROGRESS = 1;
-
 	private static final String LOG_TAG = RecordingListActivity.class.getName();
 
 	private SharedPreferences mPrefs;
@@ -97,10 +95,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
 	private String mQuery;
 
-	private ProgressDialog mProgressDialog;
-	private Handler mProgressHandler;
-
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,32 +104,10 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		Dirs.setBaseDir(getPackageName());
 		MyFileUtils.createNomedia();
 
-		mProgressHandler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				super.handleMessage(msg);
-				if (mProgressDialog != null) {
-					if (mProgressDialog.getProgress() >= mProgressDialog.getMax()) {
-						mProgressDialog.dismiss();
-						// BUG: experimental
-						// We try to forget the dialog to avoid problems (NPEs) if
-						// one does "Reload", or
-						// returns to the app from the HOME-screen, etc.
-						removeDialog(DIALOG_PROGRESS);
-						setNewListAdapter();
-						refreshGui();
-					} else {
-						mProgressDialog.incrementProgressBy(1);
-					}
-				}
-			}
-		};
-
-		loadRecordings();
+		loadRecordingsInBackground();
 
 		mListView = getListView();
 		mListView.setFastScrollEnabled(true);
-
 
 		GuiUtils.setEmptyView(this, mListView, getString(R.string.emptyview_recordings));
 		GuiUtils.setDivider(mListView);
@@ -160,22 +132,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		toast("Click-" + String.valueOf(position));
 	}
 	 */
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-		case DIALOG_PROGRESS:
-			mProgressDialog = new ProgressDialog(this);
-			mProgressDialog.setTitle(getString(R.string.message_loading_recordings));
-			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-			mProgressDialog.setProgress(0);
-			// Maybe it's better to set it to true, but we need to add some code then
-			// that responds to the cancellation event.
-			//progressDialog.setCancelable(false);
-			return mProgressDialog;
-		}
-		return null;
-	}
 
 
 	@Override
@@ -231,7 +187,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 							refreshGui();
 						}
 					}
-			).show();
+					).show();
 			return true;
 		default:
 			return super.onContextItemSelected(item);
@@ -320,7 +276,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 								transcribeAll();
 							}
 						}
-				);
+						);
 				ad.show();
 			}
 			return true;
@@ -330,9 +286,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			startActivityForResult(Intent.createChooser(audioPicker, getString(R.string.chooser_import)), ACTIVITY_PICK_AUDIO);
 			return true;
 		case R.id.menu_notes_reload:
-			RecordingListHolder.initRecordingList();
-			fillRecordingListInBackground();
-			loadRecordings();
+			loadRecordingsInBackground();
 			return true;
 		case R.id.menu_about:
 			startActivity(new Intent(this, AboutActivity.class));
@@ -459,7 +413,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				recording.getWaitingTime(),
 				Integer.parseInt(mPrefs.getString("transcribingPollPause", getString(R.string.defaultTranscribingPollPause))) * 1000,
 				Integer.parseInt(mPrefs.getString("transcribingPollAmount", getString(R.string.defaultTranscribingPollAmount)))
-		);
+				);
 		bt.transcribeInBackground();
 	}
 
@@ -471,47 +425,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				note.getAudioFilePath(),
 				note.getTransPath(),
 				mQuery
-		));
-	}
-
-
-	// Using this singleton should make the UI faster, e.g. on orientation change.
-	private void fillRecordingListInBackground() {
-		final File[] files = Dirs.getRecordingsDir().listFiles(Dirs.FILENAME_FILTER);
-		if (files == null) {
-			toast(getString(R.string.error_cant_read_dir) + ": " + Dirs.getRecordingsDir());
-		} else {
-			int numberOfFiles = files.length;
-			if (numberOfFiles > 0) {
-				showDialog(DIALOG_PROGRESS);
-				mProgressDialog.setMax(numberOfFiles);
-				Thread t = new Thread() {
-					public void run() {
-						RecordingList recList = RecordingListHolder.getRecordingList();
-						for (File file : files) {
-							Recording rec = new Recording(file);
-							recList.add(rec);
-							mProgressHandler.sendEmptyMessage(0);
-						}
-						// TODO: do we need this line?
-						mProgressHandler.sendEmptyMessage(0);
-					}
-				};
-				t.start();
-			}
-		}
-	}
-
-
-	private void loadRecordings() {
-		mRecordings = RecordingListHolder.getRecordingList();
-		if (mRecordings == null) {
-			RecordingListHolder.initRecordingList();
-			mRecordings = RecordingListHolder.getRecordingList();
-			fillRecordingListInBackground();
-		}
-		setNewListAdapter();
-		refreshTitle();
+				));
 	}
 
 
@@ -563,7 +477,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				// the regular vertical bar.
 				mQuery = mQuery.replace('\u00a6', '|');
 				SearchRecentSuggestions suggestions =
-					new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
+						new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
 				suggestions.saveRecentQuery(mQuery, null);
 
 				Log.i(LOG_TAG, "Query: " + mQuery);
@@ -695,5 +609,62 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			}
 		}
 		return count;
+	}
+
+
+	void loadRecordingsInBackground() {
+		final File[] files = Dirs.getRecordingsDir().listFiles(Dirs.FILENAME_FILTER);
+		if (files == null) {
+			toast(getString(R.string.error_cant_read_dir) + ": " + Dirs.getRecordingsDir());
+		} else {
+			new LoadRecordings(this, files.length).execute(files);
+		}
+	}
+
+
+	private class LoadRecordings extends AsyncTask<File[], String, RecordingList> {
+
+		private final ProgressDialog mProgressDialog;
+
+		LoadRecordings(Context context, int maxProgress) {
+			mProgressDialog = new ProgressDialog(context);
+			mProgressDialog.setTitle(getString(R.string.message_loading_recordings));
+			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			mProgressDialog.setProgress(0);
+			mProgressDialog.setMax(maxProgress);
+		}
+
+		protected void onPreExecute() {
+			mProgressDialog.show();
+		}
+
+		protected RecordingList doInBackground(File[]... files) {
+			RecordingList recList = new RecordingList();
+			int numberOfFiles = files.length;
+			if (numberOfFiles > 0) {
+				for (File file : files[0]) {
+					recList.add(new Recording(file));
+					publishProgress(file.toString());
+				}
+			}
+			return recList;
+		}
+
+		protected void onProgressUpdate(final String... progress) {
+			if (mProgressDialog != null) {
+				if (mProgressDialog.getProgress() >= mProgressDialog.getMax()) {
+					mProgressDialog.dismiss();
+				} else {
+					mProgressDialog.incrementProgressBy(1);
+				}
+			}
+		}
+
+		protected void onPostExecute(RecordingList recList) {
+			mRecordings = recList;
+			mProgressDialog.cancel();
+			setNewListAdapter();
+			refreshTitle();
+		}
 	}
 }
