@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,13 +27,11 @@ import android.util.Log;
 /**
  * <p>Returns raw audio using AudioRecord and saves the result as 16-bit RIFF/WAVE.</p>
  * 
- * <p>Some of the code was borrowed from http://sourceforge.net/projects/rehearsalassist/,
- * see
- * http://rehearsalassist.svn.sourceforge.net/viewvc/rehearsalassist/android/trunk/src/urbanstew/RehearsalAssistant/RehearsalAudioRecorder.java?view=markup</p>
- * 
  * @author Kaarel Kaljurand
  */
 public class RawRecorder {
+
+	private static final String LOG_TAG = RawRecorder.class.getName();
 
 	public enum State {
 		// recorder is initializing
@@ -83,12 +81,6 @@ public class RawRecorder {
 	// Buffer size
 	private int mBufferSize;
 
-	// Audio source
-	private int mSource;
-
-	// Sample size
-	private int mFormat;
-
 	// Number of frames written to file on each output
 	private int	mFramePeriod;
 
@@ -113,56 +105,6 @@ public class RawRecorder {
 	}
 
 
-	private AudioRecord.OnRecordPositionUpdateListener mListener = new AudioRecord.OnRecordPositionUpdateListener() {
-		public void onPeriodicNotification(AudioRecord recorder) {
-			// public int read (byte[] audioData, int offsetInBytes, int sizeInBytes)
-			int numberOfBytes = recorder.read(mBuffer, 0, mBuffer.length); // Fill buffer
-
-			// Some error checking
-			if (numberOfBytes == AudioRecord.ERROR_INVALID_OPERATION) {
-				Log.e(RawRecorder.class.getName(), "The AudioRecord object was not properly initialized");
-				stop();
-			} else if (numberOfBytes == AudioRecord.ERROR_BAD_VALUE) {
-				Log.e(RawRecorder.class.getName(), "The parameters do not resolve to valid data and indexes.");
-				stop();
-			} else if (numberOfBytes > mBuffer.length) {
-				Log.e(RawRecorder.class.getName(), "Read more bytes than is buffer length:" + numberOfBytes + ": " + mBuffer.length);
-				stop();
-			} else {
-				// Everything seems to be OK, writing the buffer into the file.
-				try {
-					if (mIsRecording) {
-						mRAFile.write(mBuffer);
-						mPayloadSize += mBuffer.length;
-					}
-
-					if (mResolution == 16) {
-						for (int i = 0; i < mBuffer.length/2; i++) {
-							short curSample = getShort(mBuffer[i*2], mBuffer[i*2+1]);
-							if (curSample > mMaxAmplitude) {
-								mMaxAmplitude = curSample;
-							}
-						}
-					} else {
-						for (int i = 0; i < mBuffer.length; i++) {
-							if (mBuffer[i] > mMaxAmplitude) {
-								mMaxAmplitude = mBuffer[i];
-							}
-						}
-					}
-				} catch (IOException e) {
-					Log.e(RawRecorder.class.getName(), "I/O error occured in OnRecordPositionUpdateListener, recording is aborted");
-					stop();
-				}
-			}
-		}
-
-		public void onMarkerReached(AudioRecord recorder) {
-			// BUG: NOT USED
-		}
-	};
-
-
 	/**
 	 * <p>Instantiates a new recorder and sets the state to INITIALIZING.
 	 * In case of errors, no exception is thrown, but the state is set to ERROR.</p>
@@ -181,9 +123,7 @@ public class RawRecorder {
 				mChannels = 2;
 			}
 
-			mSource = audioSource;
 			mRate = sampleRate;
-			mFormat = audioFormat;
 
 			mFramePeriod = sampleRate * TIMER_INTERVAL / 1000;
 			mBufferSize = mFramePeriod * 2 * mResolution * mChannels / 8;
@@ -193,24 +133,22 @@ public class RawRecorder {
 				mBufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
 				// Set frame period and timer interval accordingly
 				mFramePeriod = mBufferSize / ( 2 * mResolution * mChannels / 8 );
-				Log.w(RawRecorder.class.getName(), "Increasing buffer size to " + Integer.toString(mBufferSize));
+				Log.w(LOG_TAG, "Increasing buffer size to " + Integer.toString(mBufferSize));
 			}
 
 			mRecorder = new AudioRecord(audioSource, sampleRate, channelConfig, audioFormat, mBufferSize);
 			if (mRecorder.getState() != AudioRecord.STATE_INITIALIZED) {
 				throw new Exception("AudioRecord initialization failed");
 			}
-			mRecorder.setRecordPositionUpdateListener(mListener);
-			mRecorder.setPositionNotificationPeriod(mFramePeriod);
 
 			mMaxAmplitude = 0;
 			mPath = null;
 			mState = State.INITIALIZING;
 		} catch (Exception e) {
 			if (e.getMessage() == null) {
-				Log.e(RawRecorder.class.getName(), "Unknown error occured while initializing recording");
+				Log.e(LOG_TAG, "Unknown error occured while initializing recording");
 			} else {
-				Log.e(RawRecorder.class.getName(), e.getMessage());
+				Log.e(LOG_TAG, e.getMessage());
 			}
 			mState = State.ERROR;
 		}
@@ -284,19 +222,19 @@ public class RawRecorder {
 					mBuffer = new byte[mFramePeriod * (mResolution/8) * mChannels];
 					mState = State.READY;
 				} else {
-					Log.e(RawRecorder.class.getName(), "prepare() method called on uninitialized recorder");
+					Log.e(LOG_TAG, "prepare() method called on uninitialized recorder");
 					mState = State.ERROR;
 				}
 			} else {
-				Log.e(RawRecorder.class.getName(), "prepare() method called on illegal state");
+				Log.e(LOG_TAG, "prepare() method called on illegal state");
 				release();
 				mState = State.ERROR;
 			}
 		} catch(Exception e) {
 			if (e.getMessage() == null) {
-				Log.e(RawRecorder.class.getName(), "Unknown error occured in prepare()");
+				Log.e(LOG_TAG, "Unknown error occured in prepare()");
 			} else {
-				Log.e(RawRecorder.class.getName(), e.getMessage());
+				Log.e(LOG_TAG, e.getMessage());
 			}
 			mState = State.ERROR;
 		}
@@ -314,7 +252,7 @@ public class RawRecorder {
 				try {
 					mRAFile.close(); // Remove prepared file
 				} catch (IOException e) {
-					Log.e(RawRecorder.class.getName(), "I/O exception occured while closing output file");
+					Log.e(LOG_TAG, "I/O exception occured while closing output file");
 				}
 				mPath.delete();
 			}
@@ -322,30 +260,6 @@ public class RawRecorder {
 
 		if (mRecorder != null) {
 			mRecorder.release();
-		}
-	}
-
-
-	/**
-	 * @deprecated Just use release, not sure reset() works as it doesn't restore the listener
-	 * 
-	 * Resets the recorder to the INITIALIZING state, as if it was just created.
-	 * In case the class was in RECORDING state, the recording is stopped.
-	 * In case of exceptions the class is set to the ERROR state.
-	 */
-	public void reset()
-	{
-		try {
-			if (mState != State.ERROR) {
-				release();
-				mPath = null; // Reset file path
-				mMaxAmplitude = 0; // Reset amplitude
-				mRecorder = new AudioRecord(mSource, mRate, mChannels+1, mFormat, mBufferSize);
-				mState = State.INITIALIZING;
-			}
-		} catch (Exception e) {
-			Log.e(RawRecorder.class.getName(), e.getMessage());
-			mState = State.ERROR;
 		}
 	}
 
@@ -361,8 +275,18 @@ public class RawRecorder {
 			mRecorder.read(mBuffer, 0, mBuffer.length);
 			mState = State.RECORDING;
 			mIsRecording = true;
+			new Thread() {
+				public void run() {
+					while (mRecorder != null && mRecorder.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING) {
+						int status = read(mRecorder);
+						if (status < 0) {
+							break;
+						}
+					}
+				}
+			}.start();
 		} else {
-			Log.e(RawRecorder.class.getName(), "start() called on illegal state");
+			Log.e(LOG_TAG, "start() called on illegal state");
 			mState = State.ERROR;
 		}
 	}
@@ -389,9 +313,7 @@ public class RawRecorder {
 	 */
 	public void stop() {
 		if (mState == State.RECORDING) {
-			Log.e(RawRecorder.class.getName(), "Stopping the recorder...");
-			// TODO: not sure if we need to set the listener to null
-			mRecorder.setRecordPositionUpdateListener(null);
+			Log.e(LOG_TAG, "Stopping the recorder...");
 			mRecorder.stop();
 			try {
 				mRAFile.seek(4); // Write size to RIFF header
@@ -403,11 +325,11 @@ public class RawRecorder {
 				mRAFile.close();
 				mState = State.STOPPED;
 			} catch (IOException e) {
-				Log.e(RawRecorder.class.getName(), "I/O exception occured while closing output file");
+				Log.e(LOG_TAG, "I/O exception occured while closing output file");
 				mState = State.ERROR;
 			}
 		} else {
-			Log.e(RawRecorder.class.getName(), "stop() called in illegal state: " + mState);
+			Log.e(LOG_TAG, "stop() called in illegal state: " + mState);
 			mState = State.ERROR;
 		}
 	}
@@ -424,5 +346,52 @@ public class RawRecorder {
 	 */
 	private static short getShort(byte argB1, byte argB2) {
 		return (short) (argB1 | (argB2 << 8));
+	}
+
+
+	private int read(AudioRecord recorder) {
+		// public int read (byte[] audioData, int offsetInBytes, int sizeInBytes)
+		int numberOfBytes = recorder.read(mBuffer, 0, mBuffer.length); // Fill buffer
+
+		// Some error checking
+		if (numberOfBytes == AudioRecord.ERROR_INVALID_OPERATION) {
+			Log.e(LOG_TAG, "The AudioRecord object was not properly initialized");
+			return -1;
+		} else if (numberOfBytes == AudioRecord.ERROR_BAD_VALUE) {
+			Log.e(LOG_TAG, "The parameters do not resolve to valid data and indexes.");
+			return -2;
+		} else if (numberOfBytes > mBuffer.length) {
+			Log.e(LOG_TAG, "Read more bytes than is buffer length:" + numberOfBytes + ": " + mBuffer.length);
+			return -3;
+		} else if (numberOfBytes == 0) {
+			Log.e(LOG_TAG, "Read zero bytes");
+			return -4;
+		} else {
+			try {
+				if (mIsRecording) {
+					mRAFile.write(mBuffer);
+					mPayloadSize += mBuffer.length;
+				}
+
+				if (mResolution == 16) {
+					for (int i = 0; i < mBuffer.length/2; i++) {
+						short curSample = getShort(mBuffer[i*2], mBuffer[i*2+1]);
+						if (curSample > mMaxAmplitude) {
+							mMaxAmplitude = curSample;
+						}
+					}
+				} else {
+					for (int i = 0; i < mBuffer.length; i++) {
+						if (mBuffer[i] > mMaxAmplitude) {
+							mMaxAmplitude = mBuffer[i];
+						}
+					}
+				}
+			} catch (IOException e) {
+				Log.e(LOG_TAG, "I/O error occured in OnRecordPositionUpdateListener, recording is aborted");
+				stop();
+			}
+		}
+		return 0;
 	}
 }
