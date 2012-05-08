@@ -1,149 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Diktofon</string>
-	<string name="app_description">Dictaphone with Estonian speech-to-text</string>
-	<string name="app_author">Kaarel Kaljurand</string>
-	<string name="file_preferences">MyPrefsFile</string>
 
-	<string name="activity_notelistview_name">List of recordings</string>
-	<string name="activity_recorder_name">Recorder</string>
-	<string name="activity_trans_name">Read &amp; Listen</string>
-	<string name="activity_speakers_name">Speakers</string>
-	<string name="activity_tagselector_name">Tag selector</string>
-	<string name="activity_details_name">Properties</string>
-	<string name="activity_preferences_name">Settings</string>
-	<string name="activity_about_name">About</string>
+    <string name="app_name" translatable="false">Diktofon</string>
+    <string name="app_author" translatable="false">Kaarel Kaljurand</string>
+    <string name="file_preferences" translatable="false">MyPrefsFile</string>
+    <string name="app_description">Dictaphone with Estonian speech-to-text</string>
+    <string name="activity_notelistview_name">List of recordings</string>
+    <string name="activity_recorder_name">Recorder</string>
+    <string name="activity_trans_name">Read &amp; Listen</string>
+    <string name="activity_speakers_name">Speakers</string>
+    <string name="activity_tagselector_name">Tag selector</string>
+    <string name="activity_details_name">Properties</string>
+    <string name="activity_preferences_name">Settings</string>
+    <string name="activity_about_name">About</string>
+    <string name="search_transcriptions">Search (case insensitive)</string>
+    <string name="search_transcriptions_by_voice">Speak a keyword</string>
+    <string name="searchable_settings_description">Transcriptions of speech recordings</string>
+    <string name="instructionsRecorder">Press the button to start recording, press again to pause/resume. Press the BACK-key to finish the recording session.</string>
 
-	<string name="search_transcriptions">Search (case insensitive)</string>
-	<string name="search_transcriptions_by_voice">Speak a keyword</string>
-	<string name="searchable_settings_description">Transcriptions of speech recordings</string>
+    <!-- Context menu: recordings -->
+    <string name="cm_notes_view">Read &amp; Listen</string>
+    <string name="cm_notes_tags">Edit tags</string>
+    <string name="cm_notes_transcribe">Transcribe</string>
+    <string name="cm_notes_delete">Delete</string>
+    <string name="cm_notes_properties">View properties</string>
 
-	<string name="instructionsRecorder">Press the button to start recording, press again to pause/resume. Press the BACK-key to finish the recording session.</string>
+    <!-- Context menu: speakers -->
+    <string name="cm_speakers_edit">Edit</string>
+    <string name="cm_speakers_delete">Delete</string>
 
-	<!-- Context menu: recordings -->
-	<string name="cm_notes_view">Read &amp; Listen</string>
-	<string name="cm_notes_tags">Edit tags</string>
-	<string name="cm_notes_transcribe">Transcribe</string>
-	<string name="cm_notes_delete">Delete</string>
-	<string name="cm_notes_properties">View properties</string>
+    <!-- Menus in any activity -->
+    <string name="menu_add">Record</string>
+    <string name="menu_edittags_add">Add tags</string>
+    <string name="menu_speakers_add">Add speaker</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_tags">Tags</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_about">About</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_speakers">Speakers</string>
 
-	<!-- Context menu: speakers -->
-	<string name="cm_speakers_edit">Edit</string>
-	<string name="cm_speakers_delete">Delete</string>
+    <!-- Trans-menu and its sub menus -->
+    <string name="menu_trans_share">Share</string>
+    <string name="menu_trans_share_trans">Share transcription</string>
+    <string name="menu_trans_share_audio">Share audio</string>
+    <string name="menu_trans_share_all">Share everything</string>
 
-	<!-- Menus in any activity -->
-	<string name="menu_add">Record</string>
-	<string name="menu_edittags_add">Add tags</string>
-	<string name="menu_speakers_add">Add speaker</string>
-	<string name="menu_search">Search</string>
-	<string name="menu_tags">Tags</string>
-	<string name="menu_settings">Settings</string>
-	<string name="menu_about">About</string>
-	<string name="menu_delete">Delete</string>
-	<string name="menu_speakers">Speakers</string>
+    <!-- Notes menu and its sub menus -->
+    <string name="menu_notes_sort">Sort by …</string>
+    <string name="menu_notes_sort_by_timestamp">creation time</string>
+    <string name="menu_notes_sort_by_duration">duration</string>
+    <string name="menu_notes_sort_by_size">bytesize</string>
+    <string name="menu_notes_sort_by_wordcount">word count</string>
+    <string name="menu_notes_sort_by_speakercount">speaker count</string>
+    <!-- <string name="menu_notes_sort_by_search">query match count</string> -->
+    <string name="menu_notes_transcribe">Transcribe all untranscribed</string>
+    <string name="menu_notes_reload">Reload all recordings</string>
+    <string name="menu_recordings_import">Import an audio file</string>
 
-	<!-- Trans-menu and its sub menus -->
-	<string name="menu_trans_share">Share</string>
-	<string name="menu_trans_share_trans">Share transcription</string>
-	<string name="menu_trans_share_audio">Share audio</string>
-	<string name="menu_trans_share_all">Share everything</string>
+    <!-- Tags menu -->
+    <string name="menu_edittags_sort">Sort …</string>
+    <string name="menu_edittags_sort_by_alpha">alphabetically</string>
+    <string name="menu_edittags_sort_by_size">by size</string>
+    <string name="menu_edittags_sort_by_state">by checked state</string>
+    <string name="error_cant_write_sdcard">ERROR: Failed to write on the SD card</string>
+    <string name="error_cant_create_dir">ERROR: Failed to create a directory</string>
+    <string name="error_cant_create_recorder">ERROR: Failed to create an audio recorder</string>
+    <string name="error_cant_read_dir">ERROR: Failed to read the directory</string>
+    <string name="error_failed_make_recording">ERROR: Failed to make recording</string>
+    <string name="error_failed_import_audio">ERROR: Failed to import an audio file</string>
+    <string name="error_failed_import_audio_uri">ERROR: Failed to get the audio URI: %1$s</string>
+    <string name="error_failed_init_mediaplayer">ERROR: Failed to create an audio player</string>
+    <string name="error_failed_move_external_file">ERROR: Failed to move the external file</string>
+    <string name="error_failed_copy_external_file">ERROR: Failed to copy the external file</string>
+    <string name="error_failed_load_trans">ERROR: Failed to load the transcription file</string>
+    <string name="error_failed_parse_trans">ERROR: Transcription file is not well-formed</string>
+    <string name="error_failed_obtain_token">ERROR: Failed to obtain a valid transcription token</string>
+    <string name="error_failed_obtain_trans">ERROR: Failed to obtain the transcription after %1$d tries. Please try again later.</string>
+    <string name="error_failed_pick_speaker">ERROR: Failed to pick a speaker.</string>
+    <string name="b_yes">Yes</string>
+    <string name="b_no">No</string>
+    <string name="b_ok">OK</string>
+    <string name="b_cancel">Cancel</string>
+    <string name="b_apply_tags">Apply</string>
+    <string name="b_recorder_start">Start recording</string>
+    <string name="b_recorder_pause">Recording…\n(tap to pause)</string>
+    <string name="b_recorder_resume">Pausing…\n(tap to resume)</string>
+    <string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
+    <string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
+    <string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>
+    <string name="confirm_finish_activity_recorder">Are you sure you want to finish the recording session?</string>
+    <string name="chooser_record">Record using:</string>
+    <string name="chooser_import">Import using:</string>
+    <string name="subject_share">Recording %1$s</string>
+    <string name="chooser_share">Share the recording via:</string>
+    <string name="dialog_title_new_tags">Add tags (separated by whitespace)</string>
+    <string name="dialog_title_new_speaker">Name of the new speaker</string>
+    <string name="dialog_title_new_name">Change the name</string>
+    <string name="dialog_title_tags">Change tags</string>
+    <string name="progress_uploading">uploading…</string>
+    <string name="progress_waiting">waiting for %1$s…</string>
+    <string name="progress_waiting_unknown">waiting for ?? sec…</string>
+    <string name="progress_polling">polling (%1$d)…</string>
+    <string name="progress_failure">Transcribing failed :(</string>
+    <string name="progress_success">…</string>
+    <string name="submit_bug_report">BUG: This should not have happened. Please report this issue at http://code.google.com/p/diktofon/issues/list</string>
+    <string name="message_loading_recordings">Please wait, loading recordings…</string>
+    <string name="message_transcribing">Transcribing %1$d recording(s)</string>
+    <string name="message_transcribed">Recording %1$s transcribed</string>
+    <string name="message_nothing_to_transcribe">There are no recordings that need transcribing</string>
+    <string name="message_no_query">There is no search query</string>
+    <string name="message_no_transcription">(This recording has no transcription, you can only playback the audio.)</string>
+    <string name="toast_highlighting">Highlighting \"%1$s\"</string>
+    <string name="toast_speaker_add_new">Added speaker \"%1$s\"</string>
+    <string name="toast_speaker_change_name">Name changed to \"%1$s\"</string>
+    <string name="toast_add_recording">Added new recording \"%1$s\"</string>
+    <string name="notification_ticker_player">Playing in the background</string>
+    <string name="notification_ticker_recorder">Recording in the background</string>
+    <string name="notification_text_player_playing">Playing: %1$s</string>
+    <string name="notification_text_player_completed">Completed: %1$s</string>
+    <string name="notification_text_recorder_recording">Recording in progress…</string>
+    <string name="notification_text_recorder_pausing">Recording on pause</string>
+    <string name="title_note_view">%1$s / %2$d x %3$s</string>
+    <string name="title_notelist_view">%1$d recordings: %2$d have trans, %3$d need trans</string>
+    <string name="emptyview_recordings">There are no recordings.\nTo add a recording press \"Record\" in the menu.</string>
+    <string name="emptyview_speakers">There are no speakers.\nTo add a speaker press \"Add speaker\" in the menu.</string>
 
-	<!-- Notes menu and its sub menus -->
-	<string name="menu_notes_sort">Sort by ...</string>
-	<string name="menu_notes_sort_by_timestamp">creation time</string>
-	<string name="menu_notes_sort_by_duration">duration</string>
-	<string name="menu_notes_sort_by_size">bytesize</string>
-	<string name="menu_notes_sort_by_wordcount">word count</string>
-	<string name="menu_notes_sort_by_speakercount">speaker count</string>
-	<!-- <string name="menu_notes_sort_by_search">query match count</string>
--->
-	<string name="menu_notes_transcribe">Transcribe all untranscribed</string>
-	<string name="menu_notes_reload">Reload all recordings</string>
-	<string name="menu_recordings_import">Import an audio file</string>
-
-	<!-- Tags menu -->
-	<string name="menu_edittags_sort">Sort ...</string>
-	<string name="menu_edittags_sort_by_alpha">alphabetically</string>
-	<string name="menu_edittags_sort_by_size">by size</string>
-	<string name="menu_edittags_sort_by_state">by checked state</string>
-
-	<string name="error_cant_write_sdcard">ERROR: Failed to write on the SD card</string>
-	<string name="error_cant_create_dir">ERROR: Failed to create a directory</string>
-	<string name="error_cant_create_recorder">ERROR: Failed to create an audio recorder</string>
-	<string name="error_cant_read_dir">ERROR: Failed to read the directory</string>
-	<string name="error_failed_make_recording">ERROR: Failed to make recording</string>
-	<string name="error_failed_import_audio">ERROR: Failed to import an audio file</string>
-	<string name="error_failed_import_audio_uri">ERROR: Failed to get the audio URI: %1$s</string>
-	<string name="error_failed_init_mediaplayer">ERROR: Failed to create an audio player</string>
-	<string name="error_failed_move_external_file">ERROR: Failed to move the external file</string>
-	<string name="error_failed_copy_external_file">ERROR: Failed to copy the external file</string>
-	<string name="error_failed_load_trans">ERROR: Failed to load the transcription file</string>
-	<string name="error_failed_parse_trans">ERROR: Transcription file is not well-formed</string>
-	<string name="error_failed_obtain_token">ERROR: Failed to obtain a valid transcription token</string>
-	<string name="error_failed_obtain_trans">ERROR: Failed to obtain the transcription after %1$d tries. Please try again later.</string>
-	<string name="error_failed_pick_speaker">ERROR: Failed to pick a speaker.</string>
-	<string name="b_yes">Yes</string>
-	<string name="b_no">No</string>
-	<string name="b_ok">OK</string>
-	<string name="b_cancel">Cancel</string>
-	<string name="b_apply_tags">Apply</string>
-	<string name="b_recorder_start">Start recording</string>
-	<string name="b_recorder_pause">Recording...\n(tap to pause)</string>
-	<string name="b_recorder_resume">Pausing...\n(tap to resume)</string>
-	<string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
-	<string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
-	<string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>
-	<string name="confirm_finish_activity_recorder">Are you sure you want to finish the recording session?</string>
-	<string name="chooser_record">Record using:</string>
-	<string name="chooser_import">Import using:</string>
-	<string name="subject_share">Recording %1$s</string>
-	<string name="chooser_share">Share the recording via:</string>
-	<string name="dialog_title_new_tags">Add tags (separated by whitespace)</string>
-	<string name="dialog_title_new_speaker">Name of the new speaker</string>
-	<string name="dialog_title_new_name">Change the name</string>
-	<string name="dialog_title_tags">Change tags</string>
-
-	<string name="progress_uploading">uploading...</string>
-	<string name="progress_waiting">waiting for %1$s...</string>
-	<string name="progress_waiting_unknown">waiting for ?? sec...</string>
-	<string name="progress_polling">polling (%1$d)...</string>
-	<string name="progress_failure">Transcribing failed :(</string>
-	<string name="progress_success">...</string>
-	<string name="submit_bug_report">BUG: This should not have happened. Please report this issue at http://code.google.com/p/diktofon/issues/list</string>
-
-	<string name="message_loading_recordings">Please wait, loading recordings...</string>
-	<string name="message_transcribing">Transcribing %1$d recording(s)</string>
-	<string name="message_transcribed">Recording %1$s transcribed</string>
-	<string name="message_nothing_to_transcribe">There are no recordings that need transcribing</string>
-	<string name="message_no_query">There is no search query</string>
-
-	<string name="message_no_transcription">
-		(This recording has no transcription, you can only playback the audio...)
-	</string>
-
-	<string name="toast_highlighting">Highlighting \"%1$s\"</string>
-	<string name="toast_speaker_add_new">Added speaker \"%1$s\"</string>
-	<string name="toast_speaker_change_name">Name changed to \"%1$s\"</string>
-	<string name="toast_add_recording">Added new recording \"%1$s\"</string>
-
-	<string name="notification_ticker_player">Playing in the background</string>
-	<string name="notification_ticker_recorder">Recording in the background</string>
-	<string name="notification_text_player_playing">Playing: %1$s</string>
-	<string name="notification_text_player_completed">Completed: %1$s</string>
-	<string name="notification_text_recorder_recording">Recording in progress...</string>
-	<string name="notification_text_recorder_pausing">Recording on pause</string>
-
-	<string name="title_note_view">%1$s / %2$d x %3$s</string>
-	<string name="title_notelist_view">%1$d recordings: %2$d have trans, %3$d need trans</string>
-
-	<string name="emptyview_recordings">There are no recordings.\nTo add a recording press \"Record\" in the menu.</string>
-	<string name="emptyview_speakers">There are no speakers.\nTo add a speaker press \"Add speaker\" in the menu.</string>
-
-	<!-- <string name="titleTagSelector">%1$d tags / %2$d selected</string>-->
-	<string name="titleTagSelector">%1$d tags</string>
-
-	<string name="about">
-		&lt;p>&lt;b>%1$s&lt;/b> v%2$s by
+    <!-- <string name="titleTagSelector">%1$d tags / %2$d selected</string> -->
+    <string name="titleTagSelector">%1$d tags</string>
+    <string name="about">&lt;p>&lt;b>%1$s&lt;/b> v%2$s by
 		&lt;a href="http://www.google.com/profiles/kaljurand">Kaarel Kaljurand&lt;/a>&lt;/p>
 		&lt;p>%1$s helps you to record speech audio (e.g. voice memos, interviews, press conferences, lectures)
 		and offers the powerful tool of &lt;b>speech recognition&lt;/b> to make your existing recordings
@@ -156,151 +141,136 @@
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Search recordings by keywords&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Sort recordings by the number of words and speakers&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Read &amp;amp; Listen: click on a transcription paragraph to playback the corresponding audio&lt;/p>
-		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Share transcriptions (e.g. via email, Twitter, ...)&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Share transcriptions (e.g. via email, Twitter, …)&lt;/p>
 		&lt;p>The other features are general and make %1$s useful also if you are not
 		recording native Estonian speech:&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Use a high quality voice recorder with a pause button&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Tag recordings and search them by tag&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Sort recordings by creation date, duration, byte size&lt;/p>
 		&lt;p>Documentation, feature requests, issue list, and the source code are available at:
-		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>.&lt;/p>
-	</string>
+		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>.&lt;/p></string>
 
-	<!-- Words -->
-	<string name="words">words</string>
-	<string name="speakers">speakers</string>
+    <!-- Words -->
+    <string name="words">words</string>
+    <string name="speakers">speakers</string>
 
-	<!-- Preferences -->
-	<string name="nameEmail">Email</string>
-	<string name="titleEmail">Email address</string>
-	<string name="summaryEmail">Provide an email address as a form of identification for the server</string>
-	<string name="defaultEmail">kaljurand+diktofon@gmail.com</string>
+    <!-- Preferences -->
+    <string name="nameEmail">Email</string>
+    <string name="titleEmail">Email address</string>
+    <string name="summaryEmail">Provide an email address as a form of identification for the server</string>
+    <string name="defaultEmail">kaljurand+diktofon@gmail.com</string>
+    <string name="titleRecording">Recording</string>
+    <string name="titleTranscribing">Transcribing</string>
+    <string name="titleUi">User interface</string>
+    <string name="titleUseInternalRecorder">Use Diktofon\'s recorder</string>
+    <string name="summaryUseInternalRecorder">Record with Diktofon\'s own recorder rather than another recording app</string>
+    <string name="titleRecorderPreferences">Diktofon\'s recorder settings</string>
+    <string name="summaryRecorderPreferences">Recording resolution (e.g. 16-bit) and sample rate (e.g. 16 kHz)</string>
+    <string name="titleTranscribingPreferences">Transcription service settings</string>
+    <string name="summaryTranscribingPreferences">Waiting time, polling frequency, …</string>
+    <string name="titleAutotranscribe">Autotranscribe</string>
+    <string name="summaryAutotranscribe">Transcribe immediately after recording</string>
+    <string name="titleRecordingResolution">Resolution</string>
+    <string name="summaryRecordingResolution">Quality of the recording (16-bits)</string>
 
-	<string name="titleRecording">Recording</string>
-	<string name="titleTranscribing">Transcribing</string>
-	<string name="titleUi">User interface</string>
+    <string-array name="entriesRecordingResolution">
+        <item>8-bit</item>
+        <item>16-bit</item>
+    </string-array>
 
-	<string name="titleUseInternalRecorder">Use Diktofon\'s recorder</string>
-	<string name="summaryUseInternalRecorder">Record with Diktofon\'s own recorder rather than another recording app</string>
+    <string name="defaultRecordingResolution">16</string>
 
-	<string name="titleRecorderPreferences">Diktofon\'s recorder settings</string>
-	<string name="summaryRecorderPreferences">Recording resolution (e.g. 16-bit) and sample rate (e.g. 16 kHz)</string>
+    <!-- Unfortunately cannot use an integer array -->
+    <string-array name="valuesRecordingResolution">
+        <item>8</item>
+        <item>16</item>
+    </string-array>
 
-	<string name="titleTranscribingPreferences">Transcription service settings</string>
-	<string name="summaryTranscribingPreferences">Waiting time, polling frequency, ...</string>
+    <string name="titleRecordingRate">Sample rate</string>
+    <string name="summaryRecordingRate">Sample rate in Hertz (16 kHz recommended)</string>
 
-	<string name="titleAutotranscribe">Autotranscribe</string>
-	<string name="summaryAutotranscribe">Transcribe immediately after recording</string>
+    <string-array name="entriesRecordingRate">
+        <item>8 kHz</item>
+        <item>11 kHz</item>
+        <item>16 kHz</item>
+        <item>22 kHz</item>
+        <item>44 kHz</item>
+    </string-array>
 
-	<string name="titleRecordingResolution">Resolution</string>
+    <string name="defaultRecordingRate">16000</string>
 
-	<string name="summaryRecordingResolution">Quality of the recording (16-bits)</string>
+    <!-- Unfortunately cannot use an integer array -->
+    <string-array name="valuesRecordingRate">
+        <item>8000</item>
+        <item>11025</item>
+        <item>16000</item>
+        <item>22050</item>
+        <item>44100</item>
+    </string-array>
 
-	<string-array name="entriesRecordingResolution">
-		<item>8-bit</item>
-		<item>16-bit</item>
-	</string-array>
+    <!-- Wait length -->
+    <string name="titleTranscribingWaitLength">Waiting coefficient</string>
+    <string name="summaryTranscribingWaitLength">Expect the transcription to be complete after X seconds, where X is the duration of the recording multiplied by this value</string>
 
-	<string name="defaultRecordingResolution">16</string>
+    <string-array name="entriesTranscribingWaitLength">
+        <item>1x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+        <item>4x</item>
+        <item>6x</item>
+    </string-array>
 
-	<!-- Unfortunately cannot use an integer array -->
-	<string-array name="valuesRecordingResolution">
-		<item>8</item>
-		<item>16</item>
-	</string-array>
+    <string name="defaultTranscribingWaitLength">4</string>
 
+    <string-array name="valuesTranscribingWaitLength">
+        <item>1</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+    </string-array>
 
-	<string name="titleRecordingRate">Sample rate</string>
+    <!-- Poll amount -->
+    <string name="titleTranscribingPollAmount">Poll amount</string>
+    <string name="summaryTranscribingPollAmount">How many times to poll for the transcription</string>
 
-	<string name="summaryRecordingRate">Sample rate in Hertz (16 kHz recommended)</string>
+    <string-array name="entriesTranscribingPollAmount">
+        <item>Once</item>
+        <item>Twice</item>
+        <item>5 times</item>
+        <item>10 times</item>
+    </string-array>
 
-	<string-array name="entriesRecordingRate">
-		<item>8 kHz</item>
-		<item>11 kHz</item>
-		<item>16 kHz</item>
-		<item>22 kHz</item>
-		<item>44 kHz</item>
-	</string-array>
+    <string name="defaultTranscribingPollAmount">5</string>
 
-	<string name="defaultRecordingRate">16000</string>
+    <string-array name="valuesTranscribingPollAmount">
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
 
-	<!-- Unfortunately cannot use an integer array -->
-	<string-array name="valuesRecordingRate">
-		<item>8000</item>
-		<item>11025</item>
-		<item>16000</item>
-		<item>22050</item>
-		<item>44100</item>
-	</string-array>
+    <!-- Poll pause -->
+    <string name="titleTranscribingPollPause">Poll pause</string>
+    <string name="summaryTranscribingPollPause">How many seconds to pause between polls</string>
 
-	<!-- Wait length -->
-	<string name="titleTranscribingWaitLength">Waiting coefficient</string>
+    <string-array name="entriesTranscribingPollPause">
+        <item>1 sec</item>
+        <item>3 sec</item>
+        <item>5 sec</item>
+        <item>10 sec</item>
+    </string-array>
 
-	<string name="summaryTranscribingWaitLength">Expect the transcription to be complete after X seconds, where X is the duration of the recording multiplied by this value</string>
+    <string name="defaultTranscribingPollPause">5</string>
 
-	<string-array name="entriesTranscribingWaitLength">
-		<item>1x</item>
-		<item>1.5x</item>
-		<item>2x</item>
-		<item>4x</item>
-		<item>6x</item>
-	</string-array>
+    <string-array name="valuesTranscribingPollPause">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
 
-	<string name="defaultTranscribingWaitLength">4</string>
-
-	<string-array name="valuesTranscribingWaitLength">
-		<item>1</item>
-		<item>1.5</item>
-		<item>2</item>
-		<item>4</item>
-		<item>6</item>
-	</string-array>
-
-
-	<!-- Poll amount -->
-	<string name="titleTranscribingPollAmount">Poll amount</string>
-
-	<string name="summaryTranscribingPollAmount">How many times to poll for the transcription</string>
-
-	<string-array name="entriesTranscribingPollAmount">
-		<item>Once</item>
-		<item>Twice</item>
-		<item>5 times</item>
-		<item>10 times</item>
-	</string-array>
-
-	<string name="defaultTranscribingPollAmount">5</string>
-
-	<string-array name="valuesTranscribingPollAmount">
-		<item>1</item>
-		<item>2</item>
-		<item>5</item>
-		<item>10</item>
-	</string-array>
-
-	<!-- Poll pause -->
-	<string name="titleTranscribingPollPause">Poll pause</string>
-
-	<string name="summaryTranscribingPollPause">How many seconds to pause between polls</string>
-
-	<string-array name="entriesTranscribingPollPause">
-		<item>1 sec</item>
-		<item>3 sec</item>
-		<item>5 sec</item>
-		<item>10 sec</item>
-	</string-array>
-
-	<string name="defaultTranscribingPollPause">5</string>
-
-	<string-array name="valuesTranscribingPollPause">
-		<item>1</item>
-		<item>3</item>
-		<item>5</item>
-		<item>10</item>
-	</string-array>
-
-
-	<string name="titleLocaleEt">Force Estonian UI</string>
-	<string name="summaryLocaleEt">Use Estonian even if the device has a different default language</string>
+    <string name="titleLocaleEt">Force Estonian UI</string>
+    <string name="summaryLocaleEt">Use Estonian even if the device has a different default language</string>
 
 </resources>

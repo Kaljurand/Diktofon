@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kaljurand_at_gmail_dot_com.diktofon"
-    android:versionCode="973"
-    android:versionName="0.9.73" >
+    android:installLocation="auto"
+    android:versionCode="974"
+    android:versionName="0.9.74" >
 
-    <!-- TODO: put this back: android:installLocation="auto" -->
+    <!-- 3 = 1.5 -->
+    <!-- 4 = 1.6; supports includeInGlobalSearch -->
+    <!-- 8 = 2.2; HTC Wildfire; supports installLocation -->
+    <!-- 10 = 2.3.3 -->
+    <!-- 11 = 3.0 -->
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -135,14 +143,5 @@
             android:name=".provider.SpeakersContentProvider"
             android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider" />
     </application>
-
-    <!-- 3 = 1.5 -->
-    <!-- 4 = 1.6; supports includeInGlobalSearch -->
-    <!-- 8 = 2.2; HTC Wildfire; supports installLocation -->
-    <!-- 10 = 2.3.3 -->
-    <!-- 11 = 3.0 -->
-    <uses-sdk
-        android:minSdkVersion="4"
-        android:targetSdkVersion="15" />
 
 </manifest>
