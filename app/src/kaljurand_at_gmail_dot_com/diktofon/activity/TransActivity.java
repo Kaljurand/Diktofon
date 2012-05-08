@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -220,7 +220,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 				(Button) findViewById(R.id.button_trans_playpause),
 				(TextView) findViewById(R.id.tv_trans_timer),
 				(SeekBar) findViewById(R.id.seekbar_trans_seek)
-		);
+				);
 
 
 		// Starting the service, obtaining bindings later
@@ -306,7 +306,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 			mService.showNotification(
 					String.format(getString(R.string.notification_text_player_playing), mTitle),
 					Notification.FLAG_AUTO_CANCEL | Notification.FLAG_ONGOING_EVENT
-			);
+					);
 		}
 	}
 
@@ -414,11 +414,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 	private void shareAudio() {
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("audio/*");
-		ArrayList<Uri> uris = new ArrayList<Uri>();
-		uris.add(Uri.fromFile(new File(mAudioPath)));
-		// TODO: don't create a one-element list here, this way we might
-		// gain wider support from external apps (i.e. not just GMail)
-		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+		intent.putExtra(android.content.Intent.EXTRA_STREAM, Uri.fromFile(new File(mAudioPath)));
 		startActivity(Intent.createChooser(intent, getString(R.string.chooser_share)));
 	}
 
@@ -458,7 +454,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 				// the broken bar (\u00a6)
 				query = query.replace('\u00a6', '|');
 				SearchRecentSuggestions suggestions =
-					new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
+						new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
 				suggestions.saveRecentQuery(query, null);
 				mQuery = query;
 			}
