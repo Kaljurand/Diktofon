@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.service;
 
+import kaljurand_at_gmail_dot_com.diktofon.Log;
 import kaljurand_at_gmail_dot_com.diktofon.R;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -23,9 +24,10 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 public abstract class DiktofonService extends Service {
+
+	private static final String LOG_TAG = DiktofonService.class.getName();
 
 	private NotificationManager mNotificationMngr;
 	private SharedPreferences mPreferences;
@@ -39,7 +41,7 @@ public abstract class DiktofonService extends Service {
 
 	@Override
 	public void onCreate() {
-		Log.i(PlayerService.class.getName(), "onCreate");
+		Log.i(LOG_TAG, "onCreate");
 		mPreferences = getSharedPreferences(getString(R.string.file_preferences), 0);
 		mNotificationMngr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
@@ -57,7 +59,7 @@ public abstract class DiktofonService extends Service {
 	 */
 	@Override
 	public void onDestroy() {
-		Log.i(DiktofonService.class.getName(), "onDestroy");
+		Log.i(LOG_TAG, "onDestroy");
 		cancelNotification();
 		saveState();
 		releaseResources();

@@ -128,7 +128,6 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		setContentView(R.layout.recorder);
 
 		// Don't shut down the screen.
-		// TODO: Think about it.
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		mVolumeBar = getString(R.string.volumeBar);
@@ -207,6 +206,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 
 		if (mService != null) {
 			mService.cancelNotification();
+			mVolumeHandler.postDelayed(mShowVolumeTask, 100);
 			if (mService.isRecording()) {
 				setGuiRecording();
 			} else {
