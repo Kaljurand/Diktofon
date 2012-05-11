@@ -173,21 +173,6 @@ public class RawRecorder {
 
 
 	/**
-	 * <p>Returns the largest amplitude sampled since the last call to this method.</p>
-	 *
-	 * @return The largest amplitude since the last call, or 0 when not in recording state.
-	 */
-	public int getMaxAmplitude() {
-		if (mState == State.RECORDING) {
-			int result = mMaxAmplitude;
-			mMaxAmplitude = 0;
-			return result;
-		}
-		return 0;
-	}
-
-
-	/**
 	 * <p>Prepares the recorder for recording and sets the state to READY.
 	 * In case the recorder is not in the INITIALIZING state
 	 * and the file path was not set
@@ -391,6 +376,28 @@ public class RawRecorder {
 				Log.e(LOG_TAG, "I/O error occured in OnRecordPositionUpdateListener, recording is aborted");
 				stop();
 			}
+		}
+		return 0;
+	}
+
+
+	/**
+	 * @return volume indicator that shows the average volume of the last read buffer
+	 */
+	public float getRmsdb() {
+		if (mState != State.RECORDING) {
+			return 0;
+		}
+		long sumOfSquares = 0;
+		for (int i = 0; i < mBuffer.length; i += 2) {
+			short curSample = getShort(mBuffer[i], mBuffer[i+1]);
+			sumOfSquares += curSample * curSample;
+		}
+		double rootMeanSquare = Math.sqrt(sumOfSquares / (mBuffer.length / 2));
+		if (rootMeanSquare > 1) {
+			Log.i(LOG_TAG, "getRmsdb(): " + rootMeanSquare);
+			// TODO: why 10?
+			return (float) (10 * Math.log10(rootMeanSquare));
 		}
 		return 0;
 	}

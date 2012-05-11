@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kaljurand_at_gmail_dot_com.diktofon"
-    android:installLocation="auto"
-    android:versionCode="974"
-    android:versionName="0.9.74" >
+    android:versionCode="975"
+    android:versionName="0.9.75" >
+
+    <!-- android:installLocation="auto" -->
+
 
     <!-- 3 = 1.5 -->
     <!-- 4 = 1.6; supports includeInGlobalSearch -->

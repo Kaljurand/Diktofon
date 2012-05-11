@@ -143,11 +143,11 @@ public class RecorderService extends DiktofonService {
 	/**
 	 * @return Max amplitude since the last measurement
 	 */
-	public int getMaxAmplitude() {
+	public float getRmsdb() {
 		if (mRecorder == null) {
 			return 0;
 		}
-		return mRecorder.getMaxAmplitude();
+		return mRecorder.getRmsdb();
 	}
 
 
@@ -172,7 +172,7 @@ public class RecorderService extends DiktofonService {
 				title,
 				intent,
 				Notification.FLAG_AUTO_CANCEL | Notification.FLAG_ONGOING_EVENT
-		);
+				);
 
 		publishNotification(notification, NOTIFICATION_ID);
 	}

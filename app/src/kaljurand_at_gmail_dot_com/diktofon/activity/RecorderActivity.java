@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,10 +56,6 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	// Recording sample rate (int, default: 16000, i.e. 16 kHz)
 	public static final String EXTRA_SAMPLE_RATE = "SAMPLE_RATE";
 
-	// The amplitude is either short (16-bit) or byte (8-bit)
-	private static final double LOG_OF_MAX_VOLUME = Math.log10((double) Short.MAX_VALUE);
-	private static final String MAX_BAR = "||||||||||||||||||||";
-
 	private File mRecordingsDir = null;
 
 	private Button mButtonPauseResumeRecorder;
@@ -75,6 +71,8 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	private boolean mHighResolution = true;
 	private int mResolution = AudioFormat.ENCODING_PCM_16BIT;
 	private int mSampleRate = 16000;
+
+	private String mVolumeBar;
 
 	private RecorderService mService;
 	private boolean mIsBound = false;
@@ -133,6 +131,8 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		// TODO: Think about it.
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		mVolumeBar = getString(R.string.volumeBar);
+
 		mButtonPauseResumeRecorder = (Button) findViewById(R.id.buttonPauseResumeRecording);
 
 		mVolume = (TextView) findViewById(R.id.volume);
@@ -177,11 +177,11 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 			}
 		};
 
-		// Show the max volume 10 times in a second.
+		// Show the DB level 10 times in a second.
 		mShowVolumeTask = new Runnable() {
 			public void run() {
 				if (mService != null) {
-					mVolume.setText(makeBar(scaleVolume(mService.getMaxAmplitude())));
+					mVolume.setText(makeBar(scaleVolume(mService.getRmsdb())));
 					mVolumeHandler.postDelayed(this, 100);
 				}
 			}
@@ -280,7 +280,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 							finish();
 						}
 					}
-			).show();
+					).show();
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
@@ -301,18 +301,20 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	}
 
 
-	// BUG: experimenting with 200
-	// How to do it properly?
-	private int scaleVolume(int volume) {
-		if (volume <= 200) return 0;
-		return (int) (MAX_BAR.length() * Math.log10((double) volume) / LOG_OF_MAX_VOLUME);
+	private int scaleVolume(float db) {
+		// TODO: take these from some configuration
+		float min = 15.f;
+		float max = 30.f;
+		int maxLevel = mVolumeBar.length();
+		int index = (int) ((db - min) / (max - min) * maxLevel);
+		return Math.min(Math.max(0, index), maxLevel);
 	}
 
 
 	private String makeBar(int len) {
 		if (len <= 0) return "";
-		if (len >= MAX_BAR.length()) return MAX_BAR;
-		return MAX_BAR.substring(0, len);
+		if (len >= mVolumeBar.length()) return mVolumeBar;
+		return mVolumeBar.substring(0, len);
 	}
 
 

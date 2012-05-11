@@ -3,6 +3,7 @@
 
     <string name="app_name" translatable="false">Diktofon</string>
     <string name="app_author" translatable="false">Kaarel Kaljurand</string>
+    <string name="volumeBar" translatable="false">||||||||||||||||||||</string>
     <string name="file_preferences" translatable="false">MyPrefsFile</string>
     <string name="app_description">Dictaphone with Estonian speech-to-text</string>
     <string name="activity_notelistview_name">List of recordings</string>
