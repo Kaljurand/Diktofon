@@ -106,13 +106,33 @@
 
     <!-- <string name="titleTagSelector">%1$d silti / %2$d valitud</string> -->
     <string name="titleTagSelector">%1$d silti</string>
-    <string name="about">&lt;p>&lt;em>%1$s v%2$s&lt;/em>&lt;/p>
-		&lt;p>Autor:
+    <string name="about">&lt;p>&lt;em>%1$s v%2$s&lt;/em>, autor:
 		&lt;a href="http://www.google.com/profiles/kaljurand">Kaarel Kaljurand&lt;/a>&lt;/p>
+		&lt;p>%1$si abil saab salvestada heli ning hiljem selles esinevat eestikeelset kõne transkribeerida.
+		Paljud %1$si funktsioonid tuginevadki transkriptsiooni olemasolule, nt:&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; märksõnapõhine otsing;&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sorteerimine sõnade ja kõnelejate arvu järgi;&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; teksti ja heli sünkroniseeritud taasesitamine.&lt;/p>
+		&lt;p>Ülejäänud funktsioonid võimaldavad %1$si kasutada tavalise diktofonina, nt:&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sildistamine ja sildipõhine otsing;&lt;/p>
+		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sorteerimine loomisaja, kestuse, ja suuruse järgi.&lt;/p>
+
+		&lt;p>%1$si oma lindistaja võimaldab salvestada kõrge kvaliteediga heli (16-bit/16kHz), mis on eduka
+		kõnetuvastuse eelduseks. Samuti saab seda taustal tööle panna, mis on kasulik pikemate lindistuste
+		tegemisel, mille ajal on vaja telefoni ka muuks kasutada. Samas ei oska %1$si oma lindistaja
+		heli kokku pakkida, mistõttu on salvestused palju mahukamad, kui kokkupakitud formaatide (nt mp3, ogg) puhul.
+		Seega võimaldab %1$s kasutada ka teisi telefoni installeeritud lindistajaid (nt RecForge oskab salvestada
+		mp3 ja ogg formaatidesse) ning importida audiofaile teistest rakendustest (nt Box).&lt;/p>
+
+		&lt;p>Eestikeelse kõne automaattuvastus toimub läbi TTÜ Küberneetika Instituudi
+		foneetika ja kõnetehnoloogia labori veebiteenuse, vt
+		&lt;a href="http://bark.phon.ioc.ee/webtrans/">http://bark.phon.ioc.ee/webtrans/&lt;/a>.
+		Tuvastusfunktsiooni toimimiseks on seega vajalik internetiühendus, ning arvestada tuleb
+		sellega, et audiofailid võivad olla päris suured, ning nende üleslaadimine võib luhtuda või
+		osutuda kalliks sõltuvalt kasutatavast mobiilse interneti paketist.&lt;/p>
+
 		&lt;p>Dokumentatsioon, nimekiri vigadest, ja lähtekood:
-		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>&lt;/p>
-		&lt;p>Eestikeelse kõne automaattuvastuse veebiteenus:
-		&lt;a href="http://bark.phon.ioc.ee/webtrans/">http://bark.phon.ioc.ee/webtrans/&lt;/a>&lt;/p></string>
+		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>&lt;/p></string>
     <string name="progress_uploading">saadan serverile…</string>
     <string name="progress_waiting">ootan %1$s…</string>
     <string name="progress_waiting_unknown">ootan ?? sek…</string>

@@ -23,68 +23,77 @@ http://www.december.com/html/spec/color1.html
 -->
 
 <resources>
-	<color name="transparent">#00000000</color>
 
-	<!-- Dark-on-light mode -->
-	<color name="l_bg">#ffffff</color>
-	<!-- <color name="l_bg_recording">#bfbfbf</color> -->
-	<color name="l_bg_recording">#eeeee0</color> <!-- ivory2 -->
+    <color name="transparent">#00000000</color>
 
-	<color name="l_fg_text">#000000</color>
-	<color name="l_fg_meta">#005b00</color>
+    <!-- Dark-on-light mode -->
+    <color name="l_bg">#ffffff</color>
+    <!-- <color name="l_bg_recording">#bfbfbf</color> -->
+    <color name="l_bg_recording">#eeeee0</color> <!-- ivory2 -->
 
-	<!-- <color name="l_fg_title">#669900</color> -->
-	<!-- <color name="l_fg_title">#003399</color> -->
-	<color name="l_fg_title">#000000</color>
+    <color name="l_fg_text">#000000</color>
+    <color name="l_fg_meta">#005b00</color>
 
-	<color name="l_fg_tags">#ff6600</color> <!-- orange -->
-	<!-- <color name="l_bg_tags">#ff9900</color> --> <!-- light orange -->
-	<!-- <color name="l_bg_tags">#ff7722</color> --> <!-- oregon salmon -->
-	<!-- <color name="l_bg_tags">#ff8247</color> --> <!-- sienna1 -->
-	<!-- <color name="l_bg_tags">#ffa54f</color> --> <!-- tan1 -->
-	<color name="l_bg_tags">#ffcc99</color> <!-- sand(Safe Hex3) -->
-	<color name="l_fg_timer">#ffffff</color>
-	<color name="l_fg_disabled">#404040</color>
+    <!-- <color name="l_fg_title">#669900</color> -->
+    <!-- <color name="l_fg_title">#003399</color> -->
+    <color name="l_fg_title">#000000</color>
+    <color name="l_fg_tags">#ff6600</color> <!-- orange -->
+    <!-- <color name="l_bg_tags">#ff9900</color> -->
+    <!-- light orange -->
+    <!-- <color name="l_bg_tags">#ff7722</color> -->
+    <!-- oregon salmon -->
+    <!-- <color name="l_bg_tags">#ff8247</color> -->
+    <!-- sienna1 -->
+    <!-- <color name="l_bg_tags">#ffa54f</color> -->
+    <!-- tan1 -->
+    <color name="l_bg_tags">#ffcc99</color> <!-- sand(Safe Hex3) -->
+    <color name="l_fg_timer">#ffffff</color>
+    <color name="l_fg_disabled">#404040</color>
 
+    <!-- Light-on-dark mode -->
+    <!-- maybe: #77f -->
+    <color name="d_fg_title">#3366cc</color>
+    <color name="d_fg_text">#bfbfbf</color>
+    <color name="d_fg_text_faded">#808080</color>
 
-	<!-- Light-on-dark mode -->
-	<!-- maybe: #77f -->
-	<color name="d_fg_title">#3366cc</color>
-	<color name="d_fg_text">#bfbfbf</color>
+    <!-- General -->
+    <color name="highlight">#ffcc00</color>
+    <color name="processing">#cc0000</color>
+    <color name="buttonStroke">#808080</color>
+    <color name="buttonNormal1">#cc0000</color> <!-- top -->
+    <color name="buttonNormal2">#660000</color> <!-- bottom -->
+    <color name="buttonPressed1">#660000</color>
+    <color name="buttonPressed2">#cc0000</color>
+    <color name="buttonFocused1">#cc0000</color>
+    <color name="buttonFocused2">#cc0000</color>
 
-	<color name="d_fg_text_faded">#808080</color>
+    <!-- Button on pause -->
+    <color name="buttonPauseStart">#bfbfbf</color>
+    <color name="buttonPauseEnd">#808080</color>
+    <color name="buttonPausePressedStart">#808080</color>
+    <color name="buttonPausePressedEnd">#bfbfbf</color>
+    <color name="buttonPauseFocusedStart">#bfbfbf</color>
+    <color name="buttonPauseFocusedEnd">#bfbfbf</color>
 
-	<!-- General -->
-	<color name="highlight">#ffcc00</color>
-	<color name="processing">#cc0000</color>
+    <!-- Text shadow -->
+    <color name="shadow">#0f0f0f</color>
 
-	<color name="buttonStroke">#808080</color>
-	<color name="buttonNormal1">#cc0000</color> <!-- top -->
-	<color name="buttonNormal2">#660000</color> <!-- bottom -->
-	<color name="buttonPressed1">#660000</color>
-	<color name="buttonPressed2">#cc0000</color>
-	<color name="buttonFocused1">#cc0000</color>
-	<color name="buttonFocused2">#cc0000</color>
+    <!-- Android greys from light to dark -->
+    <color name="grey1">#bfbfbf</color>
+    <color name="grey2">#808080</color>
+    <color name="grey3">#404040</color>
 
-	<!-- Text shadow -->
-	<color name="shadow">#0f0f0f</color>
+    <!-- Speakers -->
+    <color name="speaker1">#ccccff</color>
+    <color name="speaker2">#ccffcc</color>
+    <color name="speaker3">#ffcccc</color>
+    <color name="speaker4">#ffffcc</color>
+    <color name="speaker5">#ffccff</color>
+    <color name="speaker6">#ccffff</color>
+    <color name="speakerN">#cccccc</color>
 
-	<!-- Android greys from light to dark -->
-	<color name="grey1">#bfbfbf</color>
-	<color name="grey2">#808080</color>	
-	<color name="grey3">#404040</color>
-
-	<!-- Speakers -->
-	<color name="speaker1">#ccccff</color>
-	<color name="speaker2">#ccffcc</color>
-	<color name="speaker3">#ffcccc</color>
-	<color name="speaker4">#ffffcc</color>
-	<color name="speaker5">#ffccff</color>
-	<color name="speaker6">#ccffff</color>
-	<color name="speakerN">#cccccc</color>
-
-	<!-- @deprecated -->
-<!--
+    <!-- @deprecated -->
+    <!--
 	<color name="speaker1">#3366cc</color>
 	<color name="speaker2">#cc0000</color>
 	<color name="speaker3">#669900</color>
@@ -92,5 +101,6 @@ http://www.december.com/html/spec/color1.html
 	<color name="speakerN">#bfbfbf</color>
 	<color name="bg_light">#bfbfbf</color>
 	<color name="bg_dark">#404040</color>
--->
+    -->
+
 </resources>

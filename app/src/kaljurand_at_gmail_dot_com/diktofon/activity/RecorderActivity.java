@@ -325,7 +325,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		mStatusHandler.removeCallbacks(mShowStatusTask);
 
 		mButtonPauseResumeRecorder.setText(getString(R.string.b_recorder_resume));
-		mButtonPauseResumeRecorder.setBackgroundDrawable(res.getDrawable(android.R.drawable.btn_default));
+		mButtonPauseResumeRecorder.setBackgroundDrawable(res.getDrawable(R.drawable.button_record_pause));
 		mButtonPauseResumeRecorder.setTextColor(res.getColor(R.color.grey3));
 		mButtonPauseResumeRecorder.setShadowLayer(0f, 0f, 0f, res.getColor(R.color.shadow));
 	}

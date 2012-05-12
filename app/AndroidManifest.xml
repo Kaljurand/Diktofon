@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kaljurand_at_gmail_dot_com.diktofon"
-    android:versionCode="975"
-    android:versionName="0.9.75" >
-
-    <!-- android:installLocation="auto" -->
-
+    android:installLocation="auto"
+    android:versionCode="976"
+    android:versionName="0.9.76" >
 
     <!-- 3 = 1.5 -->
     <!-- 4 = 1.6; supports includeInGlobalSearch -->
@@ -80,7 +78,8 @@
             android:name=".activity.Preferences"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_preferences_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
         </activity>
         <activity
             android:name=".activity.TransActivity"
@@ -101,7 +100,8 @@
             android:name=".activity.DetailsActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_details_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light" >
         </activity>
         <activity
             android:name=".activity.SpeakerListActivity"
