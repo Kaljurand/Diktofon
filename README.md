@@ -31,7 +31,7 @@ Tags
 
 Version tags are set by e.g.
 
-	git tag -a v0.9.76 -m 'version 0.9.76'
+> git tag -a v0.9.76 -m 'version 0.9.76'
 
 The last number should be even.
 
@@ -39,4 +39,4 @@ The last number should be even.
 Lint
 ----
 
-	lint --html report.html app
+> lint --html report.html app
