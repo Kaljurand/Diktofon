@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@ public class Dirs {
 	private static File sRecordingsDir;
 	private static File sNomediaFile;
 
-
-	public static void setBaseDir(String packageName) {
-		String baseDirAsString = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/" + packageName + "/files/";
+	static {
+		String baseDirAsString = Environment.getExternalStorageDirectory().getAbsolutePath() +
+				"/Android/data/kaljurand_at_gmail_dot_com.diktofon/files/";
 
 		sBaseDir = new File(baseDirAsString);
 		sRecordingsDir = new File(baseDirAsString + RECORDINGS);

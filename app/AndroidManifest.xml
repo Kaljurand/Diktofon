@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kaljurand_at_gmail_dot_com.diktofon"
     android:installLocation="auto"
-    android:versionCode="978"
-    android:versionName="0.9.78" >
+    android:versionCode="979"
+    android:versionName="0.9.79" >
 
     <!-- 3 = 1.5 -->
     <!-- 4 = 1.6; supports includeInGlobalSearch -->
@@ -39,6 +39,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".activity.RecordingSendActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -47,10 +55,6 @@
                 <data android:mimeType="audio/*" >
                 </data>
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".activity.RecorderActivity"
@@ -148,6 +152,8 @@
         <provider
             android:name=".provider.SpeakersContentProvider"
             android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider" />
+    </application>
+    <application>
     </application>
 
 </manifest>

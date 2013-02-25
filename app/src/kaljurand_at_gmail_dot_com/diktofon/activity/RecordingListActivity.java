@@ -24,7 +24,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,7 +47,6 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map.Entry;
@@ -100,8 +98,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		super.onCreate(savedInstanceState);
 
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
-		Dirs.setBaseDir(getPackageName());
 		MyFileUtils.createNomedia();
 
 		loadRecordingsInBackground();
@@ -319,7 +315,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			break;
 		case ACTIVITY_RECORD_SOUND:
 			Uri uri = intent.getData();
-			String path1 = getAudioFilenameFromUri(uri);
+			String path1 = Utils.getAudioFilenameFromUri(this, uri);
 			if (path1 == null) {
 				toast(getString(R.string.error_failed_make_recording));
 			} else {
@@ -333,7 +329,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			}
 			break;
 		case MY_ACTIVITY_RECORD_SOUND:
-			String filename1 = getAudioFilenameFromUri(intent.getData());
+			String filename1 = Utils.getAudioFilenameFromUri(this, intent.getData());
 			if (filename1 == null) {
 				toast(getString(R.string.error_failed_make_recording));
 			} else {
@@ -357,31 +353,12 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	}
 
 
-	private boolean copyIntentDataToRecordingsDir(Intent intent) {
+	private void copyIntentDataToRecordingsDir(Intent intent) {
 		Uri audioUri = intent.getData();
-		return copyUriToRecordingsDir(audioUri);
-	}
-
-
-	private boolean copyUriToRecordingsDir(Uri audioUri) {
-		Log.i(LOG_TAG, "URI: " + audioUri);
-		if (audioUri == null) {
-			toast(getString(R.string.error_failed_import_audio));
-			return false;
+		File file = Utils.copyUriToRecordingsDir(this, audioUri);
+		if (file != null) {
+			addRecording(file);
 		}
-		String filename = getAudioFilenameFromUri(audioUri);
-		if (filename == null) {
-			toast(String.format(getString(R.string.error_failed_import_audio_uri), audioUri));
-			return false;
-		}
-		try {
-			File newFile = MyFileUtils.copyFileToRecordingsDir(new File(filename));
-			addRecording(newFile);
-			return true;
-		} catch (IOException e) {
-			toast(getString(R.string.error_failed_copy_external_file));
-		}
-		return false;
 	}
 
 
@@ -484,34 +461,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				mRecordings.sort(new Recording.MatchComparator(mQuery));
 				refreshAdapter();
 			}
-		} else if (Intent.ACTION_SEND.equals(intent.getAction())) {
-			Bundle extras = intent.getExtras();
-			if (extras != null) {
-				Log.i(LOG_TAG, "ACTION_SEND: data = " + intent.getData() + ", extras: " + intent.getExtras().keySet());
-				// TODO: if the SEND-intent contains a subject then ask the user
-				// if she wants to turn it into tags
-				if (intent.hasExtra(Intent.EXTRA_STREAM)) {
-					Object extraStream = extras.get(Intent.EXTRA_STREAM);
-					if (extraStream instanceof Uri) {
-						copyUriToRecordingsDir((Uri) extraStream);
-					} else if (extraStream instanceof ArrayList<?>) {
-						// TODO: we assume a list of Uris, which might not be the case
-						ArrayList<Uri> uris = extras.getParcelableArrayList(Intent.EXTRA_STREAM);
-						if (uris != null) {
-							toast("Importing " + uris.size() + " file(s)...");
-							for (Uri uri : uris) {
-								copyUriToRecordingsDir(uri);
-							}
-						}
-					} else {
-						toast("ERROR: SEND-intent has EXTRA_STREAM with unsupported content");
-					}
-				} else {
-					toast("ERROR: SEND-intent has no EXTRA_STREAM");
-				}
-			} else {
-				toast("ERROR: SEND-intent has no extras");
-			}
 		} else {
 			Log.i(LOG_TAG, "Intent not handled:" + intent);
 		}
@@ -531,32 +480,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		} else {
 			toast(getString(R.string.message_nothing_to_transcribe));
 		}
-	}
-
-
-	/**
-	 * If the URI has the form file:///path/to/file.wav then we return its
-	 * path, otherwise we hope to find the path in a content provider.
-	 * 
-	 * BUG: maybe HTTP URIs should also be supported
-	 * 
-	 * @param uri
-	 * @return
-	 */
-	private String getAudioFilenameFromUri(Uri uri) {
-		if (uri == null) {
-			return null;
-		}
-		if ("file".equals(uri.getScheme())) {
-			return uri.getPath();
-		}
-		Cursor c = managedQuery(uri, null, "", null, null);
-		if (c == null || c.getCount() == 0) {
-			return null;
-		}
-		c.moveToFirst();
-		int dataIndex = c.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
-		return c.getString(dataIndex);
 	}
 
 

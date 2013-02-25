@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,18 @@
 
 package kaljurand_at_gmail_dot_com.diktofon;
 
+import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.text.TextUtils.SimpleStringSplitter;
-import android.util.Log;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -97,7 +103,6 @@ public class Utils {
 	 */
 	public static int getDuration(String path) {
 		MediaPlayer mp = new MediaPlayer();
-		if (mp == null) return 0;
 		int duration = 0;
 		try {
 			mp.setDataSource(path);
@@ -155,5 +160,66 @@ public class Utils {
 			mExternalStorageAvailable = true;
 		}
 		return mExternalStorageAvailable;
+	}
+
+
+	public static File copyUriToRecordingsDir(Activity activity, Uri audioUri) {
+		Log.i("URI: " + audioUri);
+		Context context = activity.getApplicationContext();
+		if (audioUri == null) {
+			toast(context, activity.getString(R.string.error_failed_import_audio));
+			return null;
+		}
+		String filename = Utils.getAudioFilenameFromUri(activity, audioUri);
+		if (filename == null) {
+			toast(context, String.format(activity.getString(R.string.error_failed_import_audio_uri), audioUri));
+			return null;
+		}
+		try {
+			return MyFileUtils.copyFileToRecordingsDir(new File(filename));
+		} catch (IOException e) {
+			Log.i("IOException: " + e.getMessage());
+			toast(context, activity.getString(R.string.error_failed_copy_external_file));
+		}
+		return null;
+	}
+
+
+	/**
+	 * If the URI has the form file:///path/to/file.wav then we return its
+	 * path, otherwise we hope to find the path in a content provider.
+	 * 
+	 * TODO: support also HTTP URIs
+	 */
+	public static String getAudioFilenameFromUri(Activity activity, Uri uri) {
+		if (uri == null) {
+			return null;
+		}
+		if ("file".equals(uri.getScheme())) {
+			return uri.getPath();
+		}
+		Cursor c = activity.managedQuery(uri, null, "", null, null);
+
+		if (c == null) {
+			return null;
+		}
+
+		String filename = null;
+
+		try {
+			if (c.moveToFirst()) {
+				filename = c.getString(c.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+			}
+		} catch (IllegalArgumentException e) {
+			Log.i("ERROR: no such column: MediaStore.Audio.Media.DATA");
+		} finally {
+			c.close();
+		}
+		return filename;
+	}
+
+
+	private static void toast(Context c, String message) {
+		Toast.makeText(c, message, Toast.LENGTH_LONG).show();
 	}
 }

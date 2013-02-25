@@ -150,7 +150,6 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		}
 
 		if (baseDir == null) {
-			Dirs.setBaseDir(getPackageName());
 			mRecordingsDir = Dirs.getRecorderDir();
 		} else {
 			mRecordingsDir = new File(baseDir);
