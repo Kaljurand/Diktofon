@@ -17,23 +17,19 @@
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import kaljurand_at_gmail_dot_com.diktofon.MyFileUtils;
+import kaljurand_at_gmail_dot_com.diktofon.Log;
 import kaljurand_at_gmail_dot_com.diktofon.R;
 import kaljurand_at_gmail_dot_com.diktofon.Utils;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 // TODO: if the SEND-intent contains a subject then ask the user
 // if she wants to turn it into tags
 public class RecordingSendActivity extends AbstractDiktofonActivity {
-
-	private static final String LOG_TAG = RecordingSendActivity.class.getName();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,30 +38,30 @@ public class RecordingSendActivity extends AbstractDiktofonActivity {
 
 		Bundle extras = intent.getExtras();
 		if (extras == null) {
-			Log.i(LOG_TAG, "ERROR: SEND-intent has no extras");
+			Log.i("ERROR: SEND-intent has no extras");
 		} else {
-			Log.i(LOG_TAG, "ACTION_SEND: data = " + intent.getData() + ", extras: " + intent.getExtras().keySet());
+			Log.i("ACTION_SEND: data = " + intent.getData() + ", extras: " + intent.getExtras().keySet());
 			if (intent.hasExtra(Intent.EXTRA_STREAM)) {
 				Object extraStream = extras.get(Intent.EXTRA_STREAM);
 				if (extraStream instanceof Uri) {
 					File file = Utils.copyUriToRecordingsDir(this, (Uri) extraStream);
 					if (file != null) {
-						toast("Audio file copied to: " + file.getAbsolutePath());
+						toast(String.format(getString(R.string.toast_import_audio_uri), file.getAbsolutePath()));
 					}
 				} else if (extraStream instanceof ArrayList<?>) {
 					// TODO: we assume a list of Uris, which might not be the case
 					ArrayList<Uri> uris = extras.getParcelableArrayList(Intent.EXTRA_STREAM);
 					if (uris != null) {
-						toast("Importing " + uris.size() + " file(s)..."); // TODO: localize
+						toast(String.format(getString(R.string.toast_import_audio_uris), uris.size()));
 						for (Uri uri : uris) {
 							Utils.copyUriToRecordingsDir(this, uri);
 						}
 					}
 				} else {
-					Log.i(LOG_TAG, "ERROR: SEND-intent has EXTRA_STREAM with unsupported content");
+					Log.i("ERROR: SEND-intent has EXTRA_STREAM with unsupported content");
 				}
 			} else {
-				Log.i(LOG_TAG, "ERROR: SEND-intent has no EXTRA_STREAM");
+				Log.i("ERROR: SEND-intent has no EXTRA_STREAM");
 			}
 		}
 		finish();

@@ -23,6 +23,7 @@
         android:required="false" />
 
     <application
+        android:allowBackup="true"
         android:description="@string/app_description"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
@@ -148,12 +149,12 @@
 
         <provider
             android:name=".SearchSuggestionsProvider"
-            android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider" />
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.SearchSuggestionsProvider"
+            android:exported="false" />
         <provider
             android:name=".provider.SpeakersContentProvider"
-            android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider" />
-    </application>
-    <application>
+            android:authorities="kaljurand_at_gmail_dot_com.diktofon.provider.SpeakersContentProvider"
+            android:exported="false" />
     </application>
 
 </manifest>

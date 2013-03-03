@@ -22,6 +22,16 @@
     <string name="cm_notes_delete">Kustuta</string>
     <string name="cm_notes_properties">Detailid</string>
 
+    <!-- Tags menu -->
+    <string name="menu_edittags_sort">Järjesta …</string>
+    <string name="menu_edittags_sort_by_alpha">tähestikuliselt</string>
+    <string name="menu_edittags_sort_by_size">suuruse järgi</string>
+    <string name="menu_edittags_sort_by_state">valiku järgi</string>
+
+    <!-- Context menu: speakers -->
+    <string name="cm_speakers_edit">Muuda</string>
+    <string name="cm_speakers_delete">Kustuta</string>
+
     <!-- Menus in any activity -->
     <string name="menu_add">Lindista</string>
     <string name="menu_edittags_add">Lisa silte</string>
@@ -66,6 +76,7 @@
     <string name="error_cant_create_recorder">VIGA: Lindistaja loomine luhtus</string>
     <string name="error_cant_read_dir">VIGA: Kataloogi lugemine luhtus</string>
     <string name="error_failed_make_recording">VIGA: Lindistamine luhtus</string>
+    <string name="error_failed_import_audio_uri">VIGA: Audiofaili import luhtus: %1$s</string>
     <string name="error_failed_init_mediaplayer">VIGA: Media Playeri loomine luhtus</string>
     <string name="error_failed_copy_external_file">VIGA: Välise faili kopeerimine luhtus</string>
     <string name="error_failed_move_external_file">VIGA: Välise faili ümbernimetamine luhtus</string>
@@ -95,6 +106,8 @@
     <string name="toast_speaker_add_new">Uus kõneleja \"%1$s\"</string>
     <string name="toast_speaker_change_name">Uus nimi on \"%1$s\"</string>
     <string name="toast_add_recording">Uus lindistus \"%1$s\"</string>
+    <string name="toast_import_audio_uri">Kopeerin helifaili: %1$s</string>
+    <string name="toast_import_audio_uris">kopeerin %1$d helifaili…</string>
     <string name="notification_ticker_player">Mängin taustal</string>
     <string name="notification_ticker_recorder">Lindistan taustal</string>
     <string name="notification_text_player_playing">Mängin: %1$s</string>
@@ -185,8 +198,5 @@
         <item>5 sek</item>
         <item>10 sek</item>
     </string-array>
-
-    <string name="titleLocaleEt">Eestikeelne kasutajaliides</string>
-    <string name="summaryLocaleEt">Näita nuppe, menüüsid jms eesti keeles, isegi kui seadme keel on teine</string>
 
 </resources>

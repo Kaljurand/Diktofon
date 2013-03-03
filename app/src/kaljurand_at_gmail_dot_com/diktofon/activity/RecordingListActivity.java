@@ -47,6 +47,7 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map.Entry;
@@ -89,13 +90,15 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private ListView mListView;
 	private RecordingList mRecordings;
 
-	private final TransHandler mHandler = new TransHandler();
+	private TransHandler mHandler = null;
 
 	private String mQuery;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		mHandler = new TransHandler(this);
 
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		MyFileUtils.createNomedia();
@@ -483,16 +486,22 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	}
 
 
-	public class TransHandler extends Handler {
+	public static class TransHandler extends Handler {
+		private final WeakReference<RecordingListActivity> mRef;
+		public TransHandler(RecordingListActivity activity) {
+			mRef = new WeakReference<RecordingListActivity>(activity);
+		}
 		public void handleMessage(Message m) {
-			Bundle b = m.getData();
-			String message = b.getString("message");
-			if (message != null) {
-				toast(message);
-				// on final transcription result we update the title
-				refreshTitle();
+			RecordingListActivity activity = mRef.get();
+			if (activity != null) {
+				String message = m.getData().getString("message");
+				if (message != null) {
+					activity.toast(message);
+					// on final transcription result we update the title
+					activity.refreshTitle();
+				}
+				activity.refreshAdapter();
 			}
-			refreshAdapter();
 		}
 	}
 

@@ -15,7 +15,6 @@
 			android:id="@+id/transcription"
 			android:bufferType="spannable"
 			android:padding="5dp"
-			android:layout_weight="1"
 			android:textColor="@color/l_fg_text"
 			android:background="@color/l_bg"
 			android:textSize="16sp"

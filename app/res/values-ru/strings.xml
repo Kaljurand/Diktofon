@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<!-- BUG: work in progress ... -->
-	<string name="menu_search">Поиск</string>
-	<string name="menu_settings">Настройки</string>
-
-	<string name="words">слов</string>
-</resources>

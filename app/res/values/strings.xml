@@ -116,6 +116,8 @@
     <string name="toast_speaker_add_new">Added speaker \"%1$s\"</string>
     <string name="toast_speaker_change_name">Name changed to \"%1$s\"</string>
     <string name="toast_add_recording">Added new recording \"%1$s\"</string>
+    <string name="toast_import_audio_uri">Copying audio file into %1$s</string>
+    <string name="toast_import_audio_uris">Copying %1$d audio files…</string>
     <string name="notification_ticker_player">Playing in the background</string>
     <string name="notification_ticker_recorder">Recording in the background</string>
     <string name="notification_text_player_playing">Playing: %1$s</string>
@@ -159,7 +161,7 @@
     <string name="nameEmail">Email</string>
     <string name="titleEmail">Email address</string>
     <string name="summaryEmail">Provide an email address as a form of identification for the server</string>
-    <string name="defaultEmail">kaljurand+diktofon@gmail.com</string>
+    <string name="defaultEmail" translatable="false">kaljurand+diktofon@gmail.com</string>
     <string name="titleRecording">Recording</string>
     <string name="titleTranscribing">Transcribing</string>
     <string name="titleUi">User interface</string>
@@ -174,15 +176,15 @@
     <string name="titleRecordingResolution">Resolution</string>
     <string name="summaryRecordingResolution">Quality of the recording (16-bits)</string>
 
-    <string-array name="entriesRecordingResolution">
+    <string-array name="entriesRecordingResolution" translatable="false">
         <item>8-bit</item>
         <item>16-bit</item>
     </string-array>
 
-    <string name="defaultRecordingResolution">16</string>
+    <string name="defaultRecordingResolution" translatable="false">16</string>
 
     <!-- Unfortunately cannot use an integer array -->
-    <string-array name="valuesRecordingResolution">
+    <string-array name="valuesRecordingResolution" translatable="false">
         <item>8</item>
         <item>16</item>
     </string-array>
@@ -190,7 +192,7 @@
     <string name="titleRecordingRate">Sample rate</string>
     <string name="summaryRecordingRate">Sample rate in Hertz (16 kHz recommended)</string>
 
-    <string-array name="entriesRecordingRate">
+    <string-array name="entriesRecordingRate" translatable="false">
         <item>8 kHz</item>
         <item>11 kHz</item>
         <item>16 kHz</item>
@@ -198,10 +200,10 @@
         <item>44 kHz</item>
     </string-array>
 
-    <string name="defaultRecordingRate">16000</string>
+    <string name="defaultRecordingRate" translatable="false">16000</string>
 
     <!-- Unfortunately cannot use an integer array -->
-    <string-array name="valuesRecordingRate">
+    <string-array name="valuesRecordingRate" translatable="false">
         <item>8000</item>
         <item>11025</item>
         <item>16000</item>
@@ -213,7 +215,7 @@
     <string name="titleTranscribingWaitLength">Waiting coefficient</string>
     <string name="summaryTranscribingWaitLength">Expect the transcription to be complete after X seconds, where X is the duration of the recording multiplied by this value</string>
 
-    <string-array name="entriesTranscribingWaitLength">
+    <string-array name="entriesTranscribingWaitLength" translatable="false">
         <item>1x</item>
         <item>1.5x</item>
         <item>2x</item>
@@ -221,9 +223,9 @@
         <item>6x</item>
     </string-array>
 
-    <string name="defaultTranscribingWaitLength">4</string>
+    <string name="defaultTranscribingWaitLength" translatable="false">4</string>
 
-    <string-array name="valuesTranscribingWaitLength">
+    <string-array name="valuesTranscribingWaitLength" translatable="false">
         <item>1</item>
         <item>1.5</item>
         <item>2</item>
@@ -242,9 +244,9 @@
         <item>10 times</item>
     </string-array>
 
-    <string name="defaultTranscribingPollAmount">5</string>
+    <string name="defaultTranscribingPollAmount" translatable="false">5</string>
 
-    <string-array name="valuesTranscribingPollAmount">
+    <string-array name="valuesTranscribingPollAmount" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>5</item>
@@ -262,16 +264,13 @@
         <item>10 sec</item>
     </string-array>
 
-    <string name="defaultTranscribingPollPause">5</string>
+    <string name="defaultTranscribingPollPause" translatable="false">5</string>
 
-    <string-array name="valuesTranscribingPollPause">
+    <string-array name="valuesTranscribingPollPause" translatable="false">
         <item>1</item>
         <item>3</item>
         <item>5</item>
         <item>10</item>
     </string-array>
-
-    <string name="titleLocaleEt">Force Estonian UI</string>
-    <string name="summaryLocaleEt">Use Estonian even if the device has a different default language</string>
 
 </resources>
