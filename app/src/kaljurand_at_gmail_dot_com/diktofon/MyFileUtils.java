@@ -77,6 +77,10 @@ public class MyFileUtils {
 		return FileUtils.readFileToString(f, "UTF8");
 	}
 
+	public static void deleteFile(File f) throws IOException {
+		FileUtils.forceDelete(f);
+	}
+
 
 	// TODO: could also use: File.renameTo(File)
 	public static File moveFileToRecordingsDir(File file) throws IOException {

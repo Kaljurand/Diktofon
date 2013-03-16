@@ -359,13 +359,18 @@ public class Recording {
 
 
 	private void storeTags() {
-		if (mTags != null && ! mTags.isEmpty()) {
-			File f = makeFile(TAGS, mId);
-			try {
+		if (mTags == null) {
+			return;
+		}
+		File f = makeFile(TAGS, mId);
+		try {
+			if (mTags.isEmpty()) {
+				MyFileUtils.deleteFile(f);
+			} else {
 				MyFileUtils.saveFile(f, TextUtils.join(" ", mTags));
-			} catch (IOException e) {
-				addMessage("storeTags: I/O error: " + e.getMessage());
 			}
+		} catch (IOException e) {
+			addMessage("storeTags: I/O error: " + e.getMessage());
 		}
 	}
 
