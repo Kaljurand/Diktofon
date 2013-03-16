@@ -22,7 +22,6 @@ import java.io.RandomAccessFile;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
-import android.util.Log;
 
 /**
  * <p>Returns raw audio using AudioRecord and saves the result as 16-bit RIFF/WAVE.</p>
@@ -133,7 +132,7 @@ public class RawRecorder {
 				mBufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat);
 				// Set frame period and timer interval accordingly
 				mFramePeriod = mBufferSize / ( 2 * mResolution * mChannels / 8 );
-				Log.w(LOG_TAG, "Increasing buffer size to " + Integer.toString(mBufferSize));
+				Log.i(LOG_TAG, "Increasing buffer size to " + Integer.toString(mBufferSize));
 			}
 
 			mRecorder = new AudioRecord(audioSource, sampleRate, channelConfig, audioFormat, mBufferSize);

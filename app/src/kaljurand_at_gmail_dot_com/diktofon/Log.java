@@ -1,5 +1,5 @@
 /*
- * Copyright 2012, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2012-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,21 +18,24 @@ package kaljurand_at_gmail_dot_com.diktofon;
 
 public class Log {
 
-	public static final String LOG_TAG = "kaljurand_at_gmail_dot_com.diktofon";
+	public static final String LOG_TAG = "diktofon";
 
-	public static int i(String msg) {
-		return android.util.Log.i(LOG_TAG, msg);
+	private static final boolean DEBUG = false;
+
+
+	public static void i(String msg) {
+		if (DEBUG) android.util.Log.i(LOG_TAG, msg);
 	}
 
-	public static int e(String msg) {
-		return android.util.Log.e(LOG_TAG, msg);
+	public static void e(String msg) {
+		if (DEBUG) android.util.Log.e(LOG_TAG, msg);
 	}
 
-	public static int i(String tag, String msg) {
-		return android.util.Log.i(tag, msg);
+	public static void i(String tag, String msg) {
+		if (DEBUG) android.util.Log.i(tag, msg);
 	}
 
-	public static int e(String tag, String msg) {
-		return android.util.Log.e(tag, msg);
+	public static void e(String tag, String msg) {
+		if (DEBUG) android.util.Log.e(tag, msg);
 	}
 }

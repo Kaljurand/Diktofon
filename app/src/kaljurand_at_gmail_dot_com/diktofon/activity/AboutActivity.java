@@ -16,6 +16,7 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
+import kaljurand_at_gmail_dot_com.diktofon.Log;
 import kaljurand_at_gmail_dot_com.diktofon.R;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
@@ -25,7 +26,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 
 public class AboutActivity extends Activity {
 
@@ -55,7 +55,7 @@ public class AboutActivity extends Activity {
 		try {
 			return manager.getPackageInfo(getPackageName(), 0);
 		} catch (NameNotFoundException e) {
-			Log.e(AboutActivity.class.getName(), "Couldn't find package information in PackageManager", e);
+			Log.e("Couldn't find package information in PackageManager: " + e.getMessage());
 		}
 		return null;
 	}

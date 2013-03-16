@@ -18,6 +18,8 @@ package kaljurand_at_gmail_dot_com.diktofon.provider;
 
 import java.util.HashMap;
 
+import kaljurand_at_gmail_dot_com.diktofon.Log;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -30,11 +32,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 
 public class SpeakersContentProvider extends ContentProvider {
 
-	private static final String TAG = "SpeakersContentProvider";
+	private static final String LOG_TAG = "SpeakersContentProvider";
 
 	private static final String DATABASE_NAME = "speakers.db";
 
@@ -84,7 +85,7 @@ public class SpeakersContentProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			Log.w(TAG, "Upgrading database v" + oldVersion + " -> v" + newVersion + ", which will destroy all old data.");
+			Log.i(LOG_TAG, "Upgrading database v" + oldVersion + " -> v" + newVersion + ", which will destroy all old data.");
 			db.execSQL("DROP TABLE IF EXISTS " + SPEAKERS_TABLE_NAME);
 			db.execSQL("DROP TABLE IF EXISTS " + TSPEAKERS_TABLE_NAME);
 			onCreate(db);

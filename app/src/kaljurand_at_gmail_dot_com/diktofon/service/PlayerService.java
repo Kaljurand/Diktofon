@@ -18,6 +18,7 @@ package kaljurand_at_gmail_dot_com.diktofon.service;
 
 import java.io.IOException;
 
+import kaljurand_at_gmail_dot_com.diktofon.Log;
 import kaljurand_at_gmail_dot_com.diktofon.R;
 import android.app.Notification;
 import android.content.Intent;
@@ -25,7 +26,6 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
-import android.util.Log;
 
 /**
  * <p>This service controls the Media Player and handles status bar notifications.
@@ -64,7 +64,7 @@ public class PlayerService extends DiktofonService {
 	/*
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.i(PlayerService.class.getName(), "Received start id " + startId + ": " + intent);
+		Log.i("Received start id " + startId + ": " + intent);
 		// We want this service to continue running until it is explicitly
 		// stopped, so return sticky.
 		return START_STICKY;
@@ -88,18 +88,14 @@ public class PlayerService extends DiktofonService {
 	 */
 	public void setAudioPath(Intent intent, final String title, String audioPath) throws IOException {
 		MediaPlayer newMp = new MediaPlayer();
-		if (newMp == null) {
-			Log.i(PlayerService.class.getName(), "Failed to create Media Player");
-			throw new IOException("Failed to create Media Player");
-		}
 
-		Log.i(PlayerService.class.getName(), "Setting Media Player data source: " + audioPath);
+		Log.i("Setting Media Player data source: " + audioPath);
 		newMp.setDataSource(audioPath);
 		newMp.prepare();
 
 		newMp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			public void onCompletion(MediaPlayer mp) {
-				Log.i(PlayerService.class.getName(), "Media Player completed");
+				Log.i("Media Player completed");
 				// We are now in the state PlaybackCompleted.
 				// Here we can call seekTo() and later start()
 				seekTo(0);
@@ -107,13 +103,13 @@ public class PlayerService extends DiktofonService {
 					showNotification(
 							String.format(getString(R.string.notification_text_player_completed), title),
 							Notification.FLAG_AUTO_CANCEL
-					);
+							);
 				}
 			}
 		});
 
 		if (mMediaPlayer != null) {
-			Log.i(PlayerService.class.getName(), "Releasing existing Media Player");
+			Log.i("Releasing existing Media Player");
 			saveState(mAudioPath);
 			mMediaPlayer.release();
 		}
@@ -173,7 +169,7 @@ public class PlayerService extends DiktofonService {
 			try {
 				mMediaPlayer.seekTo(millis);
 			} catch (IllegalStateException e) {
-				Log.e(PlayerService.class.getName(), "IllegalStateException: seekTo: " + millis);
+				Log.e("IllegalStateException: seekTo: " + millis);
 			}
 		}
 	}
@@ -197,7 +193,7 @@ public class PlayerService extends DiktofonService {
 			position = mMediaPlayer.getCurrentPosition();
 		} catch (IllegalStateException e) {
 			// Ignoring the situation where the Media Player state is wrong
-			Log.e(PlayerService.class.getName(), "IllegalStateException: getCurrentPosition");
+			Log.e("IllegalStateException: getCurrentPosition");
 		}
 		return position;
 	}
@@ -226,7 +222,7 @@ public class PlayerService extends DiktofonService {
 				title,
 				mIntent,
 				flags
-		);
+				);
 
 		publishNotification(notification, NOTIFICATION_ID);
 	}
