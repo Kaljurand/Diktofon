@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,12 +58,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ScrollView;
 
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import ee.ioc.phon.netspeechapi.trans.Speaker;
 import ee.ioc.phon.netspeechapi.trans.Transcription;
+import ee.ioc.phon.netspeechapi.trans.Turn;
 
 import java.io.File;
 import java.io.IOException;
@@ -469,12 +471,13 @@ public class TransActivity extends AbstractDiktofonActivity {
 		SpannableStringBuilder ssb = new SpannableStringBuilder();
 		String currentSpeakerLocalId = null;
 		for (int i = 0; i < turns.getLength(); i++) {
-			Node turn = turns.item(i);
+			Turn turn = new Turn(turns.item(i));
 
 			// Creating a speaker label
-			final String speakerLocalId = transcription.getTurnSpeakerId(turn);
-			if (speakerLocalId != null && ! speakerLocalId.equals(currentSpeakerLocalId)) {
+			final String speakerLocalId = turn.getSpeakerId();
 
+			// If we have a new speaker
+			if (speakerLocalId != null && ! speakerLocalId.equals(currentSpeakerLocalId)) {
 				if (currentSpeakerLocalId != null) {
 					ssb.append('\n');
 				}
@@ -506,11 +509,11 @@ public class TransActivity extends AbstractDiktofonActivity {
 			int textBegin = ssb.length();
 
 			ssb.append(' ');
-			ssb.append(transcription.getTurnText(turn));
+			ssb.append(turn.getText());
 			int textEnd = ssb.length();
 
 			// Creating click-to-sync
-			final int startTime = transcription.getTurnStartTime(turn);
+			final int startTime = turn.getStartTime();
 			if (startTime >= 0 && textBegin < textEnd) {
 				ssb.setSpan(new ExecutableSpan(new Executable() {
 					public void execute() {
@@ -521,6 +524,9 @@ public class TransActivity extends AbstractDiktofonActivity {
 						}
 					}
 				}), textBegin, textEnd, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+				if (isNonSpeech(turn)) {
+					ssb.setSpan(new ForegroundColorSpan(Color.GRAY), textBegin, textEnd, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+				}
 			}
 
 			ssb.append('\n');
@@ -606,7 +612,6 @@ public class TransActivity extends AbstractDiktofonActivity {
 				final int scrollY = mSettings.getInt("scrollY_" + mTransPath, 0);
 				//Log.i(TransActivity.class.getName(), "Scrolling to Y = " + scrollY);
 				// Scrolling to the remembered position.
-				// We have to post a Runnable to wait until the layout is complete?
 				mTransScrollView.post(new Runnable() {
 					@Override
 					public void run() {
@@ -636,5 +641,19 @@ public class TransActivity extends AbstractDiktofonActivity {
 			int count = GuiUtils.highlightRe(spannable, mQuery, mRes.getColor(R.color.highlight));
 			setTitle(String.format(getString(R.string.title_note_view), mTitle, count, mQuery));
 		}
+	}
+
+
+	/**
+	 * <p>Guesses based on the textual content of the turn if it contains non-speech.
+	 * If there is at most 1 word per 1 second, then the turn is assumed to be non-speech.</p>
+	 * <p>TODO: very preliminary</p>
+	 */
+	private boolean isNonSpeech(Turn turn) {
+		int numberOfUniqueWords = turn.getUniqueWords().size();
+		if (numberOfUniqueWords == 0) {
+			numberOfUniqueWords = 1;
+		}
+		return (turn.getDuration() / numberOfUniqueWords) > 1000;
 	}
 }

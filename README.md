@@ -15,12 +15,21 @@ Go into the app-directory and execute
 
 	ant clean release
 
-Note that you need to have 3 additional files that are not part of this
+Note that you need to have these files that are not part of this
 repository:
 
-  - app/libs/json_simple-1.1.jar (to keep ProGuard happy, there might be a simpler way)
-  - app/local.properties (pointer to the Android SDK)
-  - app/diktofon.keystore (release keys)
+  - local.properties (pointer to the Android SDK)
+  - diktofon.keystore (release keys)
 
-Read the Android developer docs for instructions on how to generate the
-last two files.
+Read the Android developer docs for instructions on how to generate them.
+
+Also, you need to have these jar-files in the `app/libs`-directory:
+
+	apache-mime4j-0.6.jar
+	commons-io-2.0.1.jar
+	guava-11.0.1.jar
+	httpmime-4.1.1.jar
+	json_simple-1.1.jar
+	net-speech-api-0.1.8.jar
+
+Net Speech API is available from <http://code.google.com/p/net-speech-api/>.
