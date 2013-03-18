@@ -44,17 +44,30 @@ public class RecordingSendActivity extends AbstractDiktofonActivity {
 			if (intent.hasExtra(Intent.EXTRA_STREAM)) {
 				Object extraStream = extras.get(Intent.EXTRA_STREAM);
 				if (extraStream instanceof Uri) {
-					File file = Utils.copyUriToRecordingsDir(this, (Uri) extraStream);
-					if (file != null) {
-						toast(String.format(getString(R.string.toast_import_audio_uri), file.getAbsolutePath()));
+					Uri uri = (Uri) extraStream;
+					toast(String.format(getString(R.string.toast_import_audio_uri), uri.toString()));
+					File file = Utils.copyUriToRecordingsDir(this, uri);
+					if (file == null) {
+						toast(getString(R.string.toast_copy_failed));
+					} else {
+						toast(String.format(getString(R.string.toast_copy_done), file.getAbsolutePath()));
 					}
 				} else if (extraStream instanceof ArrayList<?>) {
 					// TODO: we assume a list of Uris, which might not be the case
 					ArrayList<Uri> uris = extras.getParcelableArrayList(Intent.EXTRA_STREAM);
 					if (uris != null) {
 						toast(String.format(getString(R.string.toast_import_audio_uris), uris.size()));
+						int failedCount = 0;
 						for (Uri uri : uris) {
-							Utils.copyUriToRecordingsDir(this, uri);
+							File file = Utils.copyUriToRecordingsDir(this, uri);
+							if (file == null) {
+								failedCount++;
+							}
+						}
+						if (failedCount > 0) {
+							toast(String.format(getString(R.string.toast_copy_failed_count), failedCount));
+						} else {
+							toast(String.format(getString(R.string.toast_copy_done_all)));
 						}
 					}
 				} else {

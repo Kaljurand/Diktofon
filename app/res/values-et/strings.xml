@@ -3,6 +3,7 @@
 
     <string name="app_description">Diktofon eesti keele kõnetuvastusega</string>
     <string name="activity_notelistview_name">Lindistused</string>
+    <string name="activity_recording_send_name">Kopeeri Diktofoni</string>
     <string name="activity_recorder_name">Lindistaja</string>
     <string name="activity_speakers_name">Kõnelejad</string>
     <string name="activity_preferences_name">Seaded</string>
@@ -106,8 +107,12 @@
     <string name="toast_speaker_add_new">Uus kõneleja \"%1$s\"</string>
     <string name="toast_speaker_change_name">Uus nimi on \"%1$s\"</string>
     <string name="toast_add_recording">Uus lindistus \"%1$s\"</string>
-    <string name="toast_import_audio_uri">Kopeerin helifaili: %1$s</string>
-    <string name="toast_import_audio_uris">kopeerin %1$d helifaili…</string>
+    <string name="toast_import_audio_uri">Kopeerin %1$s …</string>
+    <string name="toast_import_audio_uris">Kopeerin %1$d helifaili…</string>
+    <string name="toast_copy_done">Salvestasin %1$s</string>
+    <string name="toast_copy_done_all">Kõik failid edukalt salvestatud</string>
+    <string name="toast_copy_failed_count">%1$d faili kopeerimine ebaõnnestus :(</string>
+    <string name="toast_copy_failed">Kopeerimine ebaõnnestus :(</string>
     <string name="notification_ticker_player">Mängin taustal</string>
     <string name="notification_ticker_recorder">Lindistan taustal</string>
     <string name="notification_text_player_playing">Mängin: %1$s</string>

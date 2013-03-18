@@ -7,6 +7,7 @@
     <string name="file_preferences" translatable="false">MyPrefsFile</string>
     <string name="app_description">Dictaphone with Estonian speech-to-text</string>
     <string name="activity_notelistview_name">List of recordings</string>
+    <string name="activity_recording_send_name">Copy to Diktofon</string>
     <string name="activity_recorder_name">Recorder</string>
     <string name="activity_trans_name">Read &amp; Listen</string>
     <string name="activity_speakers_name">Speakers</string>
@@ -116,8 +117,12 @@
     <string name="toast_speaker_add_new">Added speaker \"%1$s\"</string>
     <string name="toast_speaker_change_name">Name changed to \"%1$s\"</string>
     <string name="toast_add_recording">Added new recording \"%1$s\"</string>
-    <string name="toast_import_audio_uri">Copying audio file into %1$s</string>
+    <string name="toast_import_audio_uri">Copying audio file %1$s …</string>
     <string name="toast_import_audio_uris">Copying %1$d audio files…</string>
+    <string name="toast_copy_done">Successfully stored as %1$s</string>
+    <string name="toast_copy_done_all">Successfully stored all files</string>
+    <string name="toast_copy_failed_count">Failed to copy %1$d files :(</string>
+    <string name="toast_copy_failed">Copying failed :(</string>
     <string name="notification_ticker_player">Playing in the background</string>
     <string name="notification_ticker_recorder">Recording in the background</string>
     <string name="notification_text_player_playing">Playing: %1$s</string>
