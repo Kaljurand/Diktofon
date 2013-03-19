@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2012, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public abstract class DiktofonService extends Service {
 
@@ -42,7 +43,7 @@ public abstract class DiktofonService extends Service {
 	@Override
 	public void onCreate() {
 		Log.i(LOG_TAG, "onCreate");
-		mPreferences = getSharedPreferences(getString(R.string.file_preferences), 0);
+		mPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		mNotificationMngr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
 

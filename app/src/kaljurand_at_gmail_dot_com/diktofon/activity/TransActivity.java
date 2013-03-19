@@ -43,6 +43,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -215,7 +216,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 		mTransScrollView = (ScrollView) findViewById(R.id.scrollViewTrs);
 		mTransView = (TextView) findViewById(R.id.transcription);
 		mRes = getResources();
-		mSettings = getSharedPreferences(getString(R.string.file_preferences), 0);
+		mSettings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
 		mPlayer = new Player(
 				mRes,

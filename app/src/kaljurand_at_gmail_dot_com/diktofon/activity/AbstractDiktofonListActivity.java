@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import android.app.ListActivity;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 /**
@@ -30,5 +31,12 @@ public abstract class AbstractDiktofonListActivity extends ListActivity {
 
 	void toast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+	}
+
+
+	void set(SharedPreferences prefs, String key, boolean b) {
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(key, b);
+		editor.commit();
 	}
 }

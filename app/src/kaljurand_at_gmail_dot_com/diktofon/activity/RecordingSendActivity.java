@@ -50,6 +50,7 @@ public class RecordingSendActivity extends AbstractDiktofonActivity {
 					if (file == null) {
 						toast(getString(R.string.toast_copy_failed));
 					} else {
+						set(getString(R.string.keyRefresh), true);
 						toast(String.format(getString(R.string.toast_copy_done), file.getAbsolutePath()));
 					}
 				} else if (extraStream instanceof ArrayList<?>) {
@@ -64,6 +65,7 @@ public class RecordingSendActivity extends AbstractDiktofonActivity {
 								failedCount++;
 							}
 						}
+						set(getString(R.string.keyRefresh), true);
 						if (failedCount > 0) {
 							toast(String.format(getString(R.string.toast_copy_failed_count), failedCount));
 						} else {

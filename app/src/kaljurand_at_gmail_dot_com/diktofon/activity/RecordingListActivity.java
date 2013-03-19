@@ -103,8 +103,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		mPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		MyFileUtils.createNomedia();
 
-		loadRecordingsInBackground();
-
 		mListView = getListView();
 		mListView.setFastScrollEnabled(true);
 
@@ -121,6 +119,23 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		handleIntent(getIntent());
 		registerForContextMenu(mListView);
 	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		if (mPrefs.getBoolean(getString(R.string.keyRefresh), getResources().getBoolean(R.bool.defaultRefresh))) {
+			loadRecordingsInBackground();
+		}
+		set(mPrefs, getString(R.string.keyRefresh), false);
+	}
+
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		set(mPrefs, getString(R.string.keyRefresh), true);
+	}
+
 
 
 	/*

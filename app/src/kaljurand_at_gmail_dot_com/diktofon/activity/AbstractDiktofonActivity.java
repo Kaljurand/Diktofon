@@ -1,5 +1,5 @@
 /*
- * Copyright 2011, Institute of Cybernetics at Tallinn University of Technology
+ * Copyright 2011-2013, Institute of Cybernetics at Tallinn University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,9 @@ package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 /**
@@ -34,6 +36,14 @@ public abstract class AbstractDiktofonActivity extends Activity {
 
 	void toast(String message) {
 		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+	}
+
+
+	void set(String key, boolean b) {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(key, b);
+		editor.commit();
 	}
 
 }
