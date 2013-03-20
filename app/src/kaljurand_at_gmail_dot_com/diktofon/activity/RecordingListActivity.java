@@ -577,6 +577,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			mProgressDialog = new ProgressDialog(context);
 			mProgressDialog.setTitle(getString(R.string.message_loading_recordings));
 			mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			mProgressDialog.setCancelable(false);
 			mProgressDialog.setProgress(0);
 			mProgressDialog.setMax(maxProgress);
 		}
