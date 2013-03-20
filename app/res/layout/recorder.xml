@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="@string/instructionsRecorder"
         android:textColor="@color/d_fg_text"
-        android:textSize="16sp" />
+        android:textSize="@dimen/textSizeRecorderInstructions" />
 
     <!-- BUG: does not seem to work: android:soundEffectsEnabled="true" -->
 
@@ -29,7 +29,7 @@
         android:padding="16dp"
         android:text="@string/b_recorder_start"
         android:textColor="@color/grey3"
-        android:textSize="16sp" />
+        android:textSize="@dimen/textSizeRecorderInstructions" />
 
     <TextView
         android:id="@+id/volume"
@@ -41,7 +41,7 @@
         android:singleLine="true"
         android:text="@string/volumeBar"
         android:textColor="@color/d_fg_text_faded"
-        android:textSize="20sp"
+        android:textSize="@dimen/textSizeRecorderVolume"
         android:typeface="monospace" />
 
     <TextView
@@ -53,7 +53,7 @@
         android:singleLine="true"
         android:text="1023 kB"
         android:textColor="@color/d_fg_text_faded"
-        android:textSize="18sp" />
+        android:textSize="@dimen/textSizeRecorderStatus" />
 
     <Chronometer
         android:id="@+id/chronometer"
@@ -62,6 +62,6 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textColor="@color/d_fg_text_faded"
-        android:textSize="24sp" />
+        android:textSize="@dimen/textSizeRecorderChronometer" />
 
 </LinearLayout>

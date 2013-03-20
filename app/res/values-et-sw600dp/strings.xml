@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_notelist_view">%1$d lindistust: %2$d transkribeeritud, %3$d transkribeerimata</string>
+
+</resources>

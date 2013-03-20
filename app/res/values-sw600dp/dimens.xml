@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="textSizeTranscription">20sp</dimen>
+    <dimen name="textSizeAbout">20sp</dimen>
+    <dimen name="paddingAbout">8dp</dimen>
+    <dimen name="paddingTags">8dp</dimen>
+    <dimen name="paddingTranscription">8dp</dimen>
+    <dimen name="paddingRecordings">8dp</dimen>
+    <dimen name="textSizeRecordingsTitle">20sp</dimen>
+    <dimen name="textSizeRecordingsMeta">16sp</dimen>
+    <dimen name="textSizeRecordingsTrans">16sp</dimen>
+    <dimen name="textSizeRecordingsTags">15sp</dimen>
+
+    <integer name="linesRecordingsTrans">4</integer>
+
+    <dimen name="textSizeTagsTitle">20sp</dimen>
+    <dimen name="textSizeSpeakersTitle">20sp</dimen>
+    <dimen name="textSizeRecorderInstructions">20sp</dimen>
+    <dimen name="textSizeRecorderVolume">24sp</dimen>
+    <dimen name="textSizeRecorderStatus">22sp</dimen>
+    <dimen name="textSizeRecorderChronometer">28sp</dimen>
+
+</resources>

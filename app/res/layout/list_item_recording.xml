@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/list_selector_background"
-    android:padding="6dp" >
+    android:padding="@dimen/paddingRecordings" >
 
     <!-- Position -->
 
@@ -29,7 +29,7 @@
         android:singleLine="true"
         android:text="2011-04-01 (Fri) 17:05"
         android:textColor="@color/l_fg_title"
-        android:textSize="16sp" />
+        android:textSize="@dimen/textSizeRecordingsTitle" />
 
     <!-- Meta info -->
 
@@ -41,7 +41,7 @@
         android:singleLine="true"
         android:text="12:34  mpeg  120 MB  1000 words  5 speakers"
         android:textColor="@color/l_fg_meta"
-        android:textSize="14sp" />
+        android:textSize="@dimen/textSizeRecordingsMeta" />
 
     <!-- Transcription snippet -->
     <!-- BUG: Only shows 2 lines with marquee... -->
@@ -54,10 +54,10 @@
         android:layout_below="@+id/list_item_meta"
         android:bufferType="spannable"
         android:ellipsize="none"
-        android:lines="3"
-        android:text="Elas metsas mutionu, keset kuuski noori-vanu"
+        android:lines="@integer/linesRecordingsTrans"
+        android:text="@string/instructionsRecorder"
         android:textColor="@color/l_fg_text"
-        android:textSize="14sp" />
+        android:textSize="@dimen/textSizeRecordingsTrans" />
 
     <!-- Tags -->
 
@@ -74,6 +74,6 @@
         android:singleLine="true"
         android:text="song, mutionu, forest, trees, living"
         android:textColor="@color/l_fg_text"
-        android:textSize="13sp" />
+        android:textSize="@dimen/textSizeRecordingsTags" />
 
 </RelativeLayout>
