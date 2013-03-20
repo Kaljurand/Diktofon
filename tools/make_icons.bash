@@ -11,19 +11,22 @@
 # Dialog icons: ic_dialog: ic_dialog_info.png
 #
 # @author Kaarel Kaljurand
-# @version 2011-05-17
+# @version 2013-03-20
 # @work_in_progress
 
 dir_svg=${DIKTOFON_SRC}/images/
 dir_png=${DIKTOFON_SRC}/app/res/
 
+dir_png_xhdpi=${dir_png}/drawable-xhdpi/
 dir_png_hdpi=${dir_png}/drawable-hdpi/
 dir_png_mdpi=${dir_png}/drawable-mdpi/
-dir_png_ldpi=${dir_png}/drawable-ldpi/
 
 # Launcher icon
 launcher_logo_w=512
 launcher_logo_h=512
+
+launcher_xhdpi_w=96
+launcher_xhdpi_h=96
 
 launcher_hdpi_w=72
 launcher_hdpi_h=72
@@ -33,6 +36,10 @@ launcher_mdpi_h=48
 
 launcher_ldpi_w=36
 launcher_ldpi_h=36
+
+# Status bar icons (Android 3.0+)
+stat_xhdpi_w=48
+stat_xhdpi_h=48
 
 # Status bar icons (Android 2.2-)
 stat_hdpi_w=38
@@ -60,9 +67,9 @@ do
 	filename=$(basename $path)
 	file=${filename%.*}
 	echo "$file"
+	rsvg-convert -f png -w ${stat_xhdpi_w} -h ${stat_xhdpi_h} -o ${dir_png_xhdpi}/$file.png $path
 	rsvg-convert -f png -w ${stat_hdpi_w} -h ${stat_hdpi_h} -o ${dir_png_hdpi}/$file.png $path
 	rsvg-convert -f png -w ${stat_mdpi_w} -h ${stat_mdpi_h} -o ${dir_png_mdpi}/$file.png $path
-	rsvg-convert -f png -w ${stat_ldpi_w} -h ${stat_ldpi_h} -o ${dir_png_ldpi}/$file.png $path
 done
 
 echo "Generating launcher icon:"
@@ -72,7 +79,7 @@ do
 	file=${filename%.*}
 	echo "$file"
 	rsvg-convert -f png -w ${launcher_logo_w} -h ${launcher_logo_h} -o ${dir_svg}/$file.png $path
+	rsvg-convert -f png -w ${launcher_xhdpi_w} -h ${launcher_xhdpi_h} -o ${dir_png_xhdpi}/$file.png $path
 	rsvg-convert -f png -w ${launcher_hdpi_w} -h ${launcher_hdpi_h} -o ${dir_png_hdpi}/$file.png $path
 	rsvg-convert -f png -w ${launcher_mdpi_w} -h ${launcher_mdpi_h} -o ${dir_png_mdpi}/$file.png $path
-	rsvg-convert -f png -w ${launcher_ldpi_w} -h ${launcher_ldpi_h} -o ${dir_png_ldpi}/$file.png $path
 done
