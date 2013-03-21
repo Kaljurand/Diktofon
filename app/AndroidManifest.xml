@@ -26,14 +26,14 @@
         android:allowBackup="true"
         android:description="@string/app_description"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Light" >
         <activity
             android:name=".activity.RecordingListActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -55,6 +55,7 @@
 
                 <data android:mimeType="audio/*" >
                 </data>
+                <data android:mimeType="video/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
@@ -63,6 +64,7 @@
 
                 <data android:mimeType="audio/*" >
                 </data>
+                <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
         <activity
@@ -95,16 +97,14 @@
             android:name=".activity.Preferences"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_preferences_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.TransActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_trans_name"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -117,15 +117,13 @@
             android:name=".activity.DetailsActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_details_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.SpeakerListActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_speakers_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
         </activity>
 
         <!--
@@ -141,15 +139,13 @@
             android:name=".activity.TagSelectorActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_tagselector_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.AboutActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:label="@string/activity_about_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light" >
+            android:screenOrientation="portrait" >
         </activity>
 
         <service android:name=".service.PlayerService" />
