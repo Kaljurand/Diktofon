@@ -3,8 +3,10 @@
 
     <dimen name="textSizeTranscription">20sp</dimen>
     <dimen name="textSizeAbout">20sp</dimen>
+    <dimen name="textSizePlayer">20sp</dimen>
     <dimen name="paddingAbout">8dp</dimen>
     <dimen name="paddingTags">8dp</dimen>
+    <dimen name="paddingPlayer">15dp</dimen>
     <dimen name="paddingTranscription">8dp</dimen>
     <dimen name="paddingRecordings">8dp</dimen>
     <dimen name="textSizeRecordingsTitle">20sp</dimen>

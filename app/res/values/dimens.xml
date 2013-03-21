@@ -3,10 +3,12 @@
 
     <dimen name="textSizeTranscription">16sp</dimen>
     <dimen name="textSizeAbout">16sp</dimen>
+    <dimen name="textSizePlayer">16sp</dimen>
     <dimen name="paddingTranscription">4dp</dimen>
     <dimen name="paddingRecordings">6dp</dimen>
     <dimen name="paddingAbout">6dp</dimen>
     <dimen name="paddingTags">8dp</dimen>
+    <dimen name="paddingPlayer">12dp</dimen>
     <dimen name="textSizeRecordingsTitle">16sp</dimen>
 
     <integer name="linesRecordingsTrans">3</integer>
