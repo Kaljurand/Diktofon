@@ -13,7 +13,7 @@ Compilation
 
 Go into the app-directory and execute
 
-	ant clean release
+    gradle installRelease
 
 Note that you need to have these files that are not part of this
 repository:
@@ -26,10 +26,7 @@ Read the Android developer docs for instructions on how to generate them.
 Also, you need to have these jar-files in the `app/libs`-directory:
 
 	apache-mime4j-0.6.jar
-	commons-io-2.0.1.jar
-	guava-11.0.1.jar
 	httpmime-4.1.1.jar
-	json_simple-1.1.jar
-	net-speech-api-0.1.8.jar
+	net-speech-api-0.1.9.jar
 
 Net Speech API is available from <http://code.google.com/p/net-speech-api/>.

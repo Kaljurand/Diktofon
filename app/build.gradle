@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'commons-io:commons-io:2.0.1'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+    //compile 'org.apache.httpcomponents:httpmime:4.1.1'
+    //compile 'org.apache.httpcomponents:httpclient:4.1.1'
+    // TODO: This did not work
+    //compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    // TODO: start using Guava
+    compile 'com.google.guava:guava:11.0.2'
+    //compile 'com.koushikdutta.async:androidasync:2.+'
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1100
+        versionName '1.1.00'
+    }
+
+    // TODO: try to remove it
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("KEYSTORE_DIKTOFON"))
+            keyAlias System.getenv("KEYSTORE_DIKTOFON_ALIAS")
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile 'proguard.cfg'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+
+if (project.hasProperty('storePassword') &&
+    project.hasProperty('keyPassword')) {
+    android.signingConfigs.release.storePassword = storePassword
+    android.signingConfigs.release.keyPassword = keyPassword
+} else {
+    android.buildTypes.release.signingConfig = null
+}
