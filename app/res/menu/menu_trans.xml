@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/menu_trans_search" android:title="@string/menu_search"
-		android:icon="@drawable/ic_menu_search" />
+    <item
+        android:id="@+id/menu_trans_search"
+        android:icon="@drawable/ic_menu_search"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_search" />
 
-	<!--
-	<item android:id="@+id/menu_trans_speakers" android:title="@string/menu_speakers"
-		android:icon="@drawable/ic_menu_cc" />
-	-->
+    <!--
+    <item android:id="@+id/menu_trans_speakers" android:title="@string/menu_speakers"
+        android:icon="@drawable/ic_menu_cc" />
+    -->
 
-	<!-- Share the recording in various ways -->
- 	<item
- 		android:id="@+id/menu_trans_share"
-		android:title="@string/menu_trans_share"
-		android:icon="@drawable/ic_menu_share">
- 		<menu>
- 			<group android:checkableBehavior="single">
-				<item android:id="@+id/menu_trans_share_trans"
-                	  android:title="@string/menu_trans_share_trans" />
-            	<item android:id="@+id/menu_trans_share_audio"
-                	  android:title="@string/menu_trans_share_audio" />
-            	<item android:id="@+id/menu_trans_share_all"
-                	  android:title="@string/menu_trans_share_all" />
-			</group>
-		</menu>
-	</item>
+    <!-- Share the recording in various ways -->
+    <item
+        android:id="@+id/menu_trans_share"
+        android:icon="@drawable/ic_menu_share"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_trans_share">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_trans_share_trans"
+                    android:title="@string/menu_trans_share_trans" />
+                <item
+                    android:id="@+id/menu_trans_share_audio"
+                    android:title="@string/menu_trans_share_audio" />
+                <item
+                    android:id="@+id/menu_trans_share_all"
+                    android:title="@string/menu_trans_share_all" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

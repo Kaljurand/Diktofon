@@ -16,6 +16,7 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -449,9 +450,10 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	// TODO: add search query match count
 	private void refreshTitle() {
 		if (mRecordings != null) {
-			setTitle(
-					String.format(getString(R.string.title_notelist_view),
-							mRecordings.size(), mRecordings.getTransCount(), mRecordings.getNeedsTransCount()));
+            String info = String.format(getString(R.string.title_notelist_view),
+                    mRecordings.size(), mRecordings.getTransCount(), mRecordings.getNeedsTransCount());
+            ActionBar ab = getActionBar();
+            ab.setSubtitle(info);
 		}
 	}
 

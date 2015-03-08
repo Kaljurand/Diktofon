@@ -6,7 +6,6 @@
 	<LinearLayout
 		android:id="@+id/controls_tagselector"
 		android:orientation="horizontal"
-		android:background="@color/grey3"
 		android:padding="5dp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"

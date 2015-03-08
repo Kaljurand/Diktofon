@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey3"
     android:padding="@dimen/paddingPlayer" >
 
     <Button
@@ -23,7 +22,6 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:text="0:00"
-        android:textColor="@color/l_fg_timer"
         android:textSize="@dimen/textSizePlayer" />
 
     <SeekBar

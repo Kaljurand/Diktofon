@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/l_bg"
     android:padding="@dimen/paddingTags" >
 
     <CheckBox
@@ -21,7 +20,6 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/list_item_edittag_state"
         android:text=""
-        android:textColor="@color/l_fg_title"
         android:textSize="@dimen/textSizeTagsTitle" />
 
 </RelativeLayout>

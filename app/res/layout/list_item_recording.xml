@@ -14,7 +14,6 @@
         android:layout_alignParentTop="true"
         android:singleLine="true"
         android:text="12."
-        android:textColor="@color/l_fg_title"
         android:textSize="12sp"
         android:visibility="invisible" />
 
@@ -28,7 +27,6 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:text="2011-04-01 (Fri) 17:05"
-        android:textColor="@color/l_fg_title"
         android:textSize="@dimen/textSizeRecordingsTitle" />
 
     <!-- Meta info -->
@@ -56,7 +54,6 @@
         android:ellipsize="none"
         android:lines="@integer/linesRecordingsTrans"
         android:text="@string/instructionsRecorder"
-        android:textColor="@color/l_fg_text"
         android:textSize="@dimen/textSizeRecordingsTrans" />
 
     <!-- Tags -->
@@ -73,7 +70,6 @@
         android:gravity="right"
         android:singleLine="true"
         android:text="song, mutionu, forest, trees, living"
-        android:textColor="@color/l_fg_text"
         android:textSize="@dimen/textSizeRecordingsTags" />
 
 </RelativeLayout>

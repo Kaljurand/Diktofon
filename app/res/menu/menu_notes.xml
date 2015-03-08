@@ -1,79 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<!-- Add (record) a new voice note -->
+    <!-- Add (record) a new voice note -->
     <item
-		android:id="@+id/menu_notes_add"
-		android:title="@string/menu_add"
-		android:icon="@drawable/ic_menu_add" />
+        android:id="@+id/menu_notes_add"
+        android:icon="@drawable/ic_menu_add"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_add" />
 
-	<!-- Search existing notes -->
+    <!-- Search existing notes -->
     <item
-		android:id="@+id/menu_notes_search"
-		android:title="@string/menu_search"
-		android:icon="@drawable/ic_menu_search" />
+        android:id="@+id/menu_notes_search"
+        android:icon="@drawable/ic_menu_search"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_search" />
 
-	<!-- Sort existing notes by various properties -->
- 	<item android:id="@+id/menu_notes_sort"
-		android:title="@string/menu_notes_sort"
-		android:icon="@drawable/ic_menu_sort_by_size">
- 		<menu>
- 			<group android:checkableBehavior="single">
-				<item android:id="@+id/menu_notes_sort_by_timestamp"
-                	  android:title="@string/menu_notes_sort_by_timestamp" />
-            	<item android:id="@+id/menu_notes_sort_by_duration"
-                	  android:title="@string/menu_notes_sort_by_duration" />
-            	<item android:id="@+id/menu_notes_sort_by_size"
-                	  android:title="@string/menu_notes_sort_by_size" />
-				<item android:id="@+id/menu_notes_sort_by_wordcount"
-                	  android:title="@string/menu_notes_sort_by_wordcount" />
-				<item android:id="@+id/menu_notes_sort_by_speakercount"
-                	  android:title="@string/menu_notes_sort_by_speakercount" />
-				<!--
-				<item android:id="@+id/menu_notes_sort_by_search"
-                	  android:title="@string/menu_notes_sort_by_search" />
-				-->
-			</group>
-		</menu>
-	</item>
+    <!-- Sort existing notes by various properties -->
+    <item
+        android:id="@+id/menu_notes_sort"
+        android:icon="@drawable/ic_menu_sort_by_size"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_notes_sort">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_notes_sort_by_timestamp"
+                    android:title="@string/menu_notes_sort_by_timestamp" />
+                <item
+                    android:id="@+id/menu_notes_sort_by_duration"
+                    android:title="@string/menu_notes_sort_by_duration" />
+                <item
+                    android:id="@+id/menu_notes_sort_by_size"
+                    android:title="@string/menu_notes_sort_by_size" />
+                <item
+                    android:id="@+id/menu_notes_sort_by_wordcount"
+                    android:title="@string/menu_notes_sort_by_wordcount" />
+                <item
+                    android:id="@+id/menu_notes_sort_by_speakercount"
+                    android:title="@string/menu_notes_sort_by_speakercount" />
+                <!--
+                <item android:id="@+id/menu_notes_sort_by_search"
+                      android:title="@string/menu_notes_sort_by_search" />
+                -->
+            </group>
+        </menu>
+    </item>
 
-	<!-- Tags -->
-	<item android:id="@+id/menu_notes_tags"
-		android:title="@string/menu_tags"
-		android:icon="@drawable/ic_menu_tags" />
+    <!-- Tags -->
+    <item
+        android:id="@+id/menu_notes_tags"
+        android:icon="@drawable/ic_menu_tags"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_tags" />
 
-	<!-- Speakers -->
-	<!--
-	<item android:id="@+id/menu_recordings_speakers"
-		android:title="@string/menu_speakers"
-		android:icon="@drawable/ic_menu_cc" />
-	-->
+    <!-- Speakers -->
+    <!--
+    <item android:id="@+id/menu_recordings_speakers"
+        android:title="@string/menu_speakers"
+        android:icon="@drawable/ic_menu_cc" />
+    -->
 
-	<!-- Settings -->
-	<item android:id="@+id/menu_settings"
-		android:title="@string/menu_settings"
-		android:icon="@drawable/ic_menu_preferences" />
+    <!-- Settings -->
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_menu_preferences"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_settings" />
 
-	<!-- Pick an audio file -->
-	<item
-		android:id="@+id/menu_recordings_import"
-		android:title="@string/menu_recordings_import" />
+    <!-- Pick an audio file -->
+    <item
+        android:id="@+id/menu_recordings_import"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_recordings_import" />
 
-	<!-- Transcribe all the notes that do not have a transcription yet -->
-	<item
-		android:id="@+id/menu_notes_transcribe"
-		android:title="@string/menu_notes_transcribe"
-		android:icon="@drawable/ic_menu_edit" />
+    <!-- Transcribe all the notes that do not have a transcription yet -->
+    <item
+        android:id="@+id/menu_notes_transcribe"
+        android:icon="@drawable/ic_menu_edit"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_notes_transcribe" />
 
-	<!-- Reload notes from the SD card. Normally shouldn't be needed. -->
-	<item
-		android:id="@+id/menu_notes_reload"
-		android:title="@string/menu_notes_reload"
-		android:icon="@drawable/ic_menu_refresh" />
+    <!-- Reload notes from the SD card. Normally shouldn't be needed. -->
+    <item
+        android:id="@+id/menu_notes_reload"
+        android:icon="@drawable/ic_menu_refresh"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_notes_reload" />
 
-	<!-- About page -->
-	<item android:id="@+id/menu_about"
-		android:title="@string/menu_about"
-		android:icon="@drawable/ic_menu_help" />
+    <!-- About page -->
+    <item
+        android:id="@+id/menu_about"
+        android:icon="@drawable/ic_menu_help"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_about" />
 
 </menu>

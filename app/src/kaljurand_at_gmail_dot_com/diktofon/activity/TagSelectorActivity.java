@@ -22,6 +22,7 @@ import kaljurand_at_gmail_dot_com.diktofon.R;
 import kaljurand_at_gmail_dot_com.diktofon.Utils;
 import kaljurand_at_gmail_dot_com.diktofon.adapter.TagSelectorAdapter;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -126,8 +127,10 @@ public class TagSelectorActivity extends Activity {
 	// and also the number of selected tags
 	private void updateTitle() {
 		if (mAdapter != null) {
-			setTitle(String.format(getString(R.string.titleTagSelector), mAdapter.getCount()));
 			//setTitle(String.format(getString(R.string.titleTagSelector), adapter.getCount(), adapter.getSelectedCount()));
+            String info = String.format(getString(R.string.titleTagSelector), mAdapter.getCount());
+            ActionBar ab = getActionBar();
+            ab.setSubtitle(info);
 		}
 	}
 }

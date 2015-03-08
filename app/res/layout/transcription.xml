@@ -2,30 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollViewTrs"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
-
-        <!-- Black-on-white -->
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/transcription"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/l_bg"
             android:bufferType="spannable"
             android:padding="@dimen/paddingTranscription"
-            android:textColor="@color/l_fg_text"
             android:textSize="@dimen/textSizeTranscription" />
     </ScrollView>
 
     <include
+        layout="@layout/player"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/player" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
