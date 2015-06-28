@@ -29,4 +29,4 @@ Also, you need to have these jar-files in the `app/libs`-directory:
 	httpmime-4.1.1.jar
 	net-speech-api-0.1.9.jar
 
-Net Speech API is available from <http://code.google.com/p/net-speech-api/>.
+Net Speech API is available from <https://github.com/Kaljurand/net-speech-api>.

@@ -10,7 +10,7 @@ BUG: try these:
 
 	<PreferenceCategory android:title="@string/titleRecording">
 		<CheckBoxPreference
-			android:key="useInternalRecorder"
+			android:key="@string/keyUseInternalRecorder"
 			android:title="@string/titleUseInternalRecorder"
 			android:summary="@string/summaryUseInternalRecorder"
 			android:defaultValue="true" />

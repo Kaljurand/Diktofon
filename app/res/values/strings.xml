@@ -5,6 +5,7 @@
     <string name="app_author" translatable="false">Kaarel Kaljurand</string>
     <string name="volumeBar" translatable="false">|||||||||||||||</string>
     <string name="keyRefresh" translatable="false">keyRefresh</string>
+    <string name="keyUseInternalRecorder" translatable="false">keyUseInternalRecorder</string>
     <string name="app_description">Dictaphone with Estonian speech-to-text</string>
     <string name="activity_notelistview_name">List of recordings</string>
     <string name="activity_recording_send_name">Copy to Diktofon</string>

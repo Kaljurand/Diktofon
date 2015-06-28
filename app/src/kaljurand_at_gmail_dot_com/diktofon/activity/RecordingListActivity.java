@@ -225,7 +225,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 			// When recording sounds we want to make sure if the activity stack
 			// already contains a recorder then it is reused, i.e. that we
 			// do not have several recorders running in parallel.
-			if (mPrefs.getBoolean("useInternalRecorder", true)) {
+			if (mPrefs.getBoolean(getString(R.string.keyUseInternalRecorder), getResources().getBoolean(R.bool.defaultUseInternalRecorder))) {
 				Intent intent = new Intent(this, RecorderActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 				intent.putExtra(RecorderActivity.EXTRA_BASE_DIR, Dirs.getRecordingsDir().getAbsolutePath());
