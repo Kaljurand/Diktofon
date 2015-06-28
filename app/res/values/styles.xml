@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Diktofon" parent="@android:style/Theme.Holo.Light" />
+    <style name="Theme.Diktofon" parent="@android:style/Theme.DeviceDefault.Light" />
 
-    <style name="Theme.Diktofon.NoActionBar" parent="@android:style/Theme.Holo.Light.NoActionBar" />
+    <style name="Theme.Diktofon.NoActionBar" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar" />
 
-    <style name="Theme.Diktofon.Dialog" parent="@android:style/Theme.Holo.Light.Dialog" />
+    <style name="Theme.Diktofon.Dialog" parent="@android:style/Theme.DeviceDefault.Light.Dialog" />
 
 </resources>
