@@ -34,7 +34,7 @@
     <string name="cm_speakers_delete">Kustuta</string>
 
     <!-- Menus in any activity -->
-    <string name="menu_add">Lindista</string>
+    <string name="menu_add">Lisa lindistus</string>
     <string name="menu_edittags_add">Lisa silte</string>
     <string name="menu_search">Otsi</string>
     <string name="menu_tags">Sildid</string>
@@ -103,7 +103,7 @@
     <string name="chooser_share">Jaga rakendusega:</string>
     <string name="subject_share">Lindistus %1$s</string>
     <string name="title_note_view">%1$s / %2$d x %3$s</string>
-    <string name="title_notelist_view">%1$d lindistust: %2$d trans-tud, %3$d trans-da</string>
+    <string name="title_notelist_view">%1$d: %2$d trans-tud, %3$d trans-da</string>
     <string name="toast_speaker_add_new">Uus kõneleja \"%1$s\"</string>
     <string name="toast_speaker_change_name">Uus nimi on \"%1$s\"</string>
     <string name="toast_add_recording">Uus lindistus \"%1$s\"</string>
@@ -119,8 +119,8 @@
     <string name="notification_text_player_completed">Lõpetatud: %1$s</string>
     <string name="notification_text_recorder_recording">Lindistamine käib…</string>
     <string name="notification_text_recorder_pausing">Lindistamine pausil</string>
-    <string name="emptyview_recordings">Lindistusi pole.\nUue lindistuse tegemiseks vali menüüst \"Lindista\".</string>
-    <string name="emptyview_speakers">Kõnelejaid pole.\nUue kõneleja lisamiseks vali menüüst \"Lisa kõneleja\".</string>
+    <string name="emptyview_recordings">Lindistusi pole.</string>
+    <string name="emptyview_speakers">Kõnelejaid pole.</string>
 
     <!-- <string name="titleTagSelector">%1$d silti / %2$d valitud</string> -->
     <string name="titleTagSelector">%1$d silti</string>
@@ -150,14 +150,14 @@
 		osutuda kalliks sõltuvalt kasutatavast mobiilse interneti paketist.&lt;/p>
 
 		&lt;p>Dokumentatsioon, nimekiri vigadest, ja lähtekood:
-		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>&lt;/p></string>
+		&lt;a href="https://github.com/Kaljurand/Diktofon">https://github.com/Kaljurand/Diktofon&lt;/a>&lt;/p></string>
     <string name="progress_uploading">saadan serverile…</string>
     <string name="progress_waiting">ootan %1$s…</string>
     <string name="progress_waiting_unknown">ootan ?? sek…</string>
     <string name="progress_polling">pollin (%1$d)…</string>
     <string name="progress_success">…</string>
     <string name="progress_failure">Transkribeerimine luhtus :(</string>
-    <string name="submit_bug_report">BUG: Juhtus viga. Palun raporteerige see aadressil http://code.google.com/p/diktofon/issues/list</string>
+    <string name="submit_bug_report">BUG: Juhtus viga. Palun raporteerige see aadressil https://github.com/Kaljurand/Diktofon/issues</string>
 
     <!-- Words -->
     <string name="words">sõna</string>

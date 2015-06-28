@@ -33,7 +33,7 @@
     <string name="cm_speakers_delete">Delete</string>
 
     <!-- Menus in any activity -->
-    <string name="menu_add">Record</string>
+    <string name="menu_add">Add recording</string>
     <string name="menu_edittags_add">Add tags</string>
     <string name="menu_speakers_add">Add speaker</string>
     <string name="menu_search">Search</string>
@@ -107,7 +107,7 @@
     <string name="progress_polling">polling (%1$d)…</string>
     <string name="progress_failure">Transcribing failed :(</string>
     <string name="progress_success">…</string>
-    <string name="submit_bug_report">BUG: This should not have happened. Please report this issue at http://code.google.com/p/diktofon/issues/list</string>
+    <string name="submit_bug_report">BUG: This should not have happened. Please report this issue at https://github.com/Kaljurand/Diktofon/issues</string>
     <string name="message_loading_recordings">Please wait, loading recordings…</string>
     <string name="message_transcribing">Transcribing %1$d recording(s)</string>
     <string name="message_transcribed">Recording %1$s transcribed</string>
@@ -131,9 +131,9 @@
     <string name="notification_text_recorder_recording">Recording in progress…</string>
     <string name="notification_text_recorder_pausing">Recording on pause</string>
     <string name="title_note_view">%1$s / %2$d x %3$s</string>
-    <string name="title_notelist_view">%1$d recordings: %2$d have trans, %3$d need trans</string>
-    <string name="emptyview_recordings">There are no recordings.\nTo add a recording press \"Record\" in the menu.</string>
-    <string name="emptyview_speakers">There are no speakers.\nTo add a speaker press \"Add speaker\" in the menu.</string>
+    <string name="title_notelist_view">%1$d/%2$d/%3$d all/trans/need</string>
+    <string name="emptyview_recordings">There are no recordings.</string>
+    <string name="emptyview_speakers">There are no speakers.</string>
 
     <!-- <string name="titleTagSelector">%1$d tags / %2$d selected</string> -->
     <string name="titleTagSelector">%1$d tags</string>
@@ -157,7 +157,7 @@
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Tag recordings and search them by tag&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Sort recordings by creation date, duration, byte size&lt;/p>
 		&lt;p>Documentation, feature requests, issue list, and the source code are available at:
-		&lt;a href="http://diktofon.googlecode.com">http://diktofon.googlecode.com&lt;/a>.&lt;/p></string>
+		&lt;a href="https://github.com/Kaljurand/Diktofon">https://github.com/Kaljurand/Diktofon&lt;/a>.&lt;/p></string>
 
     <!-- Words -->
     <string name="words">words</string>
