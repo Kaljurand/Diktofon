@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.2'
+        classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
 
@@ -39,6 +39,8 @@ task makeIcons << {
     }
 
     convertSvg(sizeLogo, dir_svg, dir_svg)
+
+    convertSvg(128, dir_svg, 'images/chrome/')
 
     sizeMap.each {
         key, val -> convertSvg(val, dir_svg, dir_res + 'drawable-' + key + '/')
