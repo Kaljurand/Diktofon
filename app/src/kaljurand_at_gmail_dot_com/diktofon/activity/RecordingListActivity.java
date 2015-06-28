@@ -107,7 +107,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		mListView = getListView();
 		mListView.setFastScrollEnabled(true);
 
-		GuiUtils.setEmptyView(this, mListView, getString(R.string.emptyview_recordings));
 		GuiUtils.setDivider(mListView);
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -124,17 +123,13 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
-		if (mPrefs.getBoolean(getString(R.string.keyRefresh), getResources().getBoolean(R.bool.defaultRefresh))) {
-			loadRecordingsInBackground();
-		}
-		set(mPrefs, getString(R.string.keyRefresh), false);
+		loadRecordingsInBackground();
 	}
 
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		set(mPrefs, getString(R.string.keyRefresh), true);
 	}
 
 
@@ -613,6 +608,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		protected void onPostExecute(RecordingList recList) {
 			mRecordings = recList;
 			mProgressDialog.cancel();
+			GuiUtils.setEmptyView(RecordingListActivity.this, mListView, getString(R.string.emptyview_recordings));
 			setNewListAdapter();
 			refreshTitle();
 		}
