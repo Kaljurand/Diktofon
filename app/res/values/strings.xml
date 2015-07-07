@@ -218,6 +218,23 @@
         <item>48000</item>
     </string-array>
 
+    <!-- Android API MediaRecorder.AudioSource -->
+    <string name="titleMicrophoneMode">Microphone settings</string>
+    <string name="summaryMicrophoneMode">See MediaRecorder.AudioSource documentation</string>
+
+    <string-array name="entriesMicrophoneMode" translatable="false">
+        <item>VOICE_RECOGNITION (should disable AGC)</item>
+        <item>MIC (may have AGC)</item>
+    </string-array>
+
+    <string name="defaultMicrophoneMode" translatable="false">VOICE_RECOGNITION</string>
+
+    <!-- Unfortunately cannot use an integer array -->
+    <string-array name="valuesMicrophoneMode" translatable="false">
+        <item>VOICE_RECOGNITION</item>
+        <item>MIC</item>
+    </string-array>
+
     <!-- Wait length -->
     <string name="titleTranscribingWaitLength">Waiting coefficient</string>
     <string name="summaryTranscribingWaitLength">Expect the transcription to be complete after X seconds, where X is the duration of the recording multiplied by this value</string>
