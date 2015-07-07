@@ -199,10 +199,11 @@
 
     <string-array name="entriesRecordingRate" translatable="false">
         <item>8 kHz</item>
-        <item>11 kHz</item>
+        <item>11.025 kHz</item>
         <item>16 kHz</item>
-        <item>22 kHz</item>
-        <item>44 kHz</item>
+        <item>22.05 kHz</item>
+        <item>44.1 kHz</item>
+        <item>48 kHz</item>
     </string-array>
 
     <string name="defaultRecordingRate" translatable="false">16000</string>
@@ -214,6 +215,7 @@
         <item>16000</item>
         <item>22050</item>
         <item>44100</item>
+        <item>48000</item>
     </string-array>
 
     <!-- Wait length -->
