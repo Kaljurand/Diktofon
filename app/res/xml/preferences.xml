@@ -36,6 +36,14 @@ BUG: try these:
 				android:defaultValue="@string/defaultRecordingRate"
 				android:entries="@array/entriesRecordingRate"
 				android:entryValues="@array/valuesRecordingRate" />
+
+			<ListPreference
+				android:key="microphoneMode"
+				android:title="@string/titleMicrophoneMode"
+				android:summary="@string/summaryMicrophoneMode"
+				android:defaultValue="@string/defaultMicrophoneMode"
+				android:entries="@array/entriesMicrophoneMode"
+				android:entryValues="@array/valuesMicrophoneMode" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 

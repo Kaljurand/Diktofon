@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.media.AudioFormat;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,6 +56,8 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	public static final String EXTRA_HIGH_RESOLUTION = "HIGH_RESOLUTION";
 	// Recording sample rate (int, default: 16000, i.e. 16 kHz)
 	public static final String EXTRA_SAMPLE_RATE = "SAMPLE_RATE";
+	// Recording Microphone Mode (String, default: VOICE_RECOGNITION)
+	public static final String EXTRA_MICROPHONE_MODE = "VOICE_RECOGNITION";
 
 	private File mRecordingsDir = null;
 
@@ -71,6 +74,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	private boolean mHighResolution = true;
 	private int mResolution = AudioFormat.ENCODING_PCM_16BIT;
 	private int mSampleRate = 16000;
+	private int mMicrophoneMode = MediaRecorder.AudioSource.VOICE_RECOGNITION;
 
 	private String mVolumeBar;
 
@@ -83,7 +87,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 			mService = ((RecorderService.RecorderBinder) service).getService();
 
 			try {
-				mService.startRecording(mSampleRate, mResolution, getRecordingFile());
+				mService.startRecording(mMicrophoneMode, mSampleRate, mResolution, getRecordingFile());
 				setRecorderStyle(getResources().getColor(R.color.processing));
 				setButtonRecording();
 				startTasks();
@@ -147,6 +151,15 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 			baseDir = extras.getString(EXTRA_BASE_DIR);
 			mHighResolution = extras.getBoolean(EXTRA_HIGH_RESOLUTION);
 			mSampleRate = extras.getInt(EXTRA_SAMPLE_RATE);
+			String microphoneModeName = extras.getString(EXTRA_MICROPHONE_MODE);
+			if(microphoneModeName.equals("VOICE_RECOGNITION")) {
+				mMicrophoneMode = MediaRecorder.AudioSource.VOICE_RECOGNITION;
+			} else if(microphoneModeName.equals("MIC")) {
+				mMicrophoneMode = MediaRecorder.AudioSource.MIC;
+			} else {
+				Log.e("Invalid microphoneMode: " + microphoneModeName + ", using default");
+				mMicrophoneMode = MediaRecorder.AudioSource.VOICE_RECOGNITION;
+			}
 		}
 
 		if (baseDir == null) {

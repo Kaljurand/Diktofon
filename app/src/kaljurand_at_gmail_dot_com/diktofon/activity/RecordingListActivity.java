@@ -230,6 +230,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 					intent.putExtra(RecorderActivity.EXTRA_HIGH_RESOLUTION, false);
 				}
 				intent.putExtra(RecorderActivity.EXTRA_SAMPLE_RATE, Integer.parseInt(mPrefs.getString("recordingRate", getString(R.string.defaultRecordingRate))));
+				intent.putExtra(RecorderActivity.EXTRA_MICROPHONE_MODE, mPrefs.getString("microphoneMode", getString(R.string.defaultMicrophoneMode)));
 				startActivityForResult(intent, MY_ACTIVITY_RECORD_SOUND);
 			} else {
 				Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);

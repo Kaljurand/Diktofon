@@ -193,10 +193,10 @@ public class RecorderService extends DiktofonService {
 	 * @param recordingFile File to store the raw audio into
 	 * @throws IOException if recorder could not be created or file is not writable
 	 */
-	public void startRecording(int sampleRate, int resolution, File recordingFile) throws IOException {
+	public void startRecording(int microphoneMode, int sampleRate, int resolution, File recordingFile) throws IOException {
 		mRecordingFile = recordingFile;
 		// RawRecorder(int audioSource, int sampleRate, int channelConfig, int audioFormat)
-		mRecorder = new RawRecorder(MediaRecorder.AudioSource.MIC, sampleRate, AudioFormat.CHANNEL_CONFIGURATION_MONO, resolution);
+		mRecorder = new RawRecorder(microphoneMode, sampleRate, AudioFormat.CHANNEL_CONFIGURATION_MONO, resolution);
 		if (mRecorder.getState() == RawRecorder.State.ERROR) {
 			mRecorder = null;
 			throw new IOException(getString(R.string.error_cant_create_recorder));
