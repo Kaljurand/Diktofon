@@ -155,7 +155,6 @@
     <string name="progress_waiting">ootan %1$s…</string>
     <string name="progress_waiting_unknown">ootan ?? sek…</string>
     <string name="progress_polling">pollin (%1$d)…</string>
-    <string name="progress_success">…</string>
     <string name="progress_failure">Transkribeerimine luhtus :(</string>
     <string name="submit_bug_report">BUG: Juhtus viga. Palun raporteerige see aadressil https://github.com/Kaljurand/Diktofon/issues</string>
 
@@ -202,6 +201,14 @@
         <item>3 sek</item>
         <item>5 sek</item>
         <item>10 sek</item>
+    </string-array>
+
+    <string name="summaryMicrophoneMode">Audiosisendi tüüp</string>
+    <string name="titleMicrophoneMode">Audiosisendi tüüp</string>
+
+    <string-array name="entriesMicrophoneMode">
+        <item>Kõnetuvastusele optimeeritud</item>
+        <item>Mikrofon</item>
     </string-array>
 
 </resources>

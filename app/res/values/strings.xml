@@ -105,7 +105,7 @@
     <string name="progress_waiting_unknown">waiting for ?? sec…</string>
     <string name="progress_polling">polling (%1$d)…</string>
     <string name="progress_failure">Transcribing failed :(</string>
-    <string name="progress_success">…</string>
+    <string name="progress_success" translatable="false">…</string>
     <string name="submit_bug_report">BUG: This should not have happened. Please report this issue at https://github.com/Kaljurand/Diktofon/issues</string>
     <string name="message_loading_recordings">Please wait, loading recordings…</string>
     <string name="message_transcribing">Transcribing %1$d recording(s)</string>
@@ -219,10 +219,10 @@
     </string-array>
 
     <!-- Android API MediaRecorder.AudioSource -->
-    <string name="titleMicrophoneMode">Microphone settings</string>
+    <string name="titleMicrophoneMode">Audio source</string>
     <string name="summaryMicrophoneMode">See MediaRecorder.AudioSource documentation</string>
 
-    <string-array name="entriesMicrophoneMode" translatable="false">
+    <string-array name="entriesMicrophoneMode">
         <item>VOICE_RECOGNITION (should disable AGC)</item>
         <item>MIC (may have AGC)</item>
     </string-array>
