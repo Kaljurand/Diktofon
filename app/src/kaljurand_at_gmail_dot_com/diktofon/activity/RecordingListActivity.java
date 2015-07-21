@@ -390,6 +390,11 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	 */
 	private void addRecording(File file) {
 		Recording recording = new Recording(file);
+		if(mRecordings == null) {
+			// FIXME - mRecordings may not have loaded yet
+			Log.w(LOG_TAG, "mRecordings == null, WAV file written successfully but not added to list");
+			return;
+		}
 		mRecordings.add(0, recording);
 		toast(String.format(getString(R.string.toast_add_recording), recording));
 		refreshGui();
