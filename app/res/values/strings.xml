@@ -224,7 +224,7 @@
     <string name="titleMicrophoneMode">Microphone settings</string>
     <string name="summaryMicrophoneMode">See MediaRecorder.AudioSource documentation</string>
 
-    <string-array name="entriesMicrophoneMode" translatable="false">
+    <string-array name="entriesMicrophoneMode">
         <item>VOICE_RECOGNITION (should disable AGC)</item>
         <item>MIC (may have AGC)</item>
     </string-array>

@@ -204,4 +204,12 @@
         <item>10 sek</item>
     </string-array>
 
+    <string name="summaryMicrophoneMode">Audiosisendi tüüp</string>
+    <string name="titleMicrophoneMode">Audiosisendi tüüp</string>
+
+    <string-array name="entriesMicrophoneMode">
+        <item>Kõnetuvastusele optimeeritud</item>
+        <item>Mikrofon</item>
+    </string-array>
+
 </resources>
