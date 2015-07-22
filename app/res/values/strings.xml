@@ -184,6 +184,7 @@
     <string-array name="entriesRecordingResolution" translatable="false">
         <item>8-bit</item>
         <item>16-bit</item>
+        <!--<item>24-bit</item>-->
     </string-array>
 
     <string name="defaultRecordingResolution" translatable="false">16</string>
@@ -192,6 +193,7 @@
     <string-array name="valuesRecordingResolution" translatable="false">
         <item>8</item>
         <item>16</item>
+        <!--<item>24</item>-->
     </string-array>
 
     <string name="titleRecordingRate">Sample rate</string>

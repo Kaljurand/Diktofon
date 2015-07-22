@@ -71,10 +71,10 @@ public class RawRecorder {
 	// Number of channels (MONO = 1, STEREO = 2)
 	private short mChannels;
 
-	// Sample rate
+	// Sample rate  (8000 or 16000 samples per second)
 	private int mRate;
 
-	// Resolution (8000 or 16000 bits)
+	// Resolution (8 or 16 bits, maybe 24 with Android 5?)
 	private short mResolution;
 
 	// Buffer size
@@ -357,6 +357,7 @@ public class RawRecorder {
 					mPayloadSize += mBuffer.length;
 				}
 
+				// FIXME - needs to be adapted for 24-bit recording
 				if (mResolution == 16) {
 					for (int i = 0; i < mBuffer.length/2; i++) {
 						short curSample = getShort(mBuffer[i*2], mBuffer[i*2+1]);
