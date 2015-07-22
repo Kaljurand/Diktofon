@@ -228,11 +228,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 				Intent intent = new Intent(this, RecorderActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 				intent.putExtra(RecorderActivity.EXTRA_BASE_DIR, Dirs.getRecordingsDir().getAbsolutePath());
-				if (mPrefs.getString("recordingResolution", "16").equals("16")) {
-					intent.putExtra(RecorderActivity.EXTRA_HIGH_RESOLUTION, true);
-				} else {
-					intent.putExtra(RecorderActivity.EXTRA_HIGH_RESOLUTION, false);
-				}
+				intent.putExtra(RecorderActivity.EXTRA_REC_RESOLUTION, Integer.parseInt(mPrefs.getString("recordingResolution", getString(R.string.defaultRecordingResolution))));
 				intent.putExtra(RecorderActivity.EXTRA_SAMPLE_RATE, Integer.parseInt(mPrefs.getString("recordingRate", getString(R.string.defaultRecordingRate))));
 				intent.putExtra(RecorderActivity.EXTRA_MICROPHONE_MODE, mPrefs.getString("microphoneMode", getString(R.string.defaultMicrophoneMode)));
 				startActivityForResult(intent, MY_ACTIVITY_RECORD_SOUND);
@@ -392,7 +388,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		Recording recording = new Recording(file);
 		if(mRecordings == null) {
 			// FIXME - mRecordings may not have loaded yet
-			Log.w(LOG_TAG, "mRecordings == null, WAV file written successfully but not added to list");
+			Log.e(LOG_TAG, "mRecordings == null, WAV file written successfully but not added to list");
 			return;
 		}
 		mRecordings.add(0, recording);

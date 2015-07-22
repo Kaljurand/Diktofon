@@ -52,8 +52,8 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 
 	// Base directory (String, default: BUG)
 	public static final String EXTRA_BASE_DIR = "BASE_DIR";
-	// Recording resolution (boolean, default: true, i.e. 16 bit)
-	public static final String EXTRA_HIGH_RESOLUTION = "HIGH_RESOLUTION";
+	// Recording resolution (int, default: 16, i.e. 16 bit sample size)
+	public static final String EXTRA_REC_RESOLUTION = "SAMPLE_RESOLUTION";
 	// Recording sample rate (int, default: 16000, i.e. 16 kHz)
 	public static final String EXTRA_SAMPLE_RATE = "SAMPLE_RATE";
 	// Recording Microphone Mode (String, default: VOICE_RECOGNITION)
@@ -71,7 +71,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 	private Runnable mShowStatusTask;
 	private Runnable mShowVolumeTask;
 
-	private boolean mHighResolution = true;
+	private int mRecResolution = 16;
 	private int mResolution = AudioFormat.ENCODING_PCM_16BIT;
 	private int mSampleRate = 16000;
 	private int mMicrophoneMode = MediaRecorder.AudioSource.VOICE_RECOGNITION;
@@ -149,7 +149,7 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			baseDir = extras.getString(EXTRA_BASE_DIR);
-			mHighResolution = extras.getBoolean(EXTRA_HIGH_RESOLUTION);
+			mRecResolution = extras.getInt(EXTRA_REC_RESOLUTION);
 			mSampleRate = extras.getInt(EXTRA_SAMPLE_RATE);
 			String microphoneModeName = extras.getString(EXTRA_MICROPHONE_MODE);
 			if(microphoneModeName.equals("VOICE_RECOGNITION")) {
@@ -168,8 +168,17 @@ public class RecorderActivity extends AbstractDiktofonActivity {
 			mRecordingsDir = new File(baseDir);
 		}
 
-		if (! mHighResolution) {
+		switch(mRecResolution) {
+		case 8:
 			mResolution = AudioFormat.ENCODING_PCM_8BIT;
+			break;
+		case 16:
+			mResolution = AudioFormat.ENCODING_PCM_16BIT;
+			break;
+		default:
+			// Only a developer could have changed this to an invalid value,
+			// so just log it.
+			Log.e("Invalid resolution: " + mResolution);
 		}
 	}
 
