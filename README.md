@@ -1,6 +1,8 @@
 Diktofon
 ========
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/69ed62b343e6416380d839dd8763eccf)](https://www.codacy.com/app/kaljurand/Diktofon?utm_source=github.com&utm_medium=referral&utm_content=Kaljurand/Diktofon&utm_campaign=badger)
+
 Dictaphone with Estonian speech-to-text (an Android app).
 See more at the
 
