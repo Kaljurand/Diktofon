@@ -90,6 +90,7 @@ public abstract class DiktofonService extends Service {
 
 
 	/**
+	 * TODO: rewrite this using Notification.Builder
 	 * @param tickerText Ticker text (shown briefly)
 	 * @param contentText Content text (shown when the notification is pulled down)
 	 * @param intent Intent to be launched if notification is clicked
@@ -104,7 +105,7 @@ public abstract class DiktofonService extends Service {
 		notification.flags = flags;
 		// TODO: is the this-context good here?
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
+		//notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
 		return notification;
 	}
 }

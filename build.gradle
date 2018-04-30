@@ -1,18 +1,24 @@
 buildscript {
     repositories {
-        mavenCentral()
+        google()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:3.1.2'
     }
 }
 
 allprojects {
     repositories {
-        mavenCentral()
+        google()
+        jcenter()
     }
 }
 
+ext {
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
+}
 
 // Converts the SVG launcher icon to multiple resolution PNGs
 task makeIcons << {
@@ -23,7 +29,7 @@ task makeIcons << {
     def launcher_fn_png = 'ic_launcher.png'
 
     def sizeLogo = 512
-    def sizeMap = [ 'mdpi': 48, 'hdpi': 72, 'xhdpi': 96, 'xxhdpi': 144, 'xxxhdpi': 192 ]
+    def sizeMap = ['mdpi': 48, 'hdpi': 72, 'xhdpi': 96, 'xxhdpi': 144, 'xxxhdpi': 192]
 
     def convertSvg = {
         size, dir_in, dir_out ->

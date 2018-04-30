@@ -23,10 +23,11 @@ repository:
 
 Read the Android developer docs for instructions on how to generate them.
 
-Also, you need to have these jar-files in the `app/libs`-directory:
 
-	apache-mime4j-0.6.jar
-	httpmime-4.1.1.jar
-	net-speech-api-0.1.9.jar
+Permissions
+-----------
 
-Net Speech API is available from <https://github.com/Kaljurand/net-speech-api>.
+Diktofon requires the storage and microphone permissions. The first is essential
+to allow Diktofon to store the audio files and their transcriptions. The second is needed
+only if Diktofon is used as a recorder. Note that currently Diktofon does not ask for
+these permissions, instead they must to be enabled via the general Android Settings menu.

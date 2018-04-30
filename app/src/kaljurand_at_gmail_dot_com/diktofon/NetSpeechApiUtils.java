@@ -19,9 +19,6 @@ package kaljurand_at_gmail_dot_com.diktofon;
 import java.io.File;
 import java.io.IOException;
 
-
-import org.apache.http.client.ClientProtocolException;
-
 import ee.ioc.phon.netspeechapi.AudioUploader;
 import ee.ioc.phon.netspeechapi.TranscriptionDownloader;
 
@@ -66,8 +63,6 @@ public class NetSpeechApiUtils {
 		String token = null;
 		try {
 			token = fileToToken(file, mime, email);
-		} catch (ClientProtocolException e) {
-			throw new TransException("Client protocol failed: " + e);
 		} catch (IOException e) {
 			throw new TransException("IO failed: " + e);
 		}
@@ -78,7 +73,7 @@ public class NetSpeechApiUtils {
 	}
 
 
-	public static String fileToToken(File file, String mimeType, String email) throws ClientProtocolException, IOException {
+	public static String fileToToken(File file, String mimeType, String email) throws IOException {
 		//return mockFileToToken(file, mimeType, email);
 		AudioUploader uploader = new AudioUploader(email);
 		uploader.setUserAgentComment(USER_AGENT_DIKTOFON);
@@ -91,6 +86,7 @@ public class NetSpeechApiUtils {
 	}
 
 
+	/*
 	public static String mockFileToToken(File file, String mime, String email) throws ClientProtocolException, IOException {
 		return "mock token";
 	}
@@ -98,5 +94,6 @@ public class NetSpeechApiUtils {
 	public static String mockTokenToTrans(String token) throws TransException {
 		return "This is a mock transcription!";
 	}
+	*/
 
 }

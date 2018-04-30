@@ -1,21 +1,22 @@
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'commons-io:commons-io:2.0.1'
-    compile 'com.googlecode.json-simple:json-simple:1.1'
+    implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation project(':net-speech-api')
+    implementation 'commons-io:commons-io:2.5'
+    implementation 'com.googlecode.json-simple:json-simple:1.1'
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId 'kaljurand_at_gmail_dot_com.diktofon'
         minSdkVersion 14
-        targetSdkVersion 22
-        versionCode 1102
-        versionName '1.1.02'
+        targetSdkVersion 27
+        versionCode 1103
+        versionName '1.1.03'
     }
 
     // TODO: try to remove it
@@ -34,9 +35,6 @@ android {
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
         }
-
-        // Move the tests to tests/java, tests/res, etc...
-        instrumentTest.setRoot('tests')
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
@@ -71,4 +69,33 @@ if (project.hasProperty('storePassword') &&
     android.signingConfigs.release.keyPassword = keyPassword
 } else {
     android.buildTypes.release.signingConfig = null
+}
+
+task(deploy) << {
+    description 'Copy the APK and the ProGuard mapping file to the deploy directory'
+
+    def deploy_dir = System.getenv('APK_DEPLOY_DIR')
+
+    def version = android.defaultConfig.versionName
+
+    def outputs = 'build/outputs/'
+    def apk1 = outputs + 'apk/release/app-release.apk'
+    def apk2 = "${deploy_dir}Diktofon-${version}.apk"
+    def mapping1 = outputs + 'mapping/release/mapping.txt'
+    def mapping2 = "${deploy_dir}Diktofon-mapping-${version}.txt"
+
+    exec {
+        commandLine 'cp', '--verbose', apk1, apk2
+    }
+
+    exec {
+        commandLine 'cp', '--verbose', mapping1, mapping2
+    }
+
+    exec {
+        commandLine 'ls', '-l', deploy_dir
+    }
+
+    println "adb uninstall kaljurand_at_gmail_dot_com.diktofon"
+    println "adb install ${apk2}"
 }
