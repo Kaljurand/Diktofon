@@ -16,34 +16,34 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
-import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
+
 /**
  * <p>Every Diktofon activity that wants to extend Activity should
  * extend this class instead.</p>
- * 
- * @author Kaarel Kaljurand
  *
+ * @author Kaarel Kaljurand
  */
 public abstract class AbstractDiktofonActivity extends Activity {
 
-	protected static final Uri SPEAKERS_CONTENT_URI = Speaker.Columns.CONTENT_URI;
+    protected static final Uri SPEAKERS_CONTENT_URI = Speaker.Columns.CONTENT_URI;
 
-	void toast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-	}
+    void toast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
 
-	void set(String key, boolean b) {
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putBoolean(key, b);
-		editor.commit();
-	}
+    void set(String key, boolean b) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(key, b);
+        editor.commit();
+    }
 
 }

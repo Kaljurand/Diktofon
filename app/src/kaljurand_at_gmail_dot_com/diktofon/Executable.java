@@ -17,5 +17,5 @@
 package kaljurand_at_gmail_dot_com.diktofon;
 
 public interface Executable {
-	void execute();
+    void execute();
 }

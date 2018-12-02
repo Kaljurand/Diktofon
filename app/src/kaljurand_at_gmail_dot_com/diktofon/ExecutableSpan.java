@@ -22,21 +22,21 @@ import android.view.View;
 
 public class ExecutableSpan extends ClickableSpan {
 
-	private final Executable mExecutable;
+    private final Executable mExecutable;
 
-	public ExecutableSpan(Executable ex) {
-		if (ex == null) {
-			throw new IllegalArgumentException("Executable == null");
-		}
-		mExecutable = ex;
-	}
+    public ExecutableSpan(Executable ex) {
+        if (ex == null) {
+            throw new IllegalArgumentException("Executable == null");
+        }
+        mExecutable = ex;
+    }
 
-	@Override
-	public void onClick(View widget) {
-		mExecutable.execute();
-	}
+    @Override
+    public void onClick(View widget) {
+        mExecutable.execute();
+    }
 
-	public void updateDrawState(TextPaint ds) {
-		// Don't do any decoration
-	}
+    public void updateDrawState(TextPaint ds) {
+        // Don't do any decoration
+    }
 }

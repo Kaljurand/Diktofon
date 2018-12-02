@@ -16,8 +16,6 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.service;
 
-import kaljurand_at_gmail_dot_com.diktofon.Log;
-import kaljurand_at_gmail_dot_com.diktofon.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -26,86 +24,92 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import kaljurand_at_gmail_dot_com.diktofon.Log;
+import kaljurand_at_gmail_dot_com.diktofon.R;
+
 public abstract class DiktofonService extends Service {
 
-	private static final String LOG_TAG = DiktofonService.class.getName();
+    private static final String LOG_TAG = DiktofonService.class.getName();
 
-	private NotificationManager mNotificationMngr;
-	private SharedPreferences mPreferences;
+    private NotificationManager mNotificationMngr;
+    private SharedPreferences mPreferences;
 
-	private boolean mNotificationIsShowing = false;
+    private boolean mNotificationIsShowing = false;
 
-	public abstract void cancelNotification();
-	protected abstract void saveState();
-	protected abstract void releaseResources();
+    public abstract void cancelNotification();
 
+    protected abstract void saveState();
 
-	@Override
-	public void onCreate() {
-		Log.i(LOG_TAG, "onCreate");
-		mPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		mNotificationMngr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-	}
+    protected abstract void releaseResources();
 
 
-	/**
-	 * <p>If the service is destroyed (incl. via the general Android
-	 * service-management menu), then</p>
-	 * 
-	 * <ul>
-	 * <li>cancel the notifications</li>
-	 * <li>save the state</li>
-	 * <li>release the resources (e.g. Media Player, Audio Recorder)</li>
-	 * </ul>
-	 */
-	@Override
-	public void onDestroy() {
-		Log.i(LOG_TAG, "onDestroy");
-		cancelNotification();
-		saveState();
-		releaseResources();
-	}
+    @Override
+    public void onCreate() {
+        Log.i(LOG_TAG, "onCreate");
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        mNotificationMngr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    }
 
 
-	public void cancelNotification(int notificationId) {
-		mNotificationMngr.cancel(notificationId);
-		mNotificationIsShowing = false;
-	}
+    /**
+     * <p>If the service is destroyed (incl. via the general Android
+     * service-management menu), then</p>
+     *
+     * <ul>
+     * <li>cancel the notifications</li>
+     * <li>save the state</li>
+     * <li>release the resources (e.g. Media Player, Audio Recorder)</li>
+     * </ul>
+     */
+    @Override
+    public void onDestroy() {
+        Log.i(LOG_TAG, "onDestroy");
+        cancelNotification();
+        saveState();
+        releaseResources();
+    }
 
 
-	protected SharedPreferences getPreferences() {
-		return mPreferences;
-	}
+    public void cancelNotification(int notificationId) {
+        mNotificationMngr.cancel(notificationId);
+        mNotificationIsShowing = false;
+    }
 
 
-	protected boolean isNotificationShowing() {
-		return mNotificationIsShowing;
-	}
+    protected SharedPreferences getPreferences() {
+        return mPreferences;
+    }
 
 
-	protected void publishNotification(Notification notification, int notificationId) {
-		mNotificationMngr.notify(notificationId, notification);
-		mNotificationIsShowing = true;
-	}
+    protected boolean isNotificationShowing() {
+        return mNotificationIsShowing;
+    }
 
 
-	/**
-	 * TODO: rewrite this using Notification.Builder
-	 * @param tickerText Ticker text (shown briefly)
-	 * @param contentText Content text (shown when the notification is pulled down)
-	 * @param intent Intent to be launched if notification is clicked
-	 * @param flags Notification flags
-	 * @return Notification object
-	 */
-	protected Notification createNotification(int icon, CharSequence tickerText, CharSequence contentText, Intent intent, int flags) {
-		CharSequence contentTitle = getString(R.string.app_name);
-		Notification notification = new Notification(icon, tickerText, System.currentTimeMillis());
-		// TODO: are there default flags which we should preserve?
-		//notification.flags |= flags;
-		notification.flags = flags;
-		// TODO: is the this-context good here?
-		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		//notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
-		return notification;
-	}
+    protected void publishNotification(Notification notification, int notificationId) {
+        mNotificationMngr.notify(notificationId, notification);
+        mNotificationIsShowing = true;
+    }
+
+
+    /**
+     * TODO: rewrite this using Notification.Builder
+     *
+     * @param tickerText  Ticker text (shown briefly)
+     * @param contentText Content text (shown when the notification is pulled down)
+     * @param intent      Intent to be launched if notification is clicked
+     * @param flags       Notification flags
+     * @return Notification object
+     */
+    protected Notification createNotification(int icon, CharSequence tickerText, CharSequence contentText, Intent intent, int flags) {
+        CharSequence contentTitle = getString(R.string.app_name);
+        Notification notification = new Notification(icon, tickerText, System.currentTimeMillis());
+        // TODO: are there default flags which we should preserve?
+        //notification.flags |= flags;
+        notification.flags = flags;
+        // TODO: is the this-context good here?
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
+        return notification;
+    }
 }

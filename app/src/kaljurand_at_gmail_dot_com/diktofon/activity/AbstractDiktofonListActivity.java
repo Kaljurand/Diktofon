@@ -23,20 +23,19 @@ import android.widget.Toast;
 /**
  * Every Diktofon activity that wants to extend ListActivity
  * should extend this class instead.
- * 
- * @author Kaarel Kaljurand
  *
+ * @author Kaarel Kaljurand
  */
 public abstract class AbstractDiktofonListActivity extends ListActivity {
 
-	void toast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-	}
+    void toast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
 
-	void set(SharedPreferences prefs, String key, boolean b) {
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putBoolean(key, b);
-		editor.commit();
-	}
+    void set(SharedPreferences prefs, String key, boolean b) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(key, b);
+        editor.commit();
+    }
 }

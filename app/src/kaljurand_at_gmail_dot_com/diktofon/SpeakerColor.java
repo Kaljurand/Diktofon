@@ -22,38 +22,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpeakerColor {
-	// BUG: Is it possible to put this array into the resources
-	// otherwise we have to sync it with the color resource file every time
-	// a speaker-color is added/removed.
-	private static final int[] SPEAKER_COLORS = {
-		R.color.speaker1,
-		R.color.speaker2,
-		R.color.speaker3,
-		R.color.speaker4,
-		R.color.speaker5,
-		R.color.speaker6,
-	};
+    // BUG: Is it possible to put this array into the resources
+    // otherwise we have to sync it with the color resource file every time
+    // a speaker-color is added/removed.
+    private static final int[] SPEAKER_COLORS = {
+            R.color.speaker1,
+            R.color.speaker2,
+            R.color.speaker3,
+            R.color.speaker4,
+            R.color.speaker5,
+            R.color.speaker6,
+    };
 
-	private final Map<String, Integer> mIdToColor = new HashMap<String, Integer>();
-	private final Resources mRes;
+    private final Map<String, Integer> mIdToColor = new HashMap<>();
+    private final Resources mRes;
 
-	public SpeakerColor(Resources res) {
-		mRes = res;
-	}
+    public SpeakerColor(Resources res) {
+        mRes = res;
+    }
 
 
-	public int getColor(String id) {
-		Integer color = mIdToColor.get(id);
+    public int getColor(String id) {
+        Integer color = mIdToColor.get(id);
 
-		if (color == null) {
-			int size = mIdToColor.size();
-			if (size >= SPEAKER_COLORS.length) {
-				color = mRes.getColor(R.color.speakerN);
-			} else {
-				color = mRes.getColor(SPEAKER_COLORS[size]);
-			}
-			mIdToColor.put(id, color);
-		}
-		return color;
-	}
+        if (color == null) {
+            int size = mIdToColor.size();
+            if (size >= SPEAKER_COLORS.length) {
+                color = mRes.getColor(R.color.speakerN);
+            } else {
+                color = mRes.getColor(SPEAKER_COLORS[size]);
+            }
+            mIdToColor.put(id, color);
+        }
+        return color;
+    }
 }

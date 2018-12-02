@@ -20,7 +20,7 @@ import android.text.style.BackgroundColorSpan;
 
 public class HighlightSpan extends BackgroundColorSpan {
 
-	public HighlightSpan(int color) {
-		super(color);
-	}
+    public HighlightSpan(int color) {
+        super(color);
+    }
 }

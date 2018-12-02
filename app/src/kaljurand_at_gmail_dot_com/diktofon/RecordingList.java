@@ -27,123 +27,123 @@ import java.util.Set;
 
 public class RecordingList {
 
-	// List of recordings
-	private final List<Recording> mRecordings = new ArrayList<Recording>();
-	// Map of tag -> frequency (the frequency information is not really used)
-	private final Map<String, Integer> mTags = new HashMap<String, Integer>();
+    // List of recordings
+    private final List<Recording> mRecordings = new ArrayList<>();
+    // Map of tag -> frequency (the frequency information is not really used)
+    private final Map<String, Integer> mTags = new HashMap<>();
 
-	private Recording mCurrentRecording;
+    private Recording mCurrentRecording;
 
-	public RecordingList() {
-		// Don't transcribe
-		mTags.put(Recording.TAG_NOTRANS, 1);
-	}
-
-
-	public void setCurrentRecording(Recording recording) {
-		mCurrentRecording = recording;
-	}
+    public RecordingList() {
+        // Don't transcribe
+        mTags.put(Recording.TAG_NOTRANS, 1);
+    }
 
 
-	public List<Recording> list() {
-		return mRecordings;
-	}
+    public void setCurrentRecording(Recording recording) {
+        mCurrentRecording = recording;
+    }
 
 
-	public int size() {
-		return mRecordings.size();
-	}
+    public List<Recording> list() {
+        return mRecordings;
+    }
 
 
-	public Recording get(int index) {
-		return mRecordings.get(index);
-	}
+    public int size() {
+        return mRecordings.size();
+    }
 
 
-	public void add(int index, Recording rec) {
-		mRecordings.add(index, rec);
-		addRecordingTags(rec);
-	}
+    public Recording get(int index) {
+        return mRecordings.get(index);
+    }
 
 
-	public void add(Recording rec) {
-		mRecordings.add(rec);
-		addRecordingTags(rec);
-	}
+    public void add(int index, Recording rec) {
+        mRecordings.add(index, rec);
+        addRecordingTags(rec);
+    }
 
 
-	public void remove(int index) {
-		mRecordings.remove(index);
-		// TODO: remove tags
-	}
-
-	public void remove(Recording rec) {
-		mRecordings.remove(rec);
-		// TODO: remove tags
-	}
-
-	public void sort(Comparator<Recording> c) {
-		Collections.sort(mRecordings, c);
-	}
+    public void add(Recording rec) {
+        mRecordings.add(rec);
+        addRecordingTags(rec);
+    }
 
 
-	public int getNeedsTransCount() {
-		int needsTransCount = 0;
-		for (Recording rec : mRecordings) {
-			if (rec.needsTrans()) {
-				needsTransCount++;
-			}
-		}
-		return needsTransCount;
-	}
+    public void remove(int index) {
+        mRecordings.remove(index);
+        // TODO: remove tags
+    }
+
+    public void remove(Recording rec) {
+        mRecordings.remove(rec);
+        // TODO: remove tags
+    }
+
+    public void sort(Comparator<Recording> c) {
+        Collections.sort(mRecordings, c);
+    }
 
 
-	public int getTransCount() {
-		int transCount = 0;
-		for (Recording rec : mRecordings) {
-			if (rec.hasTrans()) {
-				transCount++;
-			}
-		}
-		return transCount;
-	}
+    public int getNeedsTransCount() {
+        int needsTransCount = 0;
+        for (Recording rec : mRecordings) {
+            if (rec.needsTrans()) {
+                needsTransCount++;
+            }
+        }
+        return needsTransCount;
+    }
 
 
-	/**
-	 * @return Copy of the tags set
-	 */
-	public Set<String> getTags() {
-		return new HashSet<String>(mTags.keySet());
-	}
+    public int getTransCount() {
+        int transCount = 0;
+        for (Recording rec : mRecordings) {
+            if (rec.hasTrans()) {
+                transCount++;
+            }
+        }
+        return transCount;
+    }
 
 
-	/**
-	 * <p>Adds the given tags to the "current" recording.</p>
-	 */
-	public boolean setTags(Set<String> tags) {
-		if (mCurrentRecording == null) {
-			return false;
-		}
-		mCurrentRecording.setTags(tags);
-		addRecordingTags(mCurrentRecording);
-		return true;
-	}
+    /**
+     * @return Copy of the tags set
+     */
+    public Set<String> getTags() {
+        return new HashSet<>(mTags.keySet());
+    }
 
 
-	private void addRecordingTags(Recording rec) {
-		for (String tag : rec.getTags()) {
-			addTag(tag);
-		}
-	}
+    /**
+     * <p>Adds the given tags to the "current" recording.</p>
+     */
+    public boolean setTags(Set<String> tags) {
+        if (mCurrentRecording == null) {
+            return false;
+        }
+        mCurrentRecording.setTags(tags);
+        addRecordingTags(mCurrentRecording);
+        return true;
+    }
 
 
-	private void addTag(String tag) {
-		Integer count = mTags.get(tag);
-		if (count == null) {
-			count = 1;
-		} else {
-			count++;
-		}
-		mTags.put(tag, count);
-	}
+    private void addRecordingTags(Recording rec) {
+        for (String tag : rec.getTags()) {
+            addTag(tag);
+        }
+    }
+
+
+    private void addTag(String tag) {
+        Integer count = mTags.get(tag);
+        if (count == null) {
+            count = 1;
+        } else {
+            count++;
+        }
+        mTags.put(tag, count);
+    }
 }

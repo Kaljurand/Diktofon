@@ -16,17 +16,15 @@
 
 package kaljurand_at_gmail_dot_com.diktofon;
 
-import java.lang.Exception;
-
 public class TransException extends Exception {
 
-	private static final long serialVersionUID = 427231423082987130L;
+    private static final long serialVersionUID = 427231423082987130L;
 
-	public TransException() {
-		super();
-	}
+    public TransException() {
+        super();
+    }
 
-	public TransException(String s) {
-		super(s);
-	}
+    public TransException(String s) {
+        super(s);
+    }
 }

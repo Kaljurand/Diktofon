@@ -21,17 +21,17 @@ import android.provider.BaseColumns;
 
 public class TSpeaker {
 
-	public TSpeaker() {
-	}
+    public TSpeaker() {
+    }
 
-	public static final class Columns implements BaseColumns {
-		private Columns() {
-		}
+    public static final class Columns implements BaseColumns {
+        private Columns() {
+        }
 
-		public static final Uri CONTENT_URI = Uri.parse("content://" + SpeakersContentProvider.AUTHORITY + "/tspeakers");
+        public static final Uri CONTENT_URI = Uri.parse("content://" + SpeakersContentProvider.AUTHORITY + "/tspeakers");
 
-		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.kaljurand_at_gmail_dot_com.diktofon";
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.kaljurand_at_gmail_dot_com.diktofon";
 
-		public static final String SPEAKER_ID = "SPEAKER_ID";
-	}
+        public static final String SPEAKER_ID = "SPEAKER_ID";
+    }
 }

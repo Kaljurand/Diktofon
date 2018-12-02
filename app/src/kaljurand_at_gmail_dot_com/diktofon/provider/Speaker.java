@@ -21,19 +21,19 @@ import android.provider.BaseColumns;
 
 public class Speaker {
 
-	public Speaker() {
-	}
+    public Speaker() {
+    }
 
-	public static final class Columns implements BaseColumns {
-		private Columns() {
-		}
+    public static final class Columns implements BaseColumns {
+        private Columns() {
+        }
 
-		public static final Uri CONTENT_URI = Uri.parse("content://" + SpeakersContentProvider.AUTHORITY + "/speakers");
+        public static final Uri CONTENT_URI = Uri.parse("content://" + SpeakersContentProvider.AUTHORITY + "/speakers");
 
-		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.kaljurand_at_gmail_dot_com.diktofon";
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.kaljurand_at_gmail_dot_com.diktofon";
 
-		public static final String NAME = "NAME";
-		public static final String GENDER = "GENDER";
-		public static final String DESC = "DESC";
-	}
+        public static final String NAME = "NAME";
+        public static final String GENDER = "GENDER";
+        public static final String DESC = "DESC";
+    }
 }

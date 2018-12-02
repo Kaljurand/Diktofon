@@ -31,53 +31,53 @@ import kaljurand_at_gmail_dot_com.diktofon.R;
 
 public class SpeakerListAdapter extends BaseAdapter {
 
-	private final LayoutInflater mInflater;
-	private final List<String> mSpeakerIds = new ArrayList<String>();
+    private final LayoutInflater mInflater;
+    private final List<String> mSpeakerIds = new ArrayList<String>();
 
-	public SpeakerListAdapter(Context context, Set<String> speakerIds) {
-		mInflater = LayoutInflater.from(context);
-		mSpeakerIds.addAll(speakerIds);
-	}
-
-
-	public View getView(final int position, View convertView, ViewGroup parent) {
-		ViewHolder holder;
-
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.list_item_speaker, null);
-
-			holder = new ViewHolder();
-			holder.list_item_speaker_name = (TextView) convertView.findViewById(R.id.list_item_speaker_name);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-
-		final String speakerId = mSpeakerIds.get(position);
-		holder.list_item_speaker_name.setText(speakerId);
-		return convertView;
-	}
+    public SpeakerListAdapter(Context context, Set<String> speakerIds) {
+        mInflater = LayoutInflater.from(context);
+        mSpeakerIds.addAll(speakerIds);
+    }
 
 
-	static class ViewHolder {
-		TextView list_item_speaker_name;
-	}
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.list_item_speaker, null);
+
+            holder = new ViewHolder();
+            holder.list_item_speaker_name = convertView.findViewById(R.id.list_item_speaker_name);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        final String speakerId = mSpeakerIds.get(position);
+        holder.list_item_speaker_name.setText(speakerId);
+        return convertView;
+    }
 
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    static class ViewHolder {
+        TextView list_item_speaker_name;
+    }
 
 
-	@Override
-	public Object getItem(int position) {
-		return mSpeakerIds.get(position);
-	}
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
 
-	@Override
-	public int getCount() {
-		return mSpeakerIds.size();
-	}
+    @Override
+    public Object getItem(int position) {
+        return mSpeakerIds.get(position);
+    }
+
+
+    @Override
+    public int getCount() {
+        return mSpeakerIds.size();
+    }
 }
