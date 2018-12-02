@@ -19,7 +19,7 @@
     <string name="search_transcriptions_by_voice">Speak a keyword</string>
     <string name="searchable_settings_description">Transcriptions of speech recordings</string>
     <string name="instructionsRecorder">Press the button to start recording, press again to pause/resume. Press the BACK-key to finish the recording session.</string>
-
+    <string name="permission_rationale">Please grant the essential permissions.</string>
     <!-- Context menu: recordings -->
     <string name="cm_notes_view">Read &amp; Listen</string>
     <string name="cm_notes_tags">Edit tags</string>

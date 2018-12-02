@@ -16,6 +16,7 @@
 
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,6 +26,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,8 +50,10 @@ import android.widget.ListView;
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map.Entry;
 
 import ee.ioc.phon.netspeechapi.trans.Transcription;
@@ -84,6 +88,11 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	private static final int ACTIVITY_SELECT_TAGS = 3;
 	private static final int ACTIVITY_SELECT_TAGS_FOR_SORT = 4;
 	private static final int ACTIVITY_PICK_AUDIO = 5;
+
+	public  static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
+
+	private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
+
 
 	private static final String LOG_TAG = RecordingListActivity.class.getName();
 
@@ -123,7 +132,11 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
-		loadRecordingsInBackground();
+		if(arePermissionsEnabled()){
+			loadRecordingsInBackground();
+		}else{
+			requestMultiplePermissions();
+		}
 	}
 
 
@@ -133,6 +146,26 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 	}
 
 
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if(requestCode == 101){
+			for(int i=0;i<grantResults.length;i++){
+				if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+					if(shouldShowRequestPermissionRationale(permissions[i])){
+						new AlertDialog.Builder(this)
+								.setMessage(R.string.permission_rationale)
+								.setPositiveButton(R.string.b_ok, (dialog, which) -> requestMultiplePermissions())
+								.setNegativeButton(R.string.b_cancel, (dialog, which) -> dialog.dismiss())
+								.create()
+								.show();
+					}
+					return;
+				}
+			}
+			//all is good, continue flow
+		}
+	}
 
 	/*
 	// TODO: would it be better to use this?
@@ -142,7 +175,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		toast("Click-" + String.valueOf(position));
 	}
 	 */
-
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -564,6 +596,24 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 		} else {
 			new LoadRecordings(this, files.length).execute(files);
 		}
+	}
+
+	private boolean arePermissionsEnabled(){
+		for(String permission : permissions){
+			if(checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED)
+				return false;
+		}
+		return true;
+	}
+
+	private void requestMultiplePermissions(){
+		List<String> remainingPermissions = new ArrayList<>();
+		for (String permission : permissions) {
+			if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+				remainingPermissions.add(permission);
+			}
+		}
+		requestPermissions(remainingPermissions.toArray(new String[remainingPermissions.size()]), 101);
 	}
 
 

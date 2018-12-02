@@ -15,7 +15,7 @@
     <string name="search_transcriptions_by_voice">Ütle otsisõna</string>
     <string name="searchable_settings_description">Lindistuste transkriptsioonid</string>
     <string name="instructionsRecorder">Vajutage nupule, et alustada lindistamist; vajutage uuesti, et peatada/jätkata. Vajutage BACK-nupule, et lindistamissessiooni lõpetada.</string>
-
+    <string name="permission_rationale">Palun lubage rakendusel lindistada ning lindistusi püsimällu salvestada.</string>
     <!-- Notes context menu -->
     <string name="cm_notes_view">Loe ja kuula</string>
     <string name="cm_notes_tags">Sildid</string>
