@@ -9,14 +9,18 @@ dependencies {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId 'kaljurand_at_gmail_dot_com.diktofon'
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 1103
-        versionName '1.1.03'
+        targetSdkVersion 28
+        versionCode 1104
+        versionName '1.1.04'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     // TODO: try to remove it
@@ -60,11 +64,16 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+    }
+
 }
 
 
 if (project.hasProperty('storePassword') &&
-    project.hasProperty('keyPassword')) {
+        project.hasProperty('keyPassword')) {
     android.signingConfigs.release.storePassword = storePassword
     android.signingConfigs.release.keyPassword = keyPassword
 } else {
