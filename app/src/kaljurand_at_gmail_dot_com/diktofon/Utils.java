@@ -21,7 +21,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -32,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -132,63 +132,6 @@ public class Utils {
     }
 
 
-    public static boolean isStorageWritable() {
-        boolean mExternalStorageAvailable = false;
-        boolean mExternalStorageWriteable = false;
-        String state = Environment.getExternalStorageState();
-
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            // We can read and write the media
-            mExternalStorageAvailable = mExternalStorageWriteable = true;
-        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            // We can only read the media
-            mExternalStorageAvailable = true;
-            mExternalStorageWriteable = false;
-        } else {
-            // Something else is wrong. It may be one of many other states, but all we need
-            // to know is we can neither read nor write
-            mExternalStorageAvailable = mExternalStorageWriteable = false;
-        }
-        return (mExternalStorageAvailable && mExternalStorageWriteable);
-    }
-
-
-    public static boolean isStorageReadable() {
-        boolean mExternalStorageAvailable = false;
-        String state = Environment.getExternalStorageState();
-
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mExternalStorageAvailable = true;
-        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            mExternalStorageAvailable = true;
-        }
-        return mExternalStorageAvailable;
-    }
-
-
-    public static File copyUriToRecordingsDir_OLD(Activity activity, Uri audioUri) {
-        Log.i("URI: " + audioUri);
-        Context context = activity.getApplicationContext();
-        if (audioUri == null) {
-            toast(context, activity.getString(R.string.error_failed_import_audio));
-            return null;
-        }
-        String filename = Utils.getAudioFilenameFromUri(activity, audioUri);
-        Log.i("Filename: " + filename);
-        if (filename == null) {
-            toast(context, String.format(activity.getString(R.string.error_failed_import_audio_uri), audioUri));
-            return null;
-        }
-        try {
-            return MyFileUtils.copyFileToRecordingsDir(new File(filename));
-        } catch (IOException e) {
-            Log.i("IOException: " + e.getMessage());
-            toast(context, activity.getString(R.string.error_failed_copy_external_file));
-        }
-        return null;
-    }
-
-
     /**
      * If the URI has the form file:///path/to/file.wav then we return its
      * path, otherwise we hope to find the path in a content provider.
@@ -268,25 +211,21 @@ public class Utils {
 
     public static File copyUriToRecordingsDir(Activity activity, Uri uri) {
         try {
-            InputStream inputStream = activity.getContentResolver().openInputStream(uri);
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
-            String newFileName = String.valueOf(System.currentTimeMillis()) + getName(activity, uri);
-            //String newPath = Dirs.getRecordingsDir().getAbsolutePath() + "/" + newFileName;
-            String newPath = Dirs.getRecordingsDir(activity) + "/" + newFileName;
-            Log.i("Path: " + newPath);
-            File newFile = new File(newPath);
-            if (newFile.exists()) {
-                throw new IOException("Not overwriting existing file: " + newFileName);
-            }
-            // TODO: save input stream into a File
-            FileOutputStream fos = new FileOutputStream(newFileName);
+            InputStream is = activity.getContentResolver().openInputStream(uri);
+            String newFileName = String.valueOf(System.currentTimeMillis()) + "_" + getName(activity, uri);
+            File newFile = Dirs.getRecordingsFile(activity, newFileName);
+            Log.i("File: " + newFile);
+            OutputStream os = new FileOutputStream(newFile.getAbsolutePath());
             byte[] buf = new byte[1024]; // optimize the size of buffer to your need
             int num;
-            while ((num = inputStream.read(buf)) != -1) {
-                fos.write(buf, 0, num);
+            while ((num = is.read(buf)) != -1) {
+                os.write(buf, 0, num);
             }
-            fos.close();
+            //byte[] data = new byte[is.available()];
+            //is.read(data);
+            //os.write(data);
+            is.close();
+            os.close();
             return newFile;
         } catch (IOException e) {
             Log.i("IOException: " + e.getMessage());

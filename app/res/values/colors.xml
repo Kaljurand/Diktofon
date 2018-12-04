@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 We are using the colors that are recommended for the launcher icons.
 
 http://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html
@@ -67,14 +66,6 @@ http://www.december.com/html/spec/color1.html
     <color name="buttonFocused1">#cc0000</color>
     <color name="buttonFocused2">#cc0000</color>
 
-    <!-- Button on pause -->
-    <color name="buttonPauseStart">#bfbfbf</color>
-    <color name="buttonPauseEnd">#808080</color>
-    <color name="buttonPausePressedStart">#808080</color>
-    <color name="buttonPausePressedEnd">#bfbfbf</color>
-    <color name="buttonPauseFocusedStart">#bfbfbf</color>
-    <color name="buttonPauseFocusedEnd">#bfbfbf</color>
-
     <!-- Text shadow -->
     <color name="shadow">#0f0f0f</color>
 
@@ -91,16 +82,5 @@ http://www.december.com/html/spec/color1.html
     <color name="speaker5">#ffccff</color>
     <color name="speaker6">#ccffff</color>
     <color name="speakerN">#cccccc</color>
-
-    <!-- @deprecated -->
-    <!--
-	<color name="speaker1">#3366cc</color>
-	<color name="speaker2">#cc0000</color>
-	<color name="speaker3">#669900</color>
-	<color name="speaker4">#ff6600</color>
-	<color name="speakerN">#bfbfbf</color>
-	<color name="bg_light">#bfbfbf</color>
-	<color name="bg_dark">#404040</color>
-    -->
 
 </resources>

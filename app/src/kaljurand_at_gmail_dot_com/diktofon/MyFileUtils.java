@@ -83,47 +83,6 @@ public class MyFileUtils {
     }
 
 
-    // TODO: could also use: File.renameTo(File)
-    public static File moveFileToRecordingsDir(File file) throws IOException {
-        String ext = getExtension(file.getName());
-        String newFileName = String.valueOf(System.currentTimeMillis()) + ext;
-        String newPath = Dirs.getRecordingsDir().getAbsolutePath() + "/" + newFileName;
-        File newFile = new File(newPath);
-        if (newFile.exists()) {
-            throw new IOException("Not overwriting existing file: " + newFileName);
-        }
-        FileUtils.moveFile(file, newFile);
-        return newFile;
-    }
-
-
-    // TODO: share code with moveFile...
-    public static File copyFileToRecordingsDir(File file) throws IOException {
-        String ext = getExtension(file.getName());
-        String newFileName = String.valueOf(System.currentTimeMillis()) + ext;
-        String newPath = Dirs.getRecordingsDir().getAbsolutePath() + "/" + newFileName;
-        Log.i("Path: " + newPath);
-        File newFile = new File(newPath);
-        if (newFile.exists()) {
-            throw new IOException("Not overwriting existing file: " + newFileName);
-        }
-        FileUtils.copyFile(file, newFile);
-        return newFile;
-    }
-
-
-    // Doesn't seem to work... :(
-	/*
-	public static String guessMime(String url) {
-		String mime = URLConnection.guessContentTypeFromName(url);
-		if (mime == null) {
-			return "audio/wav";
-		}
-		return mime;
-	}
-	 */
-
-
     /**
      * TODO: use something more official, e.g. URLConnection.guessContentTypeFromName
      * <p>

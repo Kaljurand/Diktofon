@@ -35,7 +35,8 @@
         </activity>
         <activity
             android:name=".activity.RecordingSendActivity"
-            android:label="@string/activity_recording_send_name">
+            android:label="@string/activity_recording_send_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 

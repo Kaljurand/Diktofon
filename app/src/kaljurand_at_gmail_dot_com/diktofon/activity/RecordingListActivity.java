@@ -335,6 +335,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
             case ACTIVITY_PICK_AUDIO:
                 copyIntentDataToRecordingsDir(intent);
                 break;
+                /*
             case ACTIVITY_RECORD_SOUND:
                 Uri uri = intent.getData();
                 String path1 = Utils.getAudioFilenameFromUri(this, uri);
@@ -350,6 +351,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
                     }
                 }
                 break;
+                */
             case MY_ACTIVITY_RECORD_SOUND:
                 String filename1 = Utils.getAudioFilenameFromUri(this, intent.getData());
                 if (filename1 == null) {
@@ -567,9 +569,9 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
 
     void loadRecordingsInBackground() {
-        final File[] files = Dirs.getRecordingsDir().listFiles(Dirs.FILENAME_FILTER);
+        final File[] files = Dirs.getRecordingsDir(getApplicationContext()).listFiles(Dirs.FILENAME_FILTER);
         if (files == null) {
-            toast(getString(R.string.error_cant_read_dir) + ": " + Dirs.getRecordingsDir());
+            toast(getString(R.string.error_cant_read_dir) + ": " + Dirs.getRecordingsDir(getApplicationContext()));
         } else {
             new LoadRecordings(this, files.length).execute(files);
         }

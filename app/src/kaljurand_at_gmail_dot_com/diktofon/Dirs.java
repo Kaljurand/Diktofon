@@ -32,11 +32,6 @@ public class Dirs {
 
     private static final String RECORDINGS = "/recordings/";
 
-    // This directory is used for the files that have been recorded
-    // using the RecorderActivity but that are not part of the Diktofon
-    // collection.
-    private static final String RECORDER = "/recorder/";
-
     private static File sBaseDir;
     private static File sRecordingsDir;
     private static File sNomediaFile;
@@ -44,7 +39,6 @@ public class Dirs {
     static {
         String baseDirAsString = Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/Android/data/kaljurand_at_gmail_dot_com.diktofon/files/";
-        //String baseDirAsString = Environment.getFilesDir().getPath();
 
         sBaseDir = new File(baseDirAsString);
         sRecordingsDir = new File(baseDirAsString + RECORDINGS);
@@ -55,21 +49,15 @@ public class Dirs {
         return sBaseDir;
     }
 
-    public static File getRecordingsDir() {
-        return sRecordingsDir;
-    }
-
-    public static File getRecordingsDir(Context context) {
-        // ontext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
-        //return new File(context.getFilesDir().getPath() + RECORDINGS);
-        return new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + RECORDINGS);
-    }
-
     public static File getNomediaFile() {
         return sNomediaFile;
     }
 
-    public static File getRecorderDir() {
-        return new File(sBaseDir.getAbsolutePath() + RECORDER);
+    public static File getRecordingsDir(Context context) {
+        return context.getExternalFilesDir(RECORDINGS);
+    }
+
+    public static File getRecordingsFile(Context context, String fileName) {
+        return new File(context.getExternalFilesDir(RECORDINGS), fileName);
     }
 }
