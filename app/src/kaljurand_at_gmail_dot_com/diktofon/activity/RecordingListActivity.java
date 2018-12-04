@@ -245,26 +245,9 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_notes_add:
-                // When recording sounds we want to make sure if the activity stack
-                // already contains a recorder then it is reused, i.e. that we
-                // do not have several recorders running in parallel.
-                if (mPrefs.getBoolean(getString(R.string.keyUseInternalRecorder), getResources().getBoolean(R.bool.defaultUseInternalRecorder))) {
-                    Intent intent = new Intent(this, RecorderActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    intent.putExtra(RecorderActivity.EXTRA_BASE_DIR, Dirs.getRecordingsDir().getAbsolutePath());
-                    if (mPrefs.getString("recordingResolution", "16").equals("16")) {
-                        intent.putExtra(RecorderActivity.EXTRA_HIGH_RESOLUTION, true);
-                    } else {
-                        intent.putExtra(RecorderActivity.EXTRA_HIGH_RESOLUTION, false);
-                    }
-                    intent.putExtra(RecorderActivity.EXTRA_SAMPLE_RATE, Integer.parseInt(mPrefs.getString("recordingRate", getString(R.string.defaultRecordingRate))));
-                    intent.putExtra(RecorderActivity.EXTRA_MICROPHONE_MODE, mPrefs.getString("microphoneMode", getString(R.string.defaultMicrophoneMode)));
-                    startActivityForResult(intent, MY_ACTIVITY_RECORD_SOUND);
-                } else {
-                    Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivityForResult(intent, ACTIVITY_RECORD_SOUND);
-                }
+                Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivityForResult(intent, ACTIVITY_RECORD_SOUND);
                 return true;
             case R.id.menu_notes_search:
                 onSearchRequested();

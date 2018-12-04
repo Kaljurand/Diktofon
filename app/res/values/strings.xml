@@ -3,12 +3,9 @@
 
     <string name="app_name" translatable="false">Diktofon</string>
     <string name="app_author" translatable="false">Kaarel Kaljurand</string>
-    <string name="volumeBar" translatable="false">|||||||||||||||</string>
-    <string name="keyUseInternalRecorder" translatable="false">keyUseInternalRecorder</string>
     <string name="app_description">Dictaphone with Estonian speech-to-text</string>
     <string name="activity_notelistview_name">List of recordings</string>
     <string name="activity_recording_send_name">Copy to Diktofon</string>
-    <string name="activity_recorder_name">Recorder</string>
     <string name="activity_trans_name">Read &amp; Listen</string>
     <string name="activity_speakers_name">Speakers</string>
     <string name="activity_tagselector_name">Tag selector</string>
@@ -85,9 +82,6 @@
     <string name="b_ok">OK</string>
     <string name="b_cancel">Cancel</string>
     <string name="b_apply_tags">Apply</string>
-    <string name="b_recorder_start">Start recording</string>
-    <string name="b_recorder_pause">Recording…\n(tap to pause)</string>
-    <string name="b_recorder_resume">Pausing…\n(tap to resume)</string>
     <string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
     <string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
     <string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>
@@ -152,7 +146,6 @@
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Share transcriptions (e.g. via email, Twitter, …)&lt;/p>
 		&lt;p>The other features are general and make %1$s useful also if you are not
 		recording native Estonian speech:&lt;/p>
-		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Use a high quality voice recorder with a pause button&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Tag recordings and search them by tag&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; Sort recordings by creation date, duration, byte size&lt;/p>
 		&lt;p>Documentation, feature requests, issue list, and the source code are available at:
@@ -170,70 +163,12 @@
     <string name="titleRecording">Recording</string>
     <string name="titleTranscribing">Transcribing</string>
     <string name="titleUi">User interface</string>
-    <string name="titleUseInternalRecorder">Use Diktofon\'s recorder</string>
-    <string name="summaryUseInternalRecorder">Record with Diktofon\'s own recorder rather than another recording app</string>
-    <string name="titleRecorderPreferences">Diktofon\'s recorder settings</string>
-    <string name="summaryRecorderPreferences">Recording resolution (e.g. 16-bit) and sample rate (e.g. 16 kHz)</string>
     <string name="titleTranscribingPreferences">Transcription service settings</string>
     <string name="summaryTranscribingPreferences">Waiting time, polling frequency, …</string>
     <string name="titleAutotranscribe">Autotranscribe</string>
     <string name="summaryAutotranscribe">Transcribe immediately after recording</string>
     <string name="titleRecordingResolution">Resolution</string>
     <string name="summaryRecordingResolution">Quality of the recording (16-bits)</string>
-
-    <string-array name="entriesRecordingResolution" translatable="false">
-        <item>8-bit</item>
-        <item>16-bit</item>
-    </string-array>
-
-    <string name="defaultRecordingResolution" translatable="false">16</string>
-
-    <!-- Unfortunately cannot use an integer array -->
-    <string-array name="valuesRecordingResolution" translatable="false">
-        <item>8</item>
-        <item>16</item>
-    </string-array>
-
-    <string name="titleRecordingRate">Sample rate</string>
-    <string name="summaryRecordingRate">Sample rate in Hertz (16 kHz recommended)</string>
-
-    <string-array name="entriesRecordingRate" translatable="false">
-        <item>8 kHz</item>
-        <item>11.025 kHz</item>
-        <item>16 kHz</item>
-        <item>22.05 kHz</item>
-        <item>44.1 kHz</item>
-        <item>48 kHz</item>
-    </string-array>
-
-    <string name="defaultRecordingRate" translatable="false">16000</string>
-
-    <!-- Unfortunately cannot use an integer array -->
-    <string-array name="valuesRecordingRate" translatable="false">
-        <item>8000</item>
-        <item>11025</item>
-        <item>16000</item>
-        <item>22050</item>
-        <item>44100</item>
-        <item>48000</item>
-    </string-array>
-
-    <!-- Android API MediaRecorder.AudioSource -->
-    <string name="titleMicrophoneMode">Audio source</string>
-    <string name="summaryMicrophoneMode">See MediaRecorder.AudioSource documentation</string>
-
-    <string-array name="entriesMicrophoneMode">
-        <item>VOICE_RECOGNITION (should disable AGC)</item>
-        <item>MIC (may have AGC)</item>
-    </string-array>
-
-    <string name="defaultMicrophoneMode" translatable="false">VOICE_RECOGNITION</string>
-
-    <!-- Unfortunately cannot use an integer array -->
-    <string-array name="valuesMicrophoneMode" translatable="false">
-        <item>VOICE_RECOGNITION</item>
-        <item>MIC</item>
-    </string-array>
 
     <!-- Wait length -->
     <string name="titleTranscribingWaitLength">Waiting coefficient</string>

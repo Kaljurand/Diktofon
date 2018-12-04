@@ -54,30 +54,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.RecorderActivity"
-            android:label="@string/activity_recorder_name"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.Diktofon.NoActionBar">
-            <intent-filter>
-
-                <!-- Java constant: android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION -->
-                <action android:name="android.provider.MediaStore.RECORD_SOUND" />
-                <!-- <action android:name="android.intent.action.PICK" /> -->
-
-
-                <!--
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-                -->
-                <!--
-                The DEFAULT-category is needed for intents that do not call
-				by class name to be resolved.
-                -->
-                <category android:name="android.intent.category.DEFAULT" />
-                <!-- <data android:mimeType="audio/wav" /> -->
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activity.Preferences"
             android:label="@string/activity_preferences_name"></activity>
         <activity
@@ -118,7 +94,6 @@
             android:label="@string/activity_about_name"></activity>
 
         <service android:name=".service.PlayerService" />
-        <service android:name=".service.RecorderService" />
 
         <provider
             android:name=".SearchSuggestionsProvider"

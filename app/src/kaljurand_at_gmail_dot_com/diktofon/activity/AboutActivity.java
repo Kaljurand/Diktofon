@@ -35,7 +35,7 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
 
-        TextView textview = (TextView) findViewById(R.id.tv_about);
+        TextView textview = findViewById(R.id.tv_about);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
         String about = String.format(getString(R.string.about), getString(R.string.app_name), getVersionName());
         textview.setText(Html.fromHtml(about));

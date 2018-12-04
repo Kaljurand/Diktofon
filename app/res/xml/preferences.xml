@@ -1,104 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--
-BUG: try these:
-    android:dialogTitle="@string/prefGestureAccuracyDialog"
-    android:persistent="true"
-    android:shouldDisableView="false"
--->
+    <PreferenceCategory android:title="@string/titleTranscribing">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="autotranscribe"
+            android:summary="@string/summaryAutotranscribe"
+            android:title="@string/titleAutotranscribe" />
 
-	<PreferenceCategory android:title="@string/titleRecording">
-		<CheckBoxPreference
-			android:key="@string/keyUseInternalRecorder"
-			android:title="@string/titleUseInternalRecorder"
-			android:summary="@string/summaryUseInternalRecorder"
-			android:defaultValue="true" />
+        <PreferenceScreen
+            android:key="prefscreenTranscribing"
+            android:summary="@string/summaryTranscribingPreferences"
+            android:title="@string/titleTranscribingPreferences">
 
-		<PreferenceScreen
-			android:key="prefscreenRecording"
-			android:title="@string/titleRecorderPreferences"
-			android:summary="@string/summaryRecorderPreferences">
+            <EditTextPreference
+                android:name="@string/nameEmail"
+                android:defaultValue="@string/defaultEmail"
+                android:key="email"
+                android:summary="@string/summaryEmail"
+                android:title="@string/titleEmail" />
 
-			<ListPreference
-				android:key="recordingResolution"
-				android:enabled="false"
-				android:title="@string/titleRecordingResolution"
-				android:summary="@string/summaryRecordingResolution"
-				android:defaultValue="@string/defaultRecordingResolution"
-				android:entries="@array/entriesRecordingResolution"
-				android:entryValues="@array/valuesRecordingResolution" />
+            <ListPreference
+                android:defaultValue="@string/defaultTranscribingWaitLength"
+                android:entries="@array/entriesTranscribingWaitLength"
+                android:entryValues="@array/valuesTranscribingWaitLength"
+                android:key="transcribingWaitLength"
+                android:summary="@string/summaryTranscribingWaitLength"
+                android:title="@string/titleTranscribingWaitLength" />
 
-			<ListPreference
-				android:key="recordingRate"
-				android:title="@string/titleRecordingRate"
-				android:summary="@string/summaryRecordingRate"
-				android:defaultValue="@string/defaultRecordingRate"
-				android:entries="@array/entriesRecordingRate"
-				android:entryValues="@array/valuesRecordingRate" />
+            <ListPreference
+                android:defaultValue="@string/defaultTranscribingPollAmount"
+                android:entries="@array/entriesTranscribingPollAmount"
+                android:entryValues="@array/valuesTranscribingPollAmount"
+                android:key="transcribingPollAmount"
+                android:summary="@string/summaryTranscribingPollAmount"
+                android:title="@string/titleTranscribingPollAmount" />
 
-			<ListPreference
-				android:key="microphoneMode"
-				android:title="@string/titleMicrophoneMode"
-				android:summary="@string/summaryMicrophoneMode"
-				android:defaultValue="@string/defaultMicrophoneMode"
-				android:entries="@array/entriesMicrophoneMode"
-				android:entryValues="@array/valuesMicrophoneMode" />
-		</PreferenceScreen>
-	</PreferenceCategory>
+            <ListPreference
+                android:defaultValue="@string/defaultTranscribingPollPause"
+                android:entries="@array/entriesTranscribingPollPause"
+                android:entryValues="@array/valuesTranscribingPollPause"
+                android:key="transcribingPollPause"
+                android:summary="@string/summaryTranscribingPollPause"
+                android:title="@string/titleTranscribingPollPause" />
+        </PreferenceScreen>
+    </PreferenceCategory>
 
-	<PreferenceCategory android:title="@string/titleTranscribing">
-		<CheckBoxPreference
-			android:title="@string/titleAutotranscribe"
-			android:summary="@string/summaryAutotranscribe"
-			android:defaultValue="false"
-			android:key="autotranscribe" />
-
-		<PreferenceScreen
-			android:key="prefscreenTranscribing"
-			android:title="@string/titleTranscribingPreferences"
-			android:summary="@string/summaryTranscribingPreferences">
-
-			<EditTextPreference
-				android:name="@string/nameEmail"
-				android:summary="@string/summaryEmail"
-				android:title="@string/titleEmail"
-				android:defaultValue="@string/defaultEmail"
-				android:key="email" />
-
-			<ListPreference
-				android:key="transcribingWaitLength"
-				android:title="@string/titleTranscribingWaitLength"
-				android:summary="@string/summaryTranscribingWaitLength"
-				android:defaultValue="@string/defaultTranscribingWaitLength"
-				android:entries="@array/entriesTranscribingWaitLength"
-				android:entryValues="@array/valuesTranscribingWaitLength" />
-
-			<ListPreference
-				android:key="transcribingPollAmount"
-				android:title="@string/titleTranscribingPollAmount"
-				android:summary="@string/summaryTranscribingPollAmount"
-				android:defaultValue="@string/defaultTranscribingPollAmount"
-				android:entries="@array/entriesTranscribingPollAmount"
-				android:entryValues="@array/valuesTranscribingPollAmount" />
-
-			<ListPreference
-				android:key="transcribingPollPause"
-				android:title="@string/titleTranscribingPollPause"
-				android:summary="@string/summaryTranscribingPollPause"
-				android:defaultValue="@string/defaultTranscribingPollPause"
-				android:entries="@array/entriesTranscribingPollPause"
-				android:entryValues="@array/valuesTranscribingPollPause" />
-		</PreferenceScreen>
-	</PreferenceCategory>
-
-<!--
-	<PreferenceCategory android:title="@string/titleUi">
-		<CheckBoxPreference
-			android:title="@string/titleLocaleEt"
-			android:summary="@string/summaryLocaleEt"
-			android:defaultValue="false"
-			android:key="localeEt" />
-	</PreferenceCategory>
--->
 </PreferenceScreen>
