@@ -87,7 +87,11 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
 
-    private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
+    private String[] permissions = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO
+    };
 
 
     private static final String LOG_TAG = RecordingListActivity.class.getName();

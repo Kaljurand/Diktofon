@@ -16,6 +16,7 @@
 
 package kaljurand_at_gmail_dot_com.diktofon;
 
+import android.content.Context;
 import android.os.Environment;
 
 import java.io.File;
@@ -43,6 +44,7 @@ public class Dirs {
     static {
         String baseDirAsString = Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/Android/data/kaljurand_at_gmail_dot_com.diktofon/files/";
+        //String baseDirAsString = Environment.getFilesDir().getPath();
 
         sBaseDir = new File(baseDirAsString);
         sRecordingsDir = new File(baseDirAsString + RECORDINGS);
@@ -55,6 +57,12 @@ public class Dirs {
 
     public static File getRecordingsDir() {
         return sRecordingsDir;
+    }
+
+    public static File getRecordingsDir(Context context) {
+        // ontext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        //return new File(context.getFilesDir().getPath() + RECORDINGS);
+        return new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + RECORDINGS);
     }
 
     public static File getNomediaFile() {

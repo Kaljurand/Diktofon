@@ -24,11 +24,14 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.text.TextUtils.SimpleStringSplitter;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -163,7 +166,7 @@ public class Utils {
     }
 
 
-    public static File copyUriToRecordingsDir(Activity activity, Uri audioUri) {
+    public static File copyUriToRecordingsDir_OLD(Activity activity, Uri audioUri) {
         Log.i("URI: " + audioUri);
         Context context = activity.getApplicationContext();
         if (audioUri == null) {
@@ -171,6 +174,7 @@ public class Utils {
             return null;
         }
         String filename = Utils.getAudioFilenameFromUri(activity, audioUri);
+        Log.i("Filename: " + filename);
         if (filename == null) {
             toast(context, String.format(activity.getString(R.string.error_failed_import_audio_uri), audioUri));
             return null;
@@ -198,6 +202,7 @@ public class Utils {
         if ("file".equals(uri.getScheme())) {
             return uri.getPath();
         }
+        dumpMetaData(activity, uri);
         Cursor c = activity.managedQuery(uri, null, "", null, null);
 
         if (c == null) {
@@ -216,6 +221,78 @@ public class Utils {
             c.close();
         }
         return filename;
+    }
+
+    private static void dumpMetaData(Activity activity, Uri uri) {
+        Cursor cursor = activity.getContentResolver()
+                .query(uri, null, null, null, null, null);
+
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+
+                String displayName = cursor.getString(
+                        cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                Log.i("Display Name: " + displayName);
+
+                int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
+                String size;
+                if (!cursor.isNull(sizeIndex)) {
+                    size = cursor.getString(sizeIndex);
+                } else {
+                    size = "Unknown";
+                }
+                Log.i("Size: " + size);
+            }
+        } finally {
+            cursor.close();
+        }
+    }
+
+    private static String getName(Activity activity, Uri uri) {
+        Cursor cursor = activity.getContentResolver()
+                .query(uri, null, null, null, null, null);
+
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+
+                String displayName = cursor.getString(
+                        cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                Log.i("Display Name: " + displayName);
+                return displayName;
+            }
+        } finally {
+            cursor.close();
+        }
+        return null;
+    }
+
+    public static File copyUriToRecordingsDir(Activity activity, Uri uri) {
+        try {
+            InputStream inputStream = activity.getContentResolver().openInputStream(uri);
+            //BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String newFileName = String.valueOf(System.currentTimeMillis()) + getName(activity, uri);
+            //String newPath = Dirs.getRecordingsDir().getAbsolutePath() + "/" + newFileName;
+            String newPath = Dirs.getRecordingsDir(activity) + "/" + newFileName;
+            Log.i("Path: " + newPath);
+            File newFile = new File(newPath);
+            if (newFile.exists()) {
+                throw new IOException("Not overwriting existing file: " + newFileName);
+            }
+            // TODO: save input stream into a File
+            FileOutputStream fos = new FileOutputStream(newFileName);
+            byte[] buf = new byte[1024]; // optimize the size of buffer to your need
+            int num;
+            while ((num = inputStream.read(buf)) != -1) {
+                fos.write(buf, 0, num);
+            }
+            fos.close();
+            return newFile;
+        } catch (IOException e) {
+            Log.i("IOException: " + e.getMessage());
+            toast(activity, activity.getString(R.string.error_failed_copy_external_file));
+        }
+        return null;
     }
 
 

@@ -102,6 +102,7 @@ public class MyFileUtils {
         String ext = getExtension(file.getName());
         String newFileName = String.valueOf(System.currentTimeMillis()) + ext;
         String newPath = Dirs.getRecordingsDir().getAbsolutePath() + "/" + newFileName;
+        Log.i("Path: " + newPath);
         File newFile = new File(newPath);
         if (newFile.exists()) {
             throw new IOException("Not overwriting existing file: " + newFileName);
