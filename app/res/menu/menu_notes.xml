@@ -3,15 +3,15 @@
 
     <!-- Add (record) a new voice note -->
     <item
-        android:id="@+id/menu_notes_add"
-        android:icon="@drawable/ic_menu_add"
+        android:id="@+id/menu_recordings_import"
+        android:icon="@drawable/ic_menu_add_audio"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_add" />
+        android:title="@string/menu_recordings_import" />
 
     <!-- Search existing notes -->
     <item
         android:id="@+id/menu_notes_search"
-        android:icon="@drawable/ic_menu_search"
+        android:icon="@drawable/ic_menu_search_trans"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_search" />
 
@@ -69,9 +69,9 @@
 
     <!-- Pick an audio file -->
     <item
-        android:id="@+id/menu_recordings_import"
+        android:id="@+id/menu_notes_add"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_recordings_import" />
+        android:title="@string/menu_add" />
 
     <!-- Transcribe all the notes that do not have a transcription yet -->
     <item

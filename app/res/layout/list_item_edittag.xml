@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="@dimen/paddingTags" >
+    android:padding="@dimen/paddingTags">
 
     <CheckBox
         android:id="@+id/list_item_edittag_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:text=" "
         android:textSize="@dimen/textSizeTagsTitle" />
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/list_item_edittag_state"
+        android:layout_toEndOf="@id/list_item_edittag_state"
         android:text=""
         android:textSize="@dimen/textSizeTagsTitle" />
 

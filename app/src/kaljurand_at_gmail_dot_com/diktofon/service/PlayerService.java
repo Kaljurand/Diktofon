@@ -92,18 +92,16 @@ public class PlayerService extends DiktofonService {
         newMp.setDataSource(audioPath);
         newMp.prepare();
 
-        newMp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer mp) {
-                Log.i("Media Player completed");
-                // We are now in the state PlaybackCompleted.
-                // Here we can call seekTo() and later start()
-                seekTo(0);
-                if (isNotificationShowing()) {
-                    showNotification(
-                            String.format(getString(R.string.notification_text_player_completed), title),
-                            Notification.FLAG_AUTO_CANCEL
-                    );
-                }
+        newMp.setOnCompletionListener(mp -> {
+            Log.i("Media Player completed");
+            // We are now in the state PlaybackCompleted.
+            // Here we can call seekTo() and later start()
+            seekTo(0);
+            if (isNotificationShowing()) {
+                showNotification(
+                        String.format(getString(R.string.notification_text_player_completed), title),
+                        Notification.FLAG_AUTO_CANCEL
+                );
             }
         });
 
@@ -176,7 +174,7 @@ public class PlayerService extends DiktofonService {
 
     public void seekToByPercentage(int positionAsPercentage) {
         if (mMediaPlayer != null) {
-            int position = (int) ((positionAsPercentage * mMediaPlayer.getDuration()) / 100);
+            int position = (positionAsPercentage * mMediaPlayer.getDuration()) / 100;
             seekTo(position);
         }
     }
@@ -207,7 +205,7 @@ public class PlayerService extends DiktofonService {
         // not sure though what will max be...
         int max = mMediaPlayer.getDuration();
         if (max == 0) return 0;
-        return (int) ((value * 100) / max);
+        return (value * 100) / max;
     }
 
 
@@ -253,6 +251,6 @@ public class PlayerService extends DiktofonService {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putInt("position_" + audioPath, getCurrentPosition());
         editor.putBoolean("isPlaying_" + audioPath, isPlaying());
-        editor.commit();
+        editor.apply();
     }
 }

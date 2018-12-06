@@ -4,7 +4,7 @@
     <!-- Add a new set of tags -->
     <item
         android:id="@+id/menu_edittags_add"
-        android:icon="@drawable/ic_menu_add"
+        android:icon="@drawable/ic_menu_add_audio"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_edittags_add" />
 

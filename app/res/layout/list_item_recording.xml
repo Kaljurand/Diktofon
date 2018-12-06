@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/list_selector_background"
-    android:padding="@dimen/paddingRecordings" >
+    android:padding="@dimen/paddingRecordings">
 
     <!-- Position -->
 
@@ -10,12 +10,12 @@
         android:id="@+id/list_item_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:singleLine="true"
-        android:text="12."
         android:textSize="12sp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        tools:text="12." />
 
     <!-- Title (timestamp) -->
     <!-- android:typeface="monospace" -->
@@ -26,8 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:text="2011-04-01 (Fri) 17:05"
-        android:textSize="@dimen/textSizeRecordingsTitle" />
+        android:textSize="@dimen/textSizeRecordingsTitle"
+        tools:text="2011-04-01 (Fri) 17:05" />
 
     <!-- Meta info -->
 
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/list_item_title"
         android:singleLine="true"
-        android:text="12:34  mpeg  120 MB  1000 words  5 speakers"
         android:textColor="@color/l_fg_meta"
-        android:textSize="@dimen/textSizeRecordingsMeta" />
+        android:textSize="@dimen/textSizeRecordingsMeta"
+        tools:text="12:34  mpeg  120 MB  1000 words  5 speakers" />
 
     <!-- Transcription snippet -->
     <!-- BUG: Only shows 2 lines with marquee... -->
@@ -62,14 +62,14 @@
         android:id="@+id/list_item_tags"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/list_item_trans"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:bufferType="spannable"
         android:gravity="right"
         android:singleLine="true"
-        android:text="song, mutionu, forest, trees, living"
-        android:textSize="@dimen/textSizeRecordingsTags" />
+        android:textSize="@dimen/textSizeRecordingsTags"
+        tools:text="song, mutionu, forest, trees, living" />
 
 </RelativeLayout>

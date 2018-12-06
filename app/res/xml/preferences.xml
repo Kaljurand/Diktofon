@@ -19,31 +19,31 @@
                 android:key="email"
                 android:summary="@string/summaryEmail"
                 android:title="@string/titleEmail" />
+            <!--
+                        <ListPreference
+                            android:defaultValue="@string/defaultTranscribingWaitLength"
+                            android:entries="@array/entriesTranscribingWaitLength"
+                            android:entryValues="@array/valuesTranscribingWaitLength"
+                            android:key="transcribingWaitLength"
+                            android:summary="@string/summaryTranscribingWaitLength"
+                            android:title="@string/titleTranscribingWaitLength" />
 
-            <ListPreference
-                android:defaultValue="@string/defaultTranscribingWaitLength"
-                android:entries="@array/entriesTranscribingWaitLength"
-                android:entryValues="@array/valuesTranscribingWaitLength"
-                android:key="transcribingWaitLength"
-                android:summary="@string/summaryTranscribingWaitLength"
-                android:title="@string/titleTranscribingWaitLength" />
+                        <ListPreference
+                            android:defaultValue="@string/defaultTranscribingPollAmount"
+                            android:entries="@array/entriesTranscribingPollAmount"
+                            android:entryValues="@array/valuesTranscribingPollAmount"
+                            android:key="transcribingPollAmount"
+                            android:summary="@string/summaryTranscribingPollAmount"
+                            android:title="@string/titleTranscribingPollAmount" />
 
-            <ListPreference
-                android:defaultValue="@string/defaultTranscribingPollAmount"
-                android:entries="@array/entriesTranscribingPollAmount"
-                android:entryValues="@array/valuesTranscribingPollAmount"
-                android:key="transcribingPollAmount"
-                android:summary="@string/summaryTranscribingPollAmount"
-                android:title="@string/titleTranscribingPollAmount" />
-
-            <ListPreference
-                android:defaultValue="@string/defaultTranscribingPollPause"
-                android:entries="@array/entriesTranscribingPollPause"
-                android:entryValues="@array/valuesTranscribingPollPause"
-                android:key="transcribingPollPause"
-                android:summary="@string/summaryTranscribingPollPause"
-                android:title="@string/titleTranscribingPollPause" />
+                        <ListPreference
+                            android:defaultValue="@string/defaultTranscribingPollPause"
+                            android:entries="@array/entriesTranscribingPollPause"
+                            android:entryValues="@array/valuesTranscribingPollPause"
+                            android:key="transcribingPollPause"
+                            android:summary="@string/summaryTranscribingPollPause"
+                            android:title="@string/titleTranscribingPollPause" />
+                            -->
         </PreferenceScreen>
     </PreferenceCategory>
-
 </PreferenceScreen>

@@ -30,11 +30,11 @@ import ee.ioc.phon.netspeechapi.TranscriptionDownloader;
  */
 public class NetSpeechApiUtils {
 
-    // Max file size supported by webtrans-server is 100MB.
+    // TODO: verify: Max file size supported by webtrans-server is 100MB.
     public static final int MAX_AUDIO_FILE_LENGTH = 100000000;
 
     // BUG: Set this from the resources
-    public static final String USER_AGENT_DIKTOFON = "Diktofon/0.9.70";
+    public static final String USER_AGENT_DIKTOFON = "Diktofon/1.1.06";
 
     private static final int SAMPLE_RATE = 16000;
 
