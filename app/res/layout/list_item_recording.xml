@@ -67,7 +67,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:bufferType="spannable"
-        android:gravity="right"
+        android:gravity="end"
         android:singleLine="true"
         android:textSize="@dimen/textSizeRecordingsTags"
         tools:text="song, mutionu, forest, trees, living" />

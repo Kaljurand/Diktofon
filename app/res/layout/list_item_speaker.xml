@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="6dp" >
+    android:padding="@dimen/layoutMargin1">
 
     <!-- Name -->
     <!--
@@ -14,10 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
         android:singleLine="true"
-        android:text="Arnold Alois Schwarzenegger"
-        android:textSize="@dimen/textSizeSpeakersTitle" />
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:textColor="?android:textColorPrimary"
+        tools:text="Arnold Alois Schwarzenegger" />
 
     <!-- Gender -->
     <!--
@@ -55,10 +56,11 @@
         android:id="@+id/list_item_speaker_id"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:singleLine="true"
-        android:text="ID"
-        android:textSize="@dimen/textSizeSpeakersTitle" />
+        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+        android:textColor="?android:textColorSecondary"
+        tools:text="ID" />
 
     <!-- TODO: show also related recordings and speakers -->
     <!--

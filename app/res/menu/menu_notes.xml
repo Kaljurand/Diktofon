@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Import an audio file -->
-    <item
-        android:id="@+id/menu_recordings_import"
-        android:icon="@drawable/ic_menu_add_audio"
-        android:showAsAction="ifRoom"
-        android:title="@string/menu_recordings_import" />
-
     <!-- Search existing notes -->
     <item
         android:id="@+id/menu_notes_search"
@@ -59,11 +52,12 @@
         android:icon="@drawable/ic_menu_cc" />
     -->
 
-    <!-- Settings -->
+    <!-- Import an audio file -->
     <item
-        android:id="@+id/menu_settings"
+        android:id="@+id/menu_recordings_import"
+        android:icon="@drawable/ic_menu_add_audio"
         android:showAsAction="ifRoom"
-        android:title="@string/menu_settings" />
+        android:title="@string/menu_recordings_import" />
 
     <!-- Record an audio file -->
     <item
@@ -82,6 +76,12 @@
         android:id="@+id/menu_notes_reload"
         android:showAsAction="ifRoom"
         android:title="@string/menu_notes_reload" />
+
+    <!-- Settings -->
+    <item
+        android:id="@+id/menu_settings"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_settings" />
 
     <!-- About page -->
     <item
