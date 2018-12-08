@@ -245,7 +245,7 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
             case R.id.menu_notes_add:
                 Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivityForResult(intent, ACTIVITY_RECORD_SOUND);
+                startActivityIfExists(intent, ACTIVITY_RECORD_SOUND);
                 return true;
             case R.id.menu_notes_search:
                 onSearchRequested();

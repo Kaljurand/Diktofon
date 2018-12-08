@@ -250,5 +250,6 @@ public class PlayerService extends DiktofonService {
         editor.putInt("position_" + audioPath, getCurrentPosition());
         editor.putBoolean("isPlaying_" + audioPath, isPlaying());
         editor.apply();
+        Log.i("audioPath save: " + audioPath);
     }
 }

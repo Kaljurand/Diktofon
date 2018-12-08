@@ -17,8 +17,12 @@
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.widget.Toast;
+
+import kaljurand_at_gmail_dot_com.diktofon.R;
 
 /**
  * Every Diktofon activity that wants to extend ListActivity
@@ -27,6 +31,15 @@ import android.widget.Toast;
  * @author Kaarel Kaljurand
  */
 public abstract class AbstractDiktofonListActivity extends ListActivity {
+
+    void startActivityIfExists(Intent intent, int requestCode) {
+        PackageManager packageManager = getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivityForResult(intent, requestCode);
+        } else {
+            toast(getString(R.string.error_failed_launch_intent));
+        }
+    }
 
     void toast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();

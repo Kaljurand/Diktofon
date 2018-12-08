@@ -13,7 +13,6 @@
     <string name="search_transcriptions">Otsi (tõstutundetu)</string>
     <string name="search_transcriptions_by_voice">Ütle otsisõna</string>
     <string name="searchable_settings_description">Lindistuste transkriptsioonid</string>
-    <string name="instructionsRecorder">Vajutage nupule, et alustada lindistamist; vajutage uuesti, et peatada/jätkata. Vajutage BACK-nupule, et lindistamissessiooni lõpetada.</string>
     <string name="permission_rationale">Palun lubage rakendusel lindistada ning lindistusi püsimällu salvestada.</string>
     <!-- Notes context menu -->
     <string name="cm_notes_view">Loe ja kuula</string>
@@ -81,6 +80,7 @@
     <string name="error_failed_obtain_trans">VIGA: Transkriptsiooni laadimine serverist luhtus, kuigi proovisin %1$d korda. Proovige natukese aja pärast uuesti.</string>
     <string name="error_failed_import_audio">VIGA: Audiofail importimine luhtus</string>
     <string name="error_failed_pick_speaker">VIGA: Kõneleja valik luhtus</string>
+    <string name="error_failed_launch_intent">VIGA: Vastav rakendus puudub</string>
     <string name="toast_highlighting">Märgin \"%1$s\"</string>
     <string name="message_loading_recordings">Oodake palun, laadin lindistusi…</string>
     <string name="message_transcribing">Transkribeerin %1$d lindistust</string>
@@ -154,7 +154,6 @@
     <string name="speakers">kõnelejat</string>
 
     <!-- Settings -->
-    <string name="titleRecording">Lindistamine</string>
     <string name="titleTranscribing">Transkribeerimine</string>
     <string name="titleUi">Kasutajaliides</string>
     <string name="titleAutotranscribe">Transkribeeri kohe</string>
@@ -164,8 +163,6 @@
     <string name="nameEmail">Email</string>
     <string name="titleEmail">E-posti aadress</string>
     <string name="summaryEmail">E-posti aadressi kasutab server kasutaja tuvastamiseks (vaikimisi kaljurand+diktofon@gmail.com)</string>
-    <string name="titleRecordingResolution">Lahutusvõime</string>
-    <string name="summaryRecordingResolution">Lindistuse lahutusvõime (16-bit)</string>
     <string name="titleTranscribingWaitLength">Ooteaja kordaja</string>
     <string name="summaryTranscribingWaitLength">Eelda, et transkriptsioon on valmis pärast X sekundit, kus X on lindistuse kestus korrutatud selle arvuga</string>
     <string name="titleTranscribingPollAmount">Pollimisarv</string>

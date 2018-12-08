@@ -138,7 +138,7 @@ public class TransActivity extends AbstractDiktofonActivity {
             // interact with the service.
             mService = ((PlayerService.PlayerBinder) service).getService();
 
-            Log.i(TransActivity.class.getName(), "Service connected");
+            Log.i("Service connected");
             try {
                 mService.setAudioPath(getIntent(), mTitle, mAudioPath);
             } catch (IOException e) {
@@ -165,7 +165,7 @@ public class TransActivity extends AbstractDiktofonActivity {
             // Because it is running in our same process, we should never
             // see this happen.
             mService = null;
-            Log.i(TransActivity.class.getName(), "Service disconnected");
+            Log.i("Service disconnected");
         }
     };
 
@@ -191,7 +191,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TransActivity.class.getName(), "onCreate");
+        Log.i("onCreate");
         setContentView(R.layout.transcription);
 
         Bundle extras = getIntent().getExtras();
@@ -204,8 +204,9 @@ public class TransActivity extends AbstractDiktofonActivity {
 
         // If certain inputs are missing then we just stop.
         if (mAudioPath == null) {
-            Log.i(TransActivity.class.getName(), "Finishing because input is not defined: " + EXTRA_AUDIO_PATH);
+            Log.i("Finishing because input is not defined: " + EXTRA_AUDIO_PATH);
             finish();
+            return;
         }
 
         mTransScrollView = findViewById(R.id.scrollViewTrs);
@@ -234,7 +235,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onStart() {
         super.onStart();
-        Log.i(TransActivity.class.getName(), "onStart");
+        Log.i("onStart");
 
         if (mService != null) {
             mPlayer.init(mService);
@@ -252,7 +253,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TransActivity.class.getName(), "onResume");
+        Log.i("onResume");
         highlightMatches();
     }
 
@@ -263,7 +264,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onPause() {
         super.onPause();
-        Log.i(TransActivity.class.getName(), "onPause");
+        Log.i("onPause");
     }
 
 
@@ -284,10 +285,10 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onStop() {
         super.onStop();
-        Log.i(TransActivity.class.getName(), "onStop");
+        Log.i("onStop");
 
         SharedPreferences.Editor editor = mSettings.edit();
-        // Log.i(TransActivity.class.getName(), "Saving scroll Y = " + scrollViewTrs.getScrollY());
+        // Log.i("Saving scroll Y = " + scrollViewTrs.getScrollY());
         editor.putInt("scrollY_" + mTransPath, mTransScrollView.getScrollY());
         editor.apply();
 
@@ -309,7 +310,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i(TransActivity.class.getName(), "onDestroy");
+        Log.i("onDestroy");
 
         if (mService != null && mService.isPlaying()) {
             doUnbindService();
@@ -317,9 +318,9 @@ public class TransActivity extends AbstractDiktofonActivity {
             doUnbindService();
             boolean succeeded = stopService(new Intent(this, PlayerService.class));
             if (succeeded) {
-                Log.i(TransActivity.class.getName(), "Successfully shut down PlayerService");
+                Log.i("Successfully shut down PlayerService");
             } else {
-                Log.i(TransActivity.class.getName(), "Failed to shut down PlayerService: there must be bound clients");
+                Log.i("Failed to shut down PlayerService: there must be bound clients");
             }
         }
     }
@@ -392,7 +393,7 @@ public class TransActivity extends AbstractDiktofonActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        Log.i(TransActivity.class.getName(), "onNewIntent: " + intent);
+        Log.i("onNewIntent: " + intent);
         setIntent(intent);
         handleIntent(intent);
     }
@@ -524,7 +525,7 @@ public class TransActivity extends AbstractDiktofonActivity {
     }
 
 
-    Map<String, String> getIdToLabel(Map<String, Speaker> idToSpeaker) {
+    private Map<String, String> getIdToLabel(Map<String, Speaker> idToSpeaker) {
         Map<String, String> idToLabel = new HashMap<>();
         for (Map.Entry<String, Speaker> entry : idToSpeaker.entrySet()) {
             String tspeakerLocalId = entry.getKey();
@@ -599,7 +600,7 @@ public class TransActivity extends AbstractDiktofonActivity {
                 mTransView.setMovementMethod(LinkMovementMethod.getInstance());
                 refreshDisplay(service);
                 final int scrollY = mSettings.getInt("scrollY_" + mTransPath, 0);
-                //Log.i(TransActivity.class.getName(), "Scrolling to Y = " + scrollY);
+                //Log.i("Scrolling to Y = " + scrollY);
                 // Scrolling to the remembered position.
                 mTransScrollView.post(() -> mTransScrollView.scrollTo(0, scrollY));
             } catch (SAXException e) {

@@ -23,7 +23,8 @@
         android:includeFontPadding="false"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:textSize="@dimen/textSizePlayer"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?android:textColorSecondary"
         tools:text="0:00" />
 
     <SeekBar

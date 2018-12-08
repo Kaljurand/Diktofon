@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textSizeTranscription">20sp</dimen>
-    <dimen name="textSizePlayer">20sp</dimen>
     <dimen name="paddingPlayer">15dp</dimen>
-    <dimen name="paddingTranscription">8dp</dimen>
     <dimen name="paddingRecordings">8dp</dimen>
-    <dimen name="textSizeRecordingsTitle">20sp</dimen>
     <dimen name="textSizeRecordingsMeta">16sp</dimen>
     <dimen name="textSizeRecordingsTrans">16sp</dimen>
     <dimen name="textSizeRecordingsTags">15sp</dimen>
-    <integer name="linesRecordingsTrans">4</integer>
+    <integer name="linesRecordingsTrans">5</integer>
     <dimen name="textSizeTagsTitle">20sp</dimen>
-    <dimen name="textSizeSpeakersTitle">20sp</dimen>
 </resources>

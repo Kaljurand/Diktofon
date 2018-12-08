@@ -26,7 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textSize="@dimen/textSizeRecordingsTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
         tools:text="2011-04-01 (Fri) 17:05" />
 
     <!-- Meta info -->
@@ -37,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/list_item_title"
         android:singleLine="true"
-        android:textColor="@color/l_fg_meta"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="?android:textColorSecondary"
         android:textSize="@dimen/textSizeRecordingsMeta"
         tools:text="12:34  mpeg  120 MB  1000 words  5 speakers" />
 
@@ -53,8 +55,9 @@
         android:bufferType="spannable"
         android:ellipsize="none"
         android:lines="@integer/linesRecordingsTrans"
-        android:text="@string/instructionsRecorder"
-        android:textSize="@dimen/textSizeRecordingsTrans" />
+        android:textColor="?android:textColorPrimary"
+        android:textSize="@dimen/textSizeRecordingsTrans"
+        tools:text="this is some meta info" />
 
     <!-- Tags -->
 
@@ -69,6 +72,7 @@
         android:bufferType="spannable"
         android:gravity="end"
         android:singleLine="true"
+        android:textColor="?android:textColorPrimary"
         android:textSize="@dimen/textSizeRecordingsTags"
         tools:text="song, mutionu, forest, trees, living" />
 

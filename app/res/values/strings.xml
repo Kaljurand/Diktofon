@@ -14,7 +14,6 @@
     <string name="search_transcriptions">Search (case insensitive)</string>
     <string name="search_transcriptions_by_voice">Speak a keyword</string>
     <string name="searchable_settings_description">Transcriptions of speech recordings</string>
-    <string name="instructionsRecorder">Press the button to start recording, press again to pause/resume. Press the BACK-key to finish the recording session.</string>
     <string name="permission_rationale">Please grant the essential permissions.</string>
     <!-- Context menu: recordings -->
     <string name="cm_notes_view">Read &amp; Listen</string>
@@ -75,6 +74,7 @@
     <string name="error_failed_obtain_token">ERROR: Failed to obtain a valid transcription token</string>
     <string name="error_failed_obtain_trans">ERROR: Failed to obtain the transcription after %1$d tries. Please try again later.</string>
     <string name="error_failed_pick_speaker">ERROR: Failed to pick a speaker.</string>
+    <string name="error_failed_launch_intent">ERROR: Intent is not serviced by any app</string>
     <string name="b_yes">Yes</string>
     <string name="b_no">No</string>
     <string name="b_ok">OK</string>
@@ -154,15 +154,12 @@
     <string name="titleEmail">Email address</string>
     <string name="summaryEmail">Provide an email address as a form of identification for the server</string>
     <string name="defaultEmail" translatable="false">kaljurand+diktofon@gmail.com</string>
-    <string name="titleRecording">Recording</string>
     <string name="titleTranscribing">Transcribing</string>
     <string name="titleUi">User interface</string>
     <string name="titleTranscribingPreferences">Transcription service settings</string>
     <string name="summaryTranscribingPreferences">Waiting time, polling frequency, …</string>
     <string name="titleAutotranscribe">Autotranscribe</string>
     <string name="summaryAutotranscribe">Transcribe immediately after recording</string>
-    <string name="titleRecordingResolution">Resolution</string>
-    <string name="summaryRecordingResolution">Quality of the recording (16-bits)</string>
 
     <!-- Wait length -->
     <string name="titleTranscribingWaitLength">Waiting coefficient</string>
