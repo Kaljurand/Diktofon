@@ -18,18 +18,13 @@ package kaljurand_at_gmail_dot_com.diktofon.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import kaljurand_at_gmail_dot_com.diktofon.Log;
-import kaljurand_at_gmail_dot_com.diktofon.R;
 
 public abstract class DiktofonService extends Service {
-
-    private static final String LOG_TAG = DiktofonService.class.getName();
 
     private NotificationManager mNotificationMngr;
     private SharedPreferences mPreferences;
@@ -45,7 +40,7 @@ public abstract class DiktofonService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i(LOG_TAG, "onCreate");
+        Log.i("onCreate");
         mPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         mNotificationMngr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
@@ -63,7 +58,7 @@ public abstract class DiktofonService extends Service {
      */
     @Override
     public void onDestroy() {
-        Log.i(LOG_TAG, "onDestroy");
+        Log.i("onDestroy");
         cancelNotification();
         saveState();
         releaseResources();
@@ -89,27 +84,5 @@ public abstract class DiktofonService extends Service {
     protected void publishNotification(Notification notification, int notificationId) {
         mNotificationMngr.notify(notificationId, notification);
         mNotificationIsShowing = true;
-    }
-
-
-    /**
-     * TODO: rewrite this using Notification.Builder
-     *
-     * @param tickerText  Ticker text (shown briefly)
-     * @param contentText Content text (shown when the notification is pulled down)
-     * @param intent      Intent to be launched if notification is clicked
-     * @param flags       Notification flags
-     * @return Notification object
-     */
-    protected Notification createNotification(int icon, CharSequence tickerText, CharSequence contentText, Intent intent, int flags) {
-        CharSequence contentTitle = getString(R.string.app_name);
-        Notification notification = new Notification(icon, tickerText, System.currentTimeMillis());
-        // TODO: are there default flags which we should preserve?
-        //notification.flags |= flags;
-        notification.flags = flags;
-        // TODO: is the this-context good here?
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        //notification.setLatestEventInfo(this, contentTitle, contentText, contentIntent);
-        return notification;
     }
 }

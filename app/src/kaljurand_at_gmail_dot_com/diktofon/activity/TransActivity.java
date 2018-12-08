@@ -17,7 +17,6 @@
 package kaljurand_at_gmail_dot_com.diktofon.activity;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.ContentValues;
@@ -302,10 +301,7 @@ public class TransActivity extends AbstractDiktofonActivity {
         // We reuse the same intent that was used to launch this activity.
         // GuiUtils.createTransIntent(this, mTitle, mAudioPath, mTransPath, mQuery),
         if (mService.isPlaying()) {
-            mService.showNotification(
-                    String.format(getString(R.string.notification_text_player_playing), mTitle),
-                    Notification.FLAG_AUTO_CANCEL | Notification.FLAG_ONGOING_EVENT
-            );
+            mService.showNotification(String.format(getString(R.string.notification_text_player_playing), mTitle));
         }
     }
 

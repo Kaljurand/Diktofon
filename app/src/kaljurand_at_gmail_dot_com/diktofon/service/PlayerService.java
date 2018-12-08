@@ -17,6 +17,7 @@
 package kaljurand_at_gmail_dot_com.diktofon.service;
 
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -98,10 +99,7 @@ public class PlayerService extends DiktofonService {
             // Here we can call seekTo() and later start()
             seekTo(0);
             if (isNotificationShowing()) {
-                showNotification(
-                        String.format(getString(R.string.notification_text_player_completed), title),
-                        Notification.FLAG_AUTO_CANCEL
-                );
+                showNotification(String.format(getString(R.string.notification_text_player_completed), title));
             }
         });
 
@@ -212,16 +210,16 @@ public class PlayerService extends DiktofonService {
     /**
      * <p>Show a notification while the activity is hidden but the service is running.</p>
      */
-    public void showNotification(CharSequence title, int flags) {
-        Notification notification = createNotification(
-                R.drawable.ic_stat_notify_player,
-                getString(R.string.notification_ticker_player),
-                title,
-                mIntent,
-                flags
-        );
-
-        publishNotification(notification, NOTIFICATION_ID);
+    public void showNotification(CharSequence title) {
+        //mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_notify_player)
+                .setContentTitle(getString(R.string.notification_ticker_player))
+                .setContentText(title)
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setContentIntent(PendingIntent.getActivity(this, 0, mIntent, 0))
+                .setAutoCancel(true);
+        publishNotification(builder.build(), NOTIFICATION_ID);
     }
 
 
