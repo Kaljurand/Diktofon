@@ -335,7 +335,7 @@ public class TransActivity extends AbstractDiktofonActivity {
         inflater.inflate(R.menu.menu_trans, menu);
 
         if (mTranscription == null) {
-            menu.findItem(R.id.menu_trans_search).setEnabled(false);
+            //menu.findItem(R.id.menu_trans_search).setEnabled(false);
             //menu.findItem(R.id.menu_trans_speakers).setEnabled(false);
             menu.findItem(R.id.menu_trans_share_trans).setEnabled(false);
             menu.findItem(R.id.menu_trans_share_all).setEnabled(false);
@@ -348,10 +348,11 @@ public class TransActivity extends AbstractDiktofonActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            /*
             case R.id.menu_trans_search:
                 onSearchRequested();
                 return true;
-			/*		case R.id.menu_trans_speakers:
+			case R.id.menu_trans_speakers:
 			if (transcription != null) {
 				Intent speakersIntent = new Intent(this, SpeakerListActivity.class);
 				speakersIntent.putExtra(SpeakerListActivity.EXTRA_SPEAKERS, Utils.setToArrayList(transcription.getSpeakerIds()));
