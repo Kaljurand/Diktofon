@@ -40,7 +40,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="audio/*"></data>
+                <data android:mimeType="audio/*" />
                 <data android:mimeType="video/*" />
             </intent-filter>
             <intent-filter>
@@ -48,17 +48,19 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="audio/*"></data>
+                <data android:mimeType="audio/*" />
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.Preferences"
-            android:label="@string/activity_preferences_name"></activity>
+            android:label="@string/activity_preferences_name"
+            android:parentActivityName=".activity.RecordingListActivity" />
         <activity
             android:name=".activity.TransActivity"
             android:label="@string/activity_trans_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.RecordingListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -69,12 +71,13 @@
         </activity>
         <activity
             android:name=".activity.DetailsActivity"
+            android:label="@string/activity_details_name"
 
-            android:label="@string/activity_details_name"></activity>
+            android:parentActivityName=".activity.RecordingListActivity" />
         <activity
             android:name=".activity.SpeakerListActivity"
-
-            android:label="@string/activity_speakers_name"></activity>
+            android:label="@string/activity_speakers_name"
+            android:parentActivityName=".activity.TransActivity" />
 
         <!--
 		<activity
@@ -85,12 +88,14 @@
 
         <activity
             android:name=".activity.TagSelectorActivity"
+            android:label="@string/activity_tagselector_name"
 
-            android:label="@string/activity_tagselector_name"></activity>
+            android:parentActivityName=".activity.RecordingListActivity" />
         <activity
             android:name=".activity.AboutActivity"
+            android:label="@string/activity_about_name"
 
-            android:label="@string/activity_about_name"></activity>
+            android:parentActivityName=".activity.RecordingListActivity" />
 
         <service android:name=".service.PlayerService" />
 
