@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name" translatable="false">Diktofon</string>
-    <string name="app_author" translatable="false">Kaarel Kaljurand</string>
     <string name="app_description">Dictaphone with Estonian speech-to-text</string>
     <string name="activity_notelistview_name">List of recordings</string>
     <string name="activity_recording_send_name">Copy to Diktofon</string>
@@ -29,7 +28,7 @@
     <string name="cm_speakers_delete">Delete</string>
 
     <!-- Menus in any activity -->
-    <string name="menu_add">Add recording</string>
+    <string name="menu_add">Record audio</string>
     <string name="menu_edittags_add">Add tags</string>
     <string name="menu_speakers_add">Add speaker</string>
     <string name="menu_search">Search</string>
@@ -64,7 +63,6 @@
     <string name="menu_edittags_sort_by_state">by checked state</string>
     <string name="error_cant_write_sdcard">ERROR: Failed to write on the SD card</string>
     <string name="error_cant_create_dir">ERROR: Failed to create a directory</string>
-    <string name="error_cant_create_recorder">ERROR: Failed to create an audio recorder</string>
     <string name="error_cant_read_dir">ERROR: Failed to read the directory</string>
     <string name="error_failed_make_recording">ERROR: Failed to make recording</string>
     <string name="error_failed_import_audio">ERROR: Failed to import an audio file</string>
@@ -85,7 +83,6 @@
     <string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
     <string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
     <string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>
-    <string name="confirm_finish_activity_recorder">Are you sure you want to finish the recording session?</string>
     <string name="chooser_record">Record using:</string>
     <string name="chooser_import">Import using:</string>
     <string name="subject_share">Recording %1$s</string>
@@ -118,11 +115,8 @@
     <string name="toast_copy_failed_count">Failed to copy %1$d files :(</string>
     <string name="toast_copy_failed">Copying failed :(</string>
     <string name="notification_ticker_player">Playing in the background</string>
-    <string name="notification_ticker_recorder">Recording in the background</string>
     <string name="notification_text_player_playing">Playing: %1$s</string>
     <string name="notification_text_player_completed">Completed: %1$s</string>
-    <string name="notification_text_recorder_recording">Recording in progress…</string>
-    <string name="notification_text_recorder_pausing">Recording on pause</string>
     <string name="title_note_view">%1$s / %2$d x %3$s</string>
     <string name="title_notelist_view">%1$d/%2$d/%3$d all/trans/need</string>
     <string name="emptyview_recordings">There are no recordings.</string>

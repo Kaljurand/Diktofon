@@ -290,7 +290,7 @@ public class TransActivity extends AbstractDiktofonActivity {
         SharedPreferences.Editor editor = mSettings.edit();
         // Log.i(TransActivity.class.getName(), "Saving scroll Y = " + scrollViewTrs.getScrollY());
         editor.putInt("scrollY_" + mTransPath, mTransScrollView.getScrollY());
-        editor.commit();
+        editor.apply();
 
         if (mPlayer != null) {
             mPlayer.release();

@@ -18,9 +18,5 @@
 
     <dimen name="textSizeTagsTitle">20sp</dimen>
     <dimen name="textSizeSpeakersTitle">20sp</dimen>
-    <dimen name="textSizeRecorderInstructions">20sp</dimen>
-    <dimen name="textSizeRecorderVolume">24sp</dimen>
-    <dimen name="textSizeRecorderStatus">22sp</dimen>
-    <dimen name="textSizeRecorderChronometer">28sp</dimen>
 
 </resources>

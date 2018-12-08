@@ -43,7 +43,7 @@ public abstract class AbstractDiktofonActivity extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(key, b);
-        editor.commit();
+        editor.apply();
     }
 
 }

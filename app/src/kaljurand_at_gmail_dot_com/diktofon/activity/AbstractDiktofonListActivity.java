@@ -36,6 +36,6 @@ public abstract class AbstractDiktofonListActivity extends ListActivity {
     void set(SharedPreferences prefs, String key, boolean b) {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(key, b);
-        editor.commit();
+        editor.apply();
     }
 }

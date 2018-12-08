@@ -33,7 +33,7 @@
     <string name="cm_speakers_delete">Kustuta</string>
 
     <!-- Menus in any activity -->
-    <string name="menu_add">Lisa lindistus</string>
+    <string name="menu_add">Lindista</string>
     <string name="menu_edittags_add">Lisa silte</string>
     <string name="menu_search">Otsi</string>
     <string name="menu_tags">Sildid</string>
@@ -67,10 +67,8 @@
     <string name="confirm_delete_recording">Tahate kindlasti kustutada lindistust \"%1$s\"?</string>
     <string name="confirm_delete_speaker">Tahate kindlasti kustutada kõnelejat \"%1$s\"?</string>
     <string name="confirm_transcribe_all">Tahate kindlasti transkribeerida %1$d lindistust?</string>
-    <string name="confirm_finish_activity_recorder">Tahate kindlasti lindistamist lõpetada?</string>
     <string name="error_cant_write_sdcard">VIGA: Mälukaardile kirjutamine luhtus</string>
     <string name="error_cant_create_dir">VIGA: Kataloogi loomine luhtus</string>
-    <string name="error_cant_create_recorder">VIGA: Lindistaja loomine luhtus</string>
     <string name="error_cant_read_dir">VIGA: Kataloogi lugemine luhtus</string>
     <string name="error_failed_make_recording">VIGA: Lindistamine luhtus</string>
     <string name="error_failed_import_audio_uri">VIGA: Audiofaili import luhtus: %1$s</string>
@@ -110,11 +108,8 @@
     <string name="toast_copy_failed_count">%1$d faili kopeerimine ebaõnnestus :(</string>
     <string name="toast_copy_failed">Kopeerimine ebaõnnestus :(</string>
     <string name="notification_ticker_player">Mängin taustal</string>
-    <string name="notification_ticker_recorder">Lindistan taustal</string>
     <string name="notification_text_player_playing">Mängin: %1$s</string>
     <string name="notification_text_player_completed">Lõpetatud: %1$s</string>
-    <string name="notification_text_recorder_recording">Lindistamine käib…</string>
-    <string name="notification_text_recorder_pausing">Lindistamine pausil</string>
     <string name="emptyview_recordings">Lindistusi pole.</string>
     <string name="emptyview_speakers">Kõnelejaid pole.</string>
 
