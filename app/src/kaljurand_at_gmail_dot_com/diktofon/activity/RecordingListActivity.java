@@ -46,10 +46,10 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
@@ -91,9 +91,6 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-
-    private static final String LOG_TAG = RecordingListActivity.class.getName();
-
     private SharedPreferences mPrefs;
     private ListView mListView;
     private RecordingList mRecordings;
@@ -123,16 +120,19 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
 
         handleIntent(getIntent());
         registerForContextMenu(mListView);
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+        // Loading the recordings must happen before onStart because, e.g. tag selector assumes
+        // that recordings are not reloaded when it returns.
         if (arePermissionsEnabled()) {
             loadRecordingsInBackground();
         } else {
             requestMultiplePermissions();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
 
@@ -251,24 +251,19 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
                 onSearchRequested();
                 return true;
             case R.id.menu_notes_sort_by_timestamp:
-                mRecordings.sort(Recording.TIMESTAMP_COMPARATOR);
-                refreshAdapter();
+                applySortMenuItem(item, Recording.TIMESTAMP_COMPARATOR);
                 return true;
             case R.id.menu_notes_sort_by_size:
-                mRecordings.sort(Recording.SIZE_COMPARATOR);
-                refreshAdapter();
+                applySortMenuItem(item, Recording.SIZE_COMPARATOR);
                 return true;
             case R.id.menu_notes_sort_by_duration:
-                mRecordings.sort(Recording.DURATION_COMPARATOR);
-                refreshAdapter();
+                applySortMenuItem(item, Recording.DURATION_COMPARATOR);
                 return true;
             case R.id.menu_notes_sort_by_wordcount:
-                mRecordings.sort(Recording.WORDCOUNT_COMPARATOR);
-                refreshAdapter();
+                applySortMenuItem(item, Recording.WORDCOUNT_COMPARATOR);
                 return true;
             case R.id.menu_notes_sort_by_speakercount:
-                mRecordings.sort(Recording.SPEAKERCOUNT_COMPARATOR);
-                refreshAdapter();
+                applySortMenuItem(item, Recording.SPEAKERCOUNT_COMPARATOR);
                 return true;
 			/*		case R.id.menu_recordings_speakers:
 			Intent speakersIntent = new Intent(this, SpeakerListActivity.class);
@@ -369,11 +364,16 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
      */
     @Override
     protected void onNewIntent(Intent intent) {
-        Log.i(LOG_TAG, "onNewIntent: " + intent);
+        Log.i("onNewIntent: " + intent);
         setIntent(intent);
         handleIntent(intent);
     }
 
+    private void applySortMenuItem(MenuItem item, Comparator<Recording> comparator) {
+        item.setChecked(!item.isChecked());
+        mRecordings.sort(comparator);
+        refreshAdapter();
+    }
 
     private void copyIntentDataToRecordingsDir(Intent intent) {
         Uri audioUri = intent.getData();
@@ -480,12 +480,12 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
                         new SearchRecentSuggestions(this, SearchSuggestionsProvider.AUTHORITY, SearchSuggestionsProvider.MODE);
                 suggestions.saveRecentQuery(mQuery, null);
 
-                Log.i(LOG_TAG, "Query: " + mQuery);
+                Log.i("Query: " + mQuery);
                 mRecordings.sort(new Recording.MatchComparator(mQuery));
                 refreshAdapter();
             }
         } else {
-            Log.i(LOG_TAG, "Intent not handled:" + intent);
+            Log.i("Intent not handled:" + intent);
         }
     }
 

@@ -65,16 +65,9 @@ public class RecordingList {
         addRecordingTags(rec);
     }
 
-
     public void add(Recording rec) {
         mRecordings.add(rec);
         addRecordingTags(rec);
-    }
-
-
-    public void remove(int index) {
-        mRecordings.remove(index);
-        // TODO: remove tags
     }
 
     public void remove(Recording rec) {
@@ -86,7 +79,6 @@ public class RecordingList {
         Collections.sort(mRecordings, c);
     }
 
-
     public int getNeedsTransCount() {
         int needsTransCount = 0;
         for (Recording rec : mRecordings) {
@@ -97,7 +89,6 @@ public class RecordingList {
         return needsTransCount;
     }
 
-
     public int getTransCount() {
         int transCount = 0;
         for (Recording rec : mRecordings) {
@@ -107,7 +98,6 @@ public class RecordingList {
         }
         return transCount;
     }
-
 
     /**
      * @return Copy of the tags set
@@ -129,21 +119,10 @@ public class RecordingList {
         return true;
     }
 
-
     private void addRecordingTags(Recording rec) {
         for (String tag : rec.getTags()) {
-            addTag(tag);
+            Integer count = mTags.get(tag);
+            mTags.put(tag, count == null ? 1 : count + 1);
         }
-    }
-
-
-    private void addTag(String tag) {
-        Integer count = mTags.get(tag);
-        if (count == null) {
-            count = 1;
-        } else {
-            count++;
-        }
-        mTags.put(tag, count);
     }
 }

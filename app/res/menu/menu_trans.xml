@@ -17,18 +17,15 @@
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_trans_share">
         <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/menu_trans_share_trans"
-                    android:title="@string/menu_trans_share_trans" />
-                <item
-                    android:id="@+id/menu_trans_share_audio"
-                    android:title="@string/menu_trans_share_audio" />
-                <item
-                    android:id="@+id/menu_trans_share_all"
-                    android:title="@string/menu_trans_share_all" />
-            </group>
+            <item
+                android:id="@+id/menu_trans_share_trans"
+                android:title="@string/menu_trans_share_trans" />
+            <item
+                android:id="@+id/menu_trans_share_audio"
+                android:title="@string/menu_trans_share_audio" />
+            <item
+                android:id="@+id/menu_trans_share_all"
+                android:title="@string/menu_trans_share_all" />
         </menu>
     </item>
-
 </menu>

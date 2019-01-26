@@ -16,6 +16,6 @@
 
     <!-- TODO: deprecate -->
     <color name="l_fg_text">#000000</color>
-    <color name="l_bg_tags">#ffcc99</color>
+    <color name="l_bg_tags">#dcedc8</color>
 
 </resources>

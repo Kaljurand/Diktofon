@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -74,8 +73,7 @@ public class TagSelectorActivity extends Activity {
         lv.setAdapter(mAdapter);
         updateTitle();
 
-        final Button b_apply_tags = findViewById(R.id.b_apply_tags);
-        b_apply_tags.setOnClickListener(v -> {
+        findViewById(R.id.b_apply_tags).setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra(EXTRA_TAGS_SELECTED, Utils.setToArray(mAdapter.getSelectedTags()));
             setResult(Activity.RESULT_OK, intent);
@@ -86,11 +84,11 @@ public class TagSelectorActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.tagselector, menu);
-        MenuItem menuItem = menu.findItem(R.id.menu_edittags_add);
-        menuItem.setEnabled(mAddEnabled);
-        return true;
+        if (mAddEnabled) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.tagselector, menu);
+        }
+        return mAddEnabled;
     }
 
 

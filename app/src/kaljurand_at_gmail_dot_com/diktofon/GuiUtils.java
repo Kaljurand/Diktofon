@@ -95,7 +95,7 @@ public class GuiUtils {
     public static AlertDialog getTextEntryDialog(Context context, String title, String initialText, final ExecutableString ex) {
         LayoutInflater factory = LayoutInflater.from(context);
         final View textEntryView = factory.inflate(R.layout.alert_dialog_text_entry, null);
-        final EditText et = (EditText) textEntryView.findViewById(R.id.tagname_edit);
+        final EditText et = textEntryView.findViewById(R.id.tagname_edit);
         et.setText(initialText);
         return new AlertDialog.Builder(context)
                 .setTitle(title)
