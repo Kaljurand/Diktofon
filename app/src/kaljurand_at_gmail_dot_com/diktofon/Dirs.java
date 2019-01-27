@@ -29,19 +29,17 @@ public class Dirs {
     // In other words: no recording can have a name that starts with a dot.
     public static final FilenameFilter FILENAME_FILTER = (dir, name) -> !name.startsWith(".");
 
-
     private static final String RECORDINGS = "/recordings/";
 
     private static File sBaseDir;
-    private static File sRecordingsDir;
     private static File sNomediaFile;
 
     static {
+        // TODO: maybe use ContextWrapper.getFilesDir()
         String baseDirAsString = Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/Android/data/kaljurand_at_gmail_dot_com.diktofon/files/";
 
         sBaseDir = new File(baseDirAsString);
-        sRecordingsDir = new File(baseDirAsString + RECORDINGS);
         sNomediaFile = new File(baseDirAsString + RECORDINGS + ".nomedia");
     }
 

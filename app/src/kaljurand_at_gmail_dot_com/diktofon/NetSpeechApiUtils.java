@@ -33,8 +33,8 @@ public class NetSpeechApiUtils {
     // TODO: verify: Max file size supported by webtrans-server is 100MB.
     public static final int MAX_AUDIO_FILE_LENGTH = 100000000;
 
-    // BUG: Set this from the resources
-    public static final String USER_AGENT_DIKTOFON = "Diktofon/1.1.06";
+    // TODO: Set this from the resources
+    public static final String USER_AGENT_DIKTOFON = "Diktofon/1.1.12";
 
     private static final int SAMPLE_RATE = 16000;
 
@@ -47,7 +47,6 @@ public class NetSpeechApiUtils {
      * throws an exception if a problem occurs.</p>
      */
     public static String tokenToTrans(String token) throws TransException {
-        //return mockTokenToTrans(token);
         TranscriptionDownloader td = new TranscriptionDownloader();
         td.setUserAgentComment(USER_AGENT_DIKTOFON);
         String trans;
@@ -75,7 +74,6 @@ public class NetSpeechApiUtils {
 
 
     public static String fileToToken(File file, String mimeType, String email) throws IOException {
-        //return mockFileToToken(file, mimeType, email);
         AudioUploader uploader = new AudioUploader(email);
         uploader.setUserAgentComment(USER_AGENT_DIKTOFON);
         return uploader.uploadFileUnderRandomName(file, mimeType, SAMPLE_RATE);
@@ -85,16 +83,5 @@ public class NetSpeechApiUtils {
     private static boolean isLegalToken(String token) {
         return ee.ioc.phon.netspeechapi.Utils.isLegalToken(token);
     }
-
-
-	/*
-	public static String mockFileToToken(File file, String mime, String email) throws ClientProtocolException, IOException {
-		return "mock token";
-	}
-
-	public static String mockTokenToTrans(String token) throws TransException {
-		return "This is a mock transcription!";
-	}
-	*/
 
 }

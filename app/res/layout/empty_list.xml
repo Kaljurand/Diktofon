@@ -6,6 +6,6 @@
     android:layout_height="fill_parent"
     android:gravity="center"
     android:padding="@dimen/layoutMargin1"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textColor="?android:textColorPrimary"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textColor="?android:textColorSecondary"
     tools:text="Nothing here" />

@@ -80,7 +80,7 @@ public class RecordingListAdapter extends BaseAdapter {
         holder.list_item_title.setText(rec.getTimestampAsString());
 
         // Meta info (duration, word count, ...)
-        holder.list_item_meta.setText(getMetaInfo(mContext, rec));
+        holder.list_item_meta.setText(getMetaInfo(rec));
 
         // Transcription or state info
         if (rec.hasTrans()) {
@@ -88,7 +88,7 @@ public class RecordingListAdapter extends BaseAdapter {
             holder.list_item_trans.setVisibility(View.VISIBLE);
             if (mSearchQuery != null && rec.getMatchCount(mSearchQuery) > 0) {
                 SpannableStringBuilder ssb = new SpannableStringBuilder();
-                ssb.append(rec.getMatchCount(mSearchQuery) + " x");
+                ssb.append(rec.getMatchCount(mSearchQuery) + " ×");
                 int labelEnd = ssb.length();
                 ssb.setSpan(new HighlightSpan(mRes.getColor(R.color.highlight)), 0, labelEnd, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
                 ssb.append(' ');
@@ -181,17 +181,16 @@ public class RecordingListAdapter extends BaseAdapter {
     }
 
 
-    // TODO: probably the users don't care about the MIME type, it would
-    // save some space not to print it.
-    private String getMetaInfo(Context context, Recording note) {
-        String metaText = note.getDurationAsString() + "  " + note.getMimePart() + "  " + note.getSizeAsString();
+    private String getMetaInfo(Recording note) {
+        String bind = " · ";
+        String metaText = note.getDurationAsString() + bind + note.getMimePart() + bind + note.getSizeAsString();
         int wordCount = note.getWordCount();
         if (wordCount >= 0) {
-            metaText += "  " + wordCount + " " + context.getString(R.string.words);
+            metaText += bind + String.format(mContext.getString(R.string.words), wordCount);
         }
         int speakerCount = note.getSpeakerCount();
         if (speakerCount >= 0) {
-            metaText += "  " + speakerCount + " " + context.getString(R.string.speakers);
+            metaText += bind + String.format(mContext.getString(R.string.speakers), speakerCount);
         }
         return metaText;
     }

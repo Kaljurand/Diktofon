@@ -117,7 +117,7 @@
     <string name="titleTagSelector">%1$d silti</string>
     <string name="about">&lt;p>&lt;em>%1$s v%2$s&lt;/em>, autor:
 		&lt;a href="http://www.google.com/profiles/kaljurand">Kaarel Kaljurand&lt;/a>&lt;/p>
-		&lt;p>%1$si abil saab salvestada heli ning hiljem selles esinevat eestikeelset kõne transkribeerida.
+		&lt;p>%1$si abil saab audiofailides esinevat eestikeelset kõne transkribeerida.
 		Paljud %1$si funktsioonid tuginevadki transkriptsiooni olemasolule, nt:&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; märksõnapõhine otsing;&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sorteerimine sõnade ja kõnelejate arvu järgi;&lt;/p>
@@ -125,13 +125,6 @@
 		&lt;p>Ülejäänud funktsioonid võimaldavad %1$si kasutada tavalise diktofonina, nt:&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sildistamine ja sildipõhine otsing;&lt;/p>
 		&lt;p>&amp;nbsp;&amp;nbsp;&amp;bull; lindistuste sorteerimine loomisaja, kestuse, ja suuruse järgi.&lt;/p>
-
-		&lt;p>%1$si oma lindistaja võimaldab salvestada kõrge kvaliteediga heli (16-bit/16kHz), mis on eduka
-		kõnetuvastuse eelduseks. Samuti saab seda taustal tööle panna, mis on kasulik pikemate lindistuste
-		tegemisel, mille ajal on vaja telefoni ka muuks kasutada. Samas ei oska %1$si oma lindistaja
-		heli kokku pakkida, mistõttu on salvestused palju mahukamad, kui kokkupakitud formaatide (nt mp3, ogg) puhul.
-		Seega võimaldab %1$s kasutada ka teisi telefoni installeeritud lindistajaid (nt RecForge oskab salvestada
-		mp3 ja ogg formaatidesse) ning importida audiofaile teistest rakendustest (nt Box).&lt;/p>
 
 		&lt;p>Eestikeelse kõne automaattuvastus toimub läbi TTÜ Küberneetika Instituudi
 		foneetika ja kõnetehnoloogia labori veebiteenuse, vt
@@ -149,9 +142,8 @@
     <string name="progress_failure">Transkribeerimine luhtus :(</string>
     <string name="submit_bug_report">BUG: Juhtus viga. Palun raporteerige see aadressil https://github.com/Kaljurand/Diktofon/issues</string>
 
-    <!-- Words -->
-    <string name="words">sõna</string>
-    <string name="speakers">kõnelejat</string>
+    <string name="words">%1$d sõna</string>
+    <string name="speakers">%1$d kõnelejat</string>
 
     <!-- Settings -->
     <string name="titleTranscribing">Transkribeerimine</string>

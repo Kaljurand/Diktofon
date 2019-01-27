@@ -26,11 +26,11 @@ public class MyFileUtils {
     public static String getSizeAsString(long size) {
         String sizeAsString;
         if (size > FileUtils.ONE_MB) {
-            sizeAsString = (long) (size / FileUtils.ONE_MB) + "MB";
+            sizeAsString = (long) (size / FileUtils.ONE_MB) + " MB";
         } else if (size > FileUtils.ONE_KB) {
-            sizeAsString = (long) (size / FileUtils.ONE_KB) + "kB";
+            sizeAsString = (long) (size / FileUtils.ONE_KB) + " kB";
         } else {
-            sizeAsString = size + "b";
+            sizeAsString = size + " b";
         }
         if (size > NetSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
             sizeAsString += " !!!";
@@ -42,11 +42,11 @@ public class MyFileUtils {
     public static String getSizeAsStringExact(long size) {
         String sizeAsString;
         if (size > FileUtils.ONE_MB) {
-            sizeAsString = String.format("%.1fMB", (float) size / FileUtils.ONE_MB);
+            sizeAsString = String.format("%.1f MB", (float) size / FileUtils.ONE_MB);
         } else if (size > FileUtils.ONE_KB) {
-            sizeAsString = String.format("%.1fkB", (float) size / FileUtils.ONE_KB);
+            sizeAsString = String.format("%.1f kB", (float) size / FileUtils.ONE_KB);
         } else {
-            sizeAsString = size + "b";
+            sizeAsString = size + " b";
         }
         if (size > NetSpeechApiUtils.MAX_AUDIO_FILE_LENGTH) {
             sizeAsString += " !!!";

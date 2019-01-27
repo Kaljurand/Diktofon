@@ -615,7 +615,13 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
             int numberOfFiles = files.length;
             if (numberOfFiles > 0) {
                 for (File file : files[0]) {
-                    recList.add(new Recording(file));
+                    Recording rec = new Recording(file);
+                    if (rec.hasToken() && !rec.hasTrans()) {
+                        rec.addTag(":✍");
+                    } else {
+                        rec.removeTag(":✍");
+                    }
+                    recList.add(rec);
                     publishProgress(file.toString());
                 }
             }

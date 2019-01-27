@@ -78,9 +78,9 @@ public class Recording {
     private final long mTimestamp;
     private final int mDuration;
 
-    private final Map<State, Long> mStateToTime = new HashMap<State, Long>();
-    private final Map<String, Integer> mMatchCache = new HashMap<String, Integer>();
-    private final List<String> mMessages = new ArrayList<String>();
+    private final Map<State, Long> mStateToTime = new HashMap<>();
+    private final Map<String, Integer> mMatchCache = new HashMap<>();
+    private final List<String> mMessages = new ArrayList<>();
 
     private String mExcerpt = null;
     private String mSearchData = null;
@@ -228,7 +228,7 @@ public class Recording {
 
 
     private void initTags() {
-        mTags = new HashSet<String>();
+        mTags = new HashSet<>();
         File f = makeFile(TAGS, mId);
         try {
             String tagsAsString = MyFileUtils.loadFile(f);
@@ -254,7 +254,7 @@ public class Recording {
         if (mTags == null) {
             initTags();
         }
-        return new TreeSet<String>(mTags);
+        return new TreeSet<>(mTags);
     }
 
 
@@ -607,15 +607,11 @@ public class Recording {
 
 
     private static int numberCompare(long n1, long n2) {
-        if (n1 < n2) return 1;
-        if (n1 > n2) return -1;
-        return 0;
+        return Long.compare(n2, n1);
     }
 
     private static int numberCompare(int n1, int n2) {
-        if (n1 < n2) return 1;
-        if (n1 > n2) return -1;
-        return 0;
+        return Integer.compare(n2, n1);
     }
 
 

@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name" translatable="false">Diktofon</string>
-    <string name="app_description">Dictaphone with Estonian speech-to-text</string>
-    <string name="activity_notelistview_name">List of recordings</string>
+    <string name="app_description">Audio player with Estonian speech-to-text</string>
+    <string name="activity_notelistview_name">List of audio files</string>
     <string name="activity_recording_send_name">Copy to Diktofon</string>
     <string name="activity_trans_name">Read &amp; Listen</string>
     <string name="activity_speakers_name">Speakers</string>
@@ -13,7 +13,7 @@
     <string name="activity_about_name">About</string>
     <string name="search_transcriptions">Search (case insensitive)</string>
     <string name="search_transcriptions_by_voice">Speak a keyword</string>
-    <string name="searchable_settings_description">Transcriptions of speech recordings</string>
+    <string name="searchable_settings_description">Transcriptions of audio files</string>
     <string name="permission_rationale">Please grant the essential permissions.</string>
     <!-- Context menu: recordings -->
     <string name="cm_notes_view">Read &amp; Listen</string>
@@ -52,7 +52,7 @@
     <string name="menu_notes_sort_by_speakercount">speaker count</string>
     <!-- <string name="menu_notes_sort_by_search">query match count</string> -->
     <string name="menu_notes_transcribe">Transcribe all untranscribed</string>
-    <string name="menu_notes_reload">Reload all recordings</string>
+    <string name="menu_notes_reload">Reload all files</string>
     <string name="menu_recordings_import">Import an audio file</string>
 
     <!-- Tags menu -->
@@ -80,13 +80,13 @@
     <string name="b_ok">OK</string>
     <string name="b_cancel">Cancel</string>
     <string name="b_apply_tags">Apply</string>
-    <string name="confirm_delete_recording">Are you sure you want to delete recording \"%1$s\"?</string>
+    <string name="confirm_delete_recording">Are you sure you want to delete file \"%1$s\"?</string>
     <string name="confirm_delete_speaker">Are you sure you want to delete speaker \"%1$s\"?</string>
-    <string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d recordings?</string>
+    <string name="confirm_transcribe_all">Are you sure you want to transcribe %1$d files?</string>
     <string name="chooser_record">Record using:</string>
     <string name="chooser_import">Import using:</string>
     <string name="subject_share">Recording %1$s</string>
-    <string name="chooser_share">Share the recording via:</string>
+    <string name="chooser_share">Share the file via:</string>
     <string name="dialog_title_new_tags">Add tags (separated by whitespace)</string>
     <string name="dialog_title_new_speaker">Name of the new speaker</string>
     <string name="dialog_title_new_name">Change the name</string>
@@ -98,16 +98,16 @@
     <string name="progress_failure">Transcribing failed :(</string>
     <string name="progress_success" translatable="false">…</string>
     <string name="submit_bug_report">BUG: This should not have happened. Please report this issue at https://github.com/Kaljurand/Diktofon/issues</string>
-    <string name="message_loading_recordings">Please wait, loading recordings…</string>
-    <string name="message_transcribing">Transcribing %1$d recording(s)</string>
-    <string name="message_transcribed">Recording %1$s transcribed</string>
-    <string name="message_nothing_to_transcribe">There are no recordings that need transcribing</string>
+    <string name="message_loading_recordings">Please wait, loading audio files…</string>
+    <string name="message_transcribing">Transcribing %1$d files(s)</string>
+    <string name="message_transcribed">File %1$s transcribed</string>
+    <string name="message_nothing_to_transcribe">There are no audio files that need transcribing</string>
     <string name="message_no_query">There is no search query</string>
-    <string name="message_no_transcription">(This recording has no transcription, you can only playback the audio.)</string>
+    <string name="message_no_transcription">(This file has no transcription, you can only playback its audio.)</string>
     <string name="toast_highlighting">Highlighting \"%1$s\"</string>
     <string name="toast_speaker_add_new">Added speaker \"%1$s\"</string>
     <string name="toast_speaker_change_name">Name changed to \"%1$s\"</string>
-    <string name="toast_add_recording">Added new recording \"%1$s\"</string>
+    <string name="toast_add_recording">Added new audio file \"%1$s\"</string>
     <string name="toast_import_audio_uri">Copying audio file %1$s …</string>
     <string name="toast_import_audio_uris">Copying %1$d audio files…</string>
     <string name="toast_copy_done">Successfully stored as %1$s</string>
@@ -119,15 +119,14 @@
     <string name="notification_text_player_completed">Completed: %1$s</string>
     <string name="title_note_view">%1$s / %2$d x %3$s</string>
     <string name="title_notelist_view">%1$d/%2$d/%3$d all/trans/need</string>
-    <string name="emptyview_recordings">There are no recordings.</string>
-    <string name="emptyview_speakers">There are no speakers.</string>
+    <string name="emptyview_recordings">No audio files here</string>
+    <string name="emptyview_speakers">No speakers here</string>
 
     <!-- <string name="titleTagSelector">%1$d tags / %2$d selected</string> -->
     <string name="titleTagSelector">%1$d tags</string>
     <string name="about">&lt;p>&lt;b>%1$s&lt;/b> v%2$s by
 		&lt;a href="http://www.google.com/profiles/kaljurand">Kaarel Kaljurand&lt;/a>&lt;/p>
-		&lt;p>%1$s helps you to record speech audio (e.g. voice memos, interviews, press conferences, lectures)
-		and offers the powerful tool of &lt;b>speech recognition&lt;/b> to make your existing recordings
+		&lt;p>%1$s makes your speech audio files (e.g. voice memos, interviews, press conferences, lectures)
 		accessible as text.&lt;/p>
 		&lt;p>%1$s uses an online &lt;b>Estonian&lt;/b> speech-to-text service
 		(&lt;a href="http://bark.phon.ioc.ee/webtrans/">http://bark.phon.ioc.ee/webtrans/&lt;/a>)
@@ -145,9 +144,8 @@
 		&lt;p>Documentation, feature requests, issue list, and the source code are available at:
 		&lt;a href="https://github.com/Kaljurand/Diktofon">https://github.com/Kaljurand/Diktofon&lt;/a>.&lt;/p></string>
 
-    <!-- Words -->
-    <string name="words">words</string>
-    <string name="speakers">speakers</string>
+    <string name="words">%1$d words</string>
+    <string name="speakers">%1$d speakers</string>
 
     <!-- Preferences -->
     <string name="nameEmail">Email</string>
@@ -194,7 +192,7 @@
         <item>10 times</item>
     </string-array>
 
-    <string name="defaultTranscribingPollAmount" translatable="false">5</string>
+    <string name="defaultTranscribingPollAmount" translatable="false">2</string>
 
     <string-array name="valuesTranscribingPollAmount" translatable="false">
         <item>1</item>
@@ -214,7 +212,7 @@
         <item>10 sec</item>
     </string-array>
 
-    <string name="defaultTranscribingPollPause" translatable="false">5</string>
+    <string name="defaultTranscribingPollPause" translatable="false">1</string>
 
     <string-array name="valuesTranscribingPollPause" translatable="false">
         <item>1</item>
