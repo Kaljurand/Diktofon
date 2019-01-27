@@ -13,8 +13,8 @@ android {
         applicationId 'kaljurand_at_gmail_dot_com.diktofon'
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 1110
-        versionName '1.1.10'
+        versionCode 1112
+        versionName '1.1.12'
     }
 
     compileOptions {

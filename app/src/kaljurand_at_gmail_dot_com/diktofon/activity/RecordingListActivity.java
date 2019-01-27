@@ -33,7 +33,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.provider.SearchRecentSuggestions;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -80,7 +79,7 @@ import kaljurand_at_gmail_dot_com.diktofon.provider.Speaker;
 public class RecordingListActivity extends AbstractDiktofonListActivity {
 
     private static final int MY_ACTIVITY_RECORD_SOUND = 1;
-    private static final int ACTIVITY_RECORD_SOUND = 2;
+    //private static final int ACTIVITY_RECORD_SOUND = 2;
     private static final int ACTIVITY_SELECT_TAGS = 3;
     private static final int ACTIVITY_SELECT_TAGS_FOR_SORT = 4;
     private static final int ACTIVITY_PICK_AUDIO = 5;
@@ -242,11 +241,11 @@ public class RecordingListActivity extends AbstractDiktofonListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_notes_add:
+/*            case R.id.menu_notes_add:
                 Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivityIfExists(intent, ACTIVITY_RECORD_SOUND);
-                return true;
+                return true;*/
             case R.id.menu_notes_search:
                 onSearchRequested();
                 return true;

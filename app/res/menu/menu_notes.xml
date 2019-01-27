@@ -8,6 +8,13 @@
         android:showAsAction="ifRoom"
         android:title="@string/menu_search" />
 
+    <!-- Import an audio file -->
+    <item
+        android:id="@+id/menu_recordings_import"
+        android:icon="@drawable/ic_menu_add_audio"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_recordings_import" />
+
     <!-- Sort existing notes by various properties -->
     <item
         android:id="@+id/menu_notes_sort"
@@ -53,18 +60,14 @@
         android:icon="@drawable/ic_menu_cc" />
     -->
 
-    <!-- Import an audio file -->
-    <item
-        android:id="@+id/menu_recordings_import"
-        android:icon="@drawable/ic_menu_add_audio"
-        android:showAsAction="ifRoom"
-        android:title="@string/menu_recordings_import" />
-
-    <!-- Record an audio file -->
+    <!-- Record an audio file. TODO: not widely supported by Android recorders, also currently
+     broken. Try to reenable in a future version. -->
+    <!--
     <item
         android:id="@+id/menu_notes_add"
         android:showAsAction="ifRoom"
         android:title="@string/menu_add" />
+     -->
 
     <!-- Transcribe all the notes that do not have a transcription yet -->
     <item
