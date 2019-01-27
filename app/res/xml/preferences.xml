@@ -2,48 +2,18 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/titleTranscribing">
+        <!-- TODO: reenable in a future version
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="autotranscribe"
             android:summary="@string/summaryAutotranscribe"
             android:title="@string/titleAutotranscribe" />
-
-        <PreferenceScreen
-            android:key="prefscreenTranscribing"
-            android:summary="@string/summaryTranscribingPreferences"
-            android:title="@string/titleTranscribingPreferences">
-
-            <EditTextPreference
-                android:name="@string/nameEmail"
-                android:defaultValue="@string/defaultEmail"
-                android:key="email"
-                android:summary="@string/summaryEmail"
-                android:title="@string/titleEmail" />
-            <!--
-                        <ListPreference
-                            android:defaultValue="@string/defaultTranscribingWaitLength"
-                            android:entries="@array/entriesTranscribingWaitLength"
-                            android:entryValues="@array/valuesTranscribingWaitLength"
-                            android:key="transcribingWaitLength"
-                            android:summary="@string/summaryTranscribingWaitLength"
-                            android:title="@string/titleTranscribingWaitLength" />
-
-                        <ListPreference
-                            android:defaultValue="@string/defaultTranscribingPollAmount"
-                            android:entries="@array/entriesTranscribingPollAmount"
-                            android:entryValues="@array/valuesTranscribingPollAmount"
-                            android:key="transcribingPollAmount"
-                            android:summary="@string/summaryTranscribingPollAmount"
-                            android:title="@string/titleTranscribingPollAmount" />
-
-                        <ListPreference
-                            android:defaultValue="@string/defaultTranscribingPollPause"
-                            android:entries="@array/entriesTranscribingPollPause"
-                            android:entryValues="@array/valuesTranscribingPollPause"
-                            android:key="transcribingPollPause"
-                            android:summary="@string/summaryTranscribingPollPause"
-                            android:title="@string/titleTranscribingPollPause" />
-                            -->
-        </PreferenceScreen>
+        -->
+        <EditTextPreference
+            android:name="@string/nameEmail"
+            android:defaultValue="@string/defaultEmail"
+            android:key="email"
+            android:summary="@string/summaryEmail"
+            android:title="@string/titleEmail" />
     </PreferenceCategory>
 </PreferenceScreen>
